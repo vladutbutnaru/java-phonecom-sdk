@@ -28,10 +28,17 @@ package io.swagger.client.api;
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.ApplicationFull;
+import io.swagger.client.model.ContactFull;
+import io.swagger.client.model.FilterIdGroupIdUpdatedAtArray;
+import io.swagger.client.model.FilterIdNameArray;
 import io.swagger.client.model.ListApplicationsFull;
+import io.swagger.client.model.SortIdName;
+import io.swagger.client.model.SortIdUpdatedAt;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,7 +84,7 @@ public class ApplicationsApiTest {
      */
     @Test
     public void listAccountApplicationsTest() throws ApiException {
-        Integer accountId = null;
+        Integer accountId = 1315091;
         List<String> filtersId = null;
         List<String> filtersName = null;
         String sortId = null;
@@ -85,9 +92,19 @@ public class ApplicationsApiTest {
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-        // ListApplicationsFull response = api.listAccountApplications(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+        ListApplicationsFull response = api.listAccountApplications(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
 
-        // TODO: test validations
+        assertNotNull(response);
+        List<ApplicationFull> items = response.getItems();
+        assertNotNull(items);
+        FilterIdNameArray filters = response.getFilters();
+        assertNotNull(filters);
+        Integer limit2 = response.getLimit();
+        assertNotNull(limit2);
+        Integer offset2 = response.getOffset();
+        assertNotNull(offset2);
+        SortIdName sort = response.getSort();
+        assertNotNull(sort);
     }
     
 }

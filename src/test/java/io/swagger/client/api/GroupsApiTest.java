@@ -27,13 +27,19 @@ package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.ApplicationFull;
 import io.swagger.client.model.CreateGroupParams;
 import io.swagger.client.model.GroupFull;
+import io.swagger.client.model.GroupsFull;
 import io.swagger.client.model.DeleteGroup;
+import io.swagger.client.model.FilterIdNameArray;
 import io.swagger.client.model.ListGroupsFull;
+import io.swagger.client.model.SortIdName;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -116,8 +122,8 @@ public class GroupsApiTest {
      */
     @Test
     public void listAccountExtensionContactGroupsTest() throws ApiException {
-        Integer accountId = null;
-        Integer extensionId = null;
+        Integer accountId = 1315091;
+        Integer extensionId = 1764590;
         List<String> filtersId = null;
         List<String> filtersName = null;
         String sortId = null;
@@ -125,9 +131,19 @@ public class GroupsApiTest {
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-        // ListGroupsFull response = api.listAccountExtensionContactGroups(accountId, extensionId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+        ListGroupsFull response = api.listAccountExtensionContactGroups(accountId, extensionId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
 
-        // TODO: test validations
+        assertNotNull(response);
+        GroupsFull items = response.getItems();
+        assertNotNull(items);
+        FilterIdNameArray filters = response.getFilters();
+        assertNotNull(filters);
+        Integer limit2 = response.getLimit();
+        assertNotNull(limit2);
+        Integer offset2 = response.getOffset();
+        assertNotNull(offset2);
+        SortIdName sort = response.getSort();
+        assertNotNull(sort);
     }
     
     /**

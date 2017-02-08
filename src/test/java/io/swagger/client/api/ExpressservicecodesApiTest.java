@@ -27,11 +27,19 @@ package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.ApplicationFull;
 import io.swagger.client.model.ExpressServiceCodeFull;
+import io.swagger.client.model.ExpressServiceCodesFull;
+import io.swagger.client.model.FilterIdArray;
+import io.swagger.client.model.FilterIdNameArray;
 import io.swagger.client.model.ListExpressServiceCodesFull;
+import io.swagger.client.model.SortId;
+import io.swagger.client.model.SortIdName;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,11 +85,21 @@ public class ExpressservicecodesApiTest {
      */
     @Test
     public void listAccountExpressSrvCodesTest() throws ApiException {
-        Integer accountId = null;
+        Integer accountId = 1315091;
         List<String> filtersId = null;
-        // ListExpressServiceCodesFull response = api.listAccountExpressSrvCodes(accountId, filtersId);
+        ListExpressServiceCodesFull response = api.listAccountExpressSrvCodes(accountId, filtersId);
 
-        // TODO: test validations
+        assertNotNull(response);
+        ExpressServiceCodesFull items = response.getItems();
+        assertNotNull(items);
+        FilterIdArray filters = response.getFilters();
+        assertNotNull(filters);
+        Integer limit2 = response.getLimit();
+        assertNotNull(limit2);
+        Integer offset2 = response.getOffset();
+        assertNotNull(offset2);
+        SortId sort = response.getSort();
+        assertNotNull(sort);
     }
     
 }

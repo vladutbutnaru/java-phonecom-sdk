@@ -25,20 +25,20 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.ApiException;
-import io.swagger.client.helper.TestConfig;
-import io.swagger.client.model.ContactFull;
-import io.swagger.client.model.CreateContactParams;
-import io.swagger.client.model.DeleteContact;
-import io.swagger.client.model.ListContactsFull;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.ContactFull;
+import io.swagger.client.model.CreateContactParams;
+import io.swagger.client.model.FilterIdGroupIdUpdatedAtArray;
+import io.swagger.client.model.ListContactsFull;
+import io.swagger.client.model.SortIdUpdatedAt;
 
 /**
  * API tests for ContactsApi
@@ -116,8 +116,8 @@ public class ContactsApiTest {
      */
     @Test
     public void listAccountExtensionContactsTest() throws ApiException {
-        Integer accountId = null;
-        Integer extensionId = null;
+    	Integer accountId = 1315091;
+        Integer extensionId = 1764590;
         List<String> filtersId = null;
         List<String> filtersGroupId = null;
         List<String> filtersUpdatedAt = null;
@@ -126,9 +126,20 @@ public class ContactsApiTest {
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-        // ListContactsFull response = api.listAccountExtensionContacts(accountId, extensionId, filtersId, filtersGroupId, filtersUpdatedAt, sortId, sortUpdatedAt, limit, offset, fields);
+        
+        ListContactsFull response = api.listAccountExtensionContacts(accountId, extensionId, filtersId, filtersGroupId, filtersUpdatedAt, sortId, sortUpdatedAt, limit, offset, fields);
 
-        // TODO: test validations
+        assertNotNull(response);
+        List<ContactFull> items = response.getItems();
+        assertNotNull(items);
+        FilterIdGroupIdUpdatedAtArray filters = response.getFilters();
+        assertNotNull(filters);
+        Integer limit2 = response.getLimit();
+        assertNotNull(limit2);
+        Integer offset2 = response.getOffset();
+        assertNotNull(offset2);
+        SortIdUpdatedAt sort = response.getSort();
+        assertNotNull(sort);
     }
     
     /**

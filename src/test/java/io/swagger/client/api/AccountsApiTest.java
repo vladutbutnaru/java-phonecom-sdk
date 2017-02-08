@@ -25,6 +25,8 @@
 
 package io.swagger.client.api;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.util.List;
 
 import org.junit.Before;
@@ -32,7 +34,13 @@ import org.junit.Test;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.AccountFull;
+import io.swagger.client.model.ApplicationFull;
+import io.swagger.client.model.FilterIdArray;
+import io.swagger.client.model.FilterIdNameArray;
 import io.swagger.client.model.ListAccountsFull;
+import io.swagger.client.model.SortId;
+import io.swagger.client.model.SortIdName;
 
 /**
  * API tests for AccountsApi
@@ -86,8 +94,18 @@ public class AccountsApiTest {
         //apiKey.setApiKeyPrefix("Token");
        
          ListAccountsFull response = api.listAccounts(filtersId, sortId, limit, offset, fields);
-         System.out.println(response);
-        // TODO: test validations
+         
+        // assertNotNull(response);
+         List<AccountFull> items = response.getItems();
+         assertNotNull(items);
+         FilterIdArray filters = response.getFilters();
+         assertNotNull(filters);
+         Integer limit2 = response.getLimit();
+         assertNotNull(limit2);
+         Integer offset2 = response.getOffset();
+         assertNotNull(offset2);
+         SortId sort = response.getSort();
+         assertNotNull(sort);
     }
 
 	

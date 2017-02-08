@@ -28,12 +28,20 @@ package io.swagger.client.api;
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.PhoneNumberFull;
+import io.swagger.client.model.PhoneNumbersFull;
+import io.swagger.client.model.ApplicationFull;
 import io.swagger.client.model.CreatePhoneNumberParams;
+import io.swagger.client.model.FilterIdNameArray;
+import io.swagger.client.model.FilterIdNamePhoneNumberArray;
 import io.swagger.client.model.ListPhoneNumbersFull;
 import io.swagger.client.model.ReplacePhoneNumberParams;
+import io.swagger.client.model.SortIdName;
+import io.swagger.client.model.SortIdNamePhoneNumber;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -96,7 +104,7 @@ public class PhonenumbersApiTest {
      */
     @Test
     public void listAccountPhoneNumbersTest() throws ApiException {
-        Integer accountId = null;
+        Integer accountId = 1315091;
         List<String> filtersId = null;
         List<String> filtersName = null;
         List<String> filtersPhoneNumber = null;
@@ -106,9 +114,19 @@ public class PhonenumbersApiTest {
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-        // ListPhoneNumbersFull response = api.listAccountPhoneNumbers(accountId, filtersId, filtersName, filtersPhoneNumber, sortId, sortName, sortPhoneNumber, limit, offset, fields);
+        ListPhoneNumbersFull response = api.listAccountPhoneNumbers(accountId, filtersId, filtersName, filtersPhoneNumber, sortId, sortName, sortPhoneNumber, limit, offset, fields);
 
-        // TODO: test validations
+        assertNotNull(response);
+        PhoneNumbersFull items = response.getItems();
+        assertNotNull(items);
+        FilterIdNamePhoneNumberArray filters = response.getFilters();
+        assertNotNull(filters);
+        Integer limit2 = response.getLimit();
+        assertNotNull(limit2);
+        Integer offset2 = response.getOffset();
+        assertNotNull(offset2);
+        SortIdNamePhoneNumber sort = response.getSort();
+        assertNotNull(sort);
     }
     
     /**

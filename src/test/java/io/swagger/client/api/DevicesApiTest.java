@@ -27,12 +27,18 @@ package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.ApplicationFull;
 import io.swagger.client.model.CreateDeviceParams;
 import io.swagger.client.model.DeviceFull;
+import io.swagger.client.model.DevicesFull;
+import io.swagger.client.model.FilterIdNameArray;
 import io.swagger.client.model.ListDevicesFull;
+import io.swagger.client.model.SortIdName;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -95,7 +101,7 @@ public class DevicesApiTest {
      */
     @Test
     public void listAccountDevicesTest() throws ApiException {
-        Integer accountId = null;
+        Integer accountId = 1315091;
         List<String> filtersId = null;
         List<String> filtersName = null;
         String sortId = null;
@@ -103,9 +109,19 @@ public class DevicesApiTest {
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-        // ListDevicesFull response = api.listAccountDevices(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+        ListDevicesFull response = api.listAccountDevices(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
 
-        // TODO: test validations
+        assertNotNull(response);
+        DevicesFull items = response.getItems();
+        assertNotNull(items);
+        FilterIdNameArray filters = response.getFilters();
+        assertNotNull(filters);
+        Integer limit2 = response.getLimit();
+        assertNotNull(limit2);
+        Integer offset2 = response.getOffset();
+        assertNotNull(offset2);
+        SortIdName sort = response.getSort();
+        assertNotNull(sort);
     }
     
     /**

@@ -27,10 +27,18 @@ package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.CallLogFull;
+import io.swagger.client.model.CallerIdFull;
+import io.swagger.client.model.FilterCallLogs;
+import io.swagger.client.model.FilterNameNumberArray;
 import io.swagger.client.model.ListCallerIdsFull;
+import io.swagger.client.model.SortCallLogs;
+import io.swagger.client.model.SortNameNumber;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,7 +56,7 @@ public class CalleridsApiTest {
     public void initTest() {
     	TestConfig.setAuthorization();
     }
-    
+
     /**
      * Show the Caller ID options a given extension can use
      *
@@ -59,8 +67,8 @@ public class CalleridsApiTest {
      */
     @Test
     public void getCallerIdsTest() throws ApiException {
-        Integer accountId = null;
-        Integer extensionId = null;
+        Integer accountId = 1315091;
+        Integer extensionId = 1764590;
         List<String> filtersNumber = null;
         List<String> filtersName = null;
         String sortNumber = null;
@@ -68,9 +76,19 @@ public class CalleridsApiTest {
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-        // ListCallerIdsFull response = api.getCallerIds(accountId, extensionId, filtersNumber, filtersName, sortNumber, sortName, limit, offset, fields);
+        ListCallerIdsFull response = api.getCallerIds(accountId, extensionId, filtersNumber, filtersName, sortNumber, sortName, limit, offset, fields);
 
-        // TODO: test validations
+        assertNotNull(response);
+        List<CallerIdFull> items = response.getItems();
+        assertNotNull(items);
+        FilterNameNumberArray filters = response.getFilters();
+        assertNotNull(filters);
+        Integer limit2 = response.getLimit();
+        assertNotNull(limit2);
+        Integer offset2 = response.getOffset();
+        assertNotNull(offset2);
+        SortNameNumber sort = response.getSort();
+        assertNotNull(sort);
     }
     
 }
