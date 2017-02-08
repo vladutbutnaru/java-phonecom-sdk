@@ -25,21 +25,20 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.ApiException;
-import io.swagger.client.helper.TestConfig;
-import io.swagger.client.model.CreateMenuParams;
-import io.swagger.client.model.MenuFull;
-import io.swagger.client.model.DeleteMenu;
-import io.swagger.client.model.ListMenusFull;
-import io.swagger.client.model.ReplaceMenuParams;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.CreateMenuParams;
+import io.swagger.client.model.ListMenusFull;
+import io.swagger.client.model.MenuFull;
+import io.swagger.client.model.ReplaceMenuParams;
 
 /**
  * API tests for MenusApi
@@ -63,10 +62,16 @@ public class MenusApiTest {
      */
     @Test
     public void createAccountMenuTest() throws ApiException {
-        Integer accountId = null;
-        CreateMenuParams data = null;
-        // MenuFull response = api.createAccountMenu(accountId, data);
-
+        Integer accountId = 1315091;
+        CreateMenuParams data = new CreateMenuParams();
+        data.setAllowExtensionDial(true);
+        data.setName("Test Menu");
+        data.setKeypressWaitTime(1234);
+        List<Object> options = new ArrayList<Object>();
+        data.setOptions(options);
+        
+         //MenuFull response = api.createAccountMenu(accountId, data);
+         //assertNotNull(response.getId());
         // TODO: test validations
     }
     
@@ -97,10 +102,15 @@ public class MenusApiTest {
      */
     @Test
     public void getAccountMenuTest() throws ApiException {
-        Integer accountId = null;
-        Integer menuId = null;
-        // MenuFull response = api.getAccountMenu(accountId, menuId);
-
+        Integer accountId = 1315091;
+        Integer menuId = 87926;
+         MenuFull response = api.getAccountMenu(accountId, menuId);
+         assertNotNull(response.getAllowExtensionDial());
+         assertNotNull(response.getId());
+         assertNotNull(response.getKeypressWaitTime());
+         assertNotNull(response.getName());
+         assertNotNull(response.getOptions());
+         
         // TODO: test validations
     }
     
@@ -114,7 +124,7 @@ public class MenusApiTest {
      */
     @Test
     public void listAccountMenusTest() throws ApiException {
-        Integer accountId = null;
+        Integer accountId = 1315091;
         List<String> filtersId = null;
         List<String> filtersName = null;
         String sortId = null;
@@ -122,8 +132,14 @@ public class MenusApiTest {
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-        // ListMenusFull response = api.listAccountMenus(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
-
+        ListMenusFull response = api.listAccountMenus(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+        assertNotNull(response.getFilters());
+        assertNotNull(response.getItems());
+        assertNotNull(response.getLimit());
+        assertNotNull(response.getOffset());
+        assertNotNull(response.getSort());
+        assertNotNull(response.getTotal());
+        
         // TODO: test validations
     }
     
