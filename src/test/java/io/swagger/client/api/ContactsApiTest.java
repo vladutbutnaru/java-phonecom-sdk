@@ -26,10 +26,13 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.ContactFull;
 import io.swagger.client.model.CreateContactParams;
 import io.swagger.client.model.DeleteContact;
 import io.swagger.client.model.ListContactsFull;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -44,6 +47,10 @@ public class ContactsApiTest {
 
     private final ContactsApi api = new ContactsApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * Add a new address book contact for an extension

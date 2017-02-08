@@ -26,10 +26,13 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.RouteFull;
 import io.swagger.client.model.CreateRouteParams;
 import io.swagger.client.model.DeleteRoute;
 import io.swagger.client.model.ListRoutesFull;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -44,6 +47,10 @@ public class RoutesApiTest {
 
     private final RoutesApi api = new RoutesApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * Add a new address book contact for an extension

@@ -25,18 +25,14 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.Configuration;
-import io.swagger.client.auth.ApiKeyAuth;
-import io.swagger.client.model.AccountFull;
-import io.swagger.client.model.ListAccountsFull;
+import java.util.List;
+
+import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.ListAccountsFull;
 
 /**
  * API tests for AccountsApi
@@ -45,6 +41,10 @@ public class AccountsApiTest {
 
     private final AccountsApi api = new AccountsApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * Retrieve details of an individual account
@@ -56,14 +56,6 @@ public class AccountsApiTest {
      */
     @Test
     public void getAccountTest() throws ApiException {
-    	 ApiClient defaultClient = Configuration.getDefaultApiClient();
-         
-         // Configure API key authorization: apiKey
-         ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-         apiKey.setApiKeyPrefix("Bearer");
-         apiKey.setApiKey("FJxqBQcorvEVFPpDVPuZAeYdT5kMrWo1cFxwGE7u");
-         // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-         //apiKey.setApiKeyPrefix("Token");
         
     	//Integer accountId = 33;
         
@@ -89,12 +81,7 @@ public class AccountsApiTest {
         Integer offset = null;
         String fields = null;
         
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
-        // Configure API key authorization: apiKey
-        ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
-        apiKey.setApiKeyPrefix("Bearer");
-        apiKey.setApiKey("FJxqBQcorvEVFPpDVPuZAeYdT5kMrWo1cFxwGE7u");
         // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
         //apiKey.setApiKeyPrefix("Token");
        
@@ -102,5 +89,7 @@ public class AccountsApiTest {
          System.out.println(response);
         // TODO: test validations
     }
+
+	
     
 }

@@ -26,10 +26,13 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.QueueFull;
 import io.swagger.client.model.CreateQueueParams;
 import io.swagger.client.model.DeleteQueue;
 import io.swagger.client.model.ListQueuesFull;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -44,6 +47,10 @@ public class QueuesApiTest {
 
     private final QueuesApi api = new QueuesApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * Create a queue

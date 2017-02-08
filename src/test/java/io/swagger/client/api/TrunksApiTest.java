@@ -26,10 +26,13 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateTrunkParams;
 import io.swagger.client.model.TrunkFull;
 import io.swagger.client.model.DeleteTrunk;
 import io.swagger.client.model.ListTrunksFull;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -44,6 +47,10 @@ public class TrunksApiTest {
 
     private final TrunksApi api = new TrunksApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * Add a trunk record with SIP information

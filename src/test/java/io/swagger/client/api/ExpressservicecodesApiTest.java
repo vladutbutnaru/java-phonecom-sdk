@@ -26,8 +26,11 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.ExpressServiceCodeFull;
 import io.swagger.client.model.ListExpressServiceCodesFull;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -42,6 +45,10 @@ public class ExpressservicecodesApiTest {
 
     private final ExpressservicecodesApi api = new ExpressservicecodesApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * Show details of an account Express Service Code

@@ -26,9 +26,12 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.SmsFull;
 import io.swagger.client.model.CreateSmsParams;
 import io.swagger.client.model.ListSmsFull;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -43,6 +46,10 @@ public class SmsApiTest {
 
     private final SmsApi api = new SmsApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * Send a SMS to one or a group of recipients

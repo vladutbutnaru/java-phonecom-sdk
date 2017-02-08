@@ -26,10 +26,13 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateGroupParams;
 import io.swagger.client.model.GroupFull;
 import io.swagger.client.model.DeleteGroup;
 import io.swagger.client.model.ListGroupsFull;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -44,6 +47,10 @@ public class GroupsApiTest {
 
     private final GroupsApi api = new GroupsApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * 

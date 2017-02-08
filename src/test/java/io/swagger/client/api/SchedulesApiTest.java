@@ -26,8 +26,11 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.ScheduleFull;
 import io.swagger.client.model.ListSchedulesFull;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -42,6 +45,10 @@ public class SchedulesApiTest {
 
     private final SchedulesApi api = new SchedulesApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * Show details of an individual schedule

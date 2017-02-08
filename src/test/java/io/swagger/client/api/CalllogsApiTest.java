@@ -26,7 +26,10 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.ListCallLogsFull;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -41,6 +44,10 @@ public class CalllogsApiTest {
 
     private final CalllogsApi api = new CalllogsApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * Get a list of call details associated with your account

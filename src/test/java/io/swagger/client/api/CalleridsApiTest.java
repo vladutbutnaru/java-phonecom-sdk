@@ -26,7 +26,10 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.ListCallerIdsFull;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -41,6 +44,10 @@ public class CalleridsApiTest {
 
     private final CalleridsApi api = new CalleridsApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * Show the Caller ID options a given extension can use

@@ -26,9 +26,12 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateDeviceParams;
 import io.swagger.client.model.DeviceFull;
 import io.swagger.client.model.ListDevicesFull;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -43,6 +46,10 @@ public class DevicesApiTest {
 
     private final DevicesApi api = new DevicesApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * Register a generic VoIP device

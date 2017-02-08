@@ -26,10 +26,13 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateExtensionParams;
 import io.swagger.client.model.ExtensionFull;
 import io.swagger.client.model.ListExtensionsFull;
 import io.swagger.client.model.ReplaceExtensionParams;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -44,6 +47,10 @@ public class ExtensionsApiTest {
 
     private final ExtensionsApi api = new ExtensionsApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * Create an individual extension

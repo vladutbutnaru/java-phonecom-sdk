@@ -26,10 +26,13 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.PhoneNumberFull;
 import io.swagger.client.model.CreatePhoneNumberParams;
 import io.swagger.client.model.ListPhoneNumbersFull;
 import io.swagger.client.model.ReplacePhoneNumberParams;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -44,6 +47,10 @@ public class PhonenumbersApiTest {
 
     private final PhonenumbersApi api = new PhonenumbersApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * Add a phone number to an account

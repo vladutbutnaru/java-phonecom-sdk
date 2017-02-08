@@ -26,7 +26,10 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.ListPhoneNumbersRegionsFull;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -41,6 +44,10 @@ public class NumberregionsApiTest {
 
     private final NumberregionsApi api = new NumberregionsApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * 

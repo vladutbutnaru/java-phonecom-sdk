@@ -26,11 +26,14 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateMenuParams;
 import io.swagger.client.model.MenuFull;
 import io.swagger.client.model.DeleteMenu;
 import io.swagger.client.model.ListMenusFull;
 import io.swagger.client.model.ReplaceMenuParams;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -45,6 +48,10 @@ public class MenusApiTest {
 
     private final MenusApi api = new MenusApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * Create an individual menu

@@ -26,9 +26,12 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateSubaccountParams;
 import io.swagger.client.model.AccountFull;
 import io.swagger.client.model.ListAccountsFull;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -43,6 +46,10 @@ public class SubaccountsApiTest {
 
     private final SubaccountsApi api = new SubaccountsApi();
 
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
     
     /**
      * Add a subaccount for the authenticated user or client
