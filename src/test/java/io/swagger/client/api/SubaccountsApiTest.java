@@ -34,6 +34,8 @@ import io.swagger.client.model.ListAccountsFull;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -78,14 +80,19 @@ public class SubaccountsApiTest {
      */
     @Test
     public void listAccountSubaccountsTest() throws ApiException {
-        Integer accountId = null;
+        Integer accountId = 1315091;
         List<String> filtersId = null;
         String sortId = null;
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-        // ListAccountsFull response = api.listAccountSubaccounts(accountId, filtersId, sortId, limit, offset, fields);
-
+        ListAccountsFull response = api.listAccountSubaccounts(accountId, filtersId, sortId, limit, offset, fields);
+        assertNotNull(response.getFilters());
+        assertNotNull(response.getItems());
+        assertNotNull(response.getLimit());
+        assertNotNull(response.getOffset());
+        assertNotNull(response.getSort());
+        assertNotNull(response.getTotal());
         // TODO: test validations
     }
     

@@ -25,20 +25,18 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.ApiException;
-import io.swagger.client.helper.TestConfig;
-import io.swagger.client.model.QueueFull;
-import io.swagger.client.model.CreateQueueParams;
-import io.swagger.client.model.DeleteQueue;
-import io.swagger.client.model.ListQueuesFull;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.CreateQueueParams;
+import io.swagger.client.model.ListQueuesFull;
+import io.swagger.client.model.QueueFull;
 
 /**
  * API tests for QueuesApi
@@ -62,10 +60,16 @@ public class QueuesApiTest {
      */
     @Test
     public void createAccountQueueTest() throws ApiException {
-        Integer accountId = null;
+        Integer accountId = 1315091;
         CreateQueueParams data = null;
+        data = new CreateQueueParams();
+        data.setCallerIdType("caller");
+        data.setMaxHoldTime(13);
+        data.setName("TEST");
+        data.setRingTime(10);
+        
         // QueueFull response = api.createAccountQueue(accountId, data);
-
+        
         // TODO: test validations
     }
     
@@ -96,7 +100,7 @@ public class QueuesApiTest {
      */
     @Test
     public void getAccountQueueTest() throws ApiException {
-        Integer accountId = null;
+        Integer accountId = 1315091;
         Integer queueId = null;
         // QueueFull response = api.getAccountQueue(accountId, queueId);
 
@@ -113,7 +117,7 @@ public class QueuesApiTest {
      */
     @Test
     public void listAccountQueuesTest() throws ApiException {
-        Integer accountId = null;
+        Integer accountId = 1315091;
         List<String> filtersId = null;
         List<String> filtersName = null;
         String sortId = null;
@@ -121,8 +125,13 @@ public class QueuesApiTest {
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-        // ListQueuesFull response = api.listAccountQueues(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
-
+         ListQueuesFull response = api.listAccountQueues(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+         assertNotNull(response.getFilters());
+         assertNotNull(response.getItems());
+         assertNotNull(response.getLimit());
+         assertNotNull(response.getOffset());
+         assertNotNull(response.getSort());
+         assertNotNull(response.getTotal());
         // TODO: test validations
     }
     
