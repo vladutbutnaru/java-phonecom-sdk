@@ -14,36 +14,15 @@
 package io.swagger.client.model;
 
 import java.util.Objects;
-import com.google.gson.annotations.SerializedName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.client.model.SortId;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * DeleteGroup
+ * SortIdArray
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-08T15:20:10.092Z")
-public class DeleteGroup {
-  @SerializedName("success")
-  private Boolean success = null;
-
-  public DeleteGroup success(Boolean success) {
-    this.success = success;
-    return this;
-  }
-
-   /**
-   * Get success
-   * @return success
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public Boolean getSuccess() {
-    return success;
-  }
-
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
-
+public class SortIdArray extends ArrayList<SortId> {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -53,22 +32,20 @@ public class DeleteGroup {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DeleteGroup deleteGroup = (DeleteGroup) o;
-    return Objects.equals(this.success, deleteGroup.success);
+    return super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success);
+    return Objects.hash(super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DeleteGroup {\n");
-    
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("class SortIdArray {\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();
   }

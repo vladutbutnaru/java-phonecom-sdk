@@ -25,26 +25,22 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.ApiException;
-import io.swagger.client.helper.TestConfig;
-import io.swagger.client.model.ApplicationFull;
-import io.swagger.client.model.CallLogFull;
-import io.swagger.client.model.FilterCallLogs;
-import io.swagger.client.model.FilterIdNameArray;
-import io.swagger.client.model.ListCallLogsFull;
-import io.swagger.client.model.SortCallLogs;
-import io.swagger.client.model.SortIdName;
+import static io.swagger.client.helper.TestConfig.GREATER_THAN_FILTER;
+import static io.swagger.client.helper.TestConfig.LESS_THAN_FILTER;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.CallLogFull;
+import io.swagger.client.model.FilterCallLogs;
+import io.swagger.client.model.ListCallLogsFull;
+import io.swagger.client.model.SortCallLogs;
 /**
  * API tests for CalllogsApi
  */
@@ -67,33 +63,60 @@ public class CalllogsApiTest {
      */
     @Test
     public void listAccountCallLogsTest() throws ApiException {
+
         Integer accountId = 1315091;
-        List<String> filtersId = null;
-        List<String> filtersStartTime = null;
-        String filtersCreatedAt = null;
+        List<String> filtersId = TestConfig.createDefaultFilter();
+        List<String> filtersStartTime = TestConfig.createDefaultFilter();
+        String filtersCreatedAt = LESS_THAN_FILTER;
         String filtersDirection = null;
-        String filtersCalledNumber = null;
+        String filtersCalledNumber = LESS_THAN_FILTER;
         String filtersType = null;
-        List<String> filtersExtension = null;
-        String sortId = null;
-        String sortStartTime = null;
-        String sortCreatedAt = null;
-        Integer limit = null;
-        Integer offset = null;
+        List<String> filtersExtension = TestConfig.createDefaultFilter();
+        String sortId = "asc";
+        String sortStartTime = "asc";
+        String sortCreatedAt = "desc";
+        Integer limit = 4;
+        Integer offset = 1;
         String fields = null;
         ListCallLogsFull response = api.listAccountCallLogs(accountId, filtersId, filtersStartTime, filtersCreatedAt, filtersDirection, filtersCalledNumber, filtersType, filtersExtension, sortId, sortStartTime, sortCreatedAt, limit, offset, fields);
 
         assertNotNull(response);
         List<CallLogFull> items = response.getItems();
         assertNotNull(items);
+        
         FilterCallLogs filters = response.getFilters();
         assertNotNull(filters);
-        Integer limit2 = response.getLimit();
-        assertNotNull(limit2);
-        Integer offset2 = response.getOffset();
-        assertNotNull(offset2);
+        assertEquals(GREATER_THAN_FILTER, filters.getId());
+        
+        assertEquals(GREATER_THAN_FILTER, filters.getId());
+        
+        assertEquals(GREATER_THAN_FILTER, filters.getId());
+        
+        assertEquals(filtersCreatedAt, filters.getCreatedAt());
+        
+        // TODO API response: "@message": "Internal Server Error"
+//        assertEquals(filtersDirection, filters.getDirection());
+        
+        assertEquals(filtersCalledNumber, filters.getCalledNumber());
+
+        // TODO API response: "@message": "Internal Server Error"
+//        assertEquals(filtersType, filters.getType());
+        
+        Integer limitActual = response.getLimit();
+        assertNotNull(limitActual);
+        assertEquals(limit, limitActual);
+        
+        Integer offsetActual = response.getOffset();
+        assertNotNull(offsetActual);
+        assertEquals(offset, offsetActual);
+
         SortCallLogs sort = response.getSort();
         assertNotNull(sort);
+        assertEquals(sortId, sort.getId());
+
+        assertEquals(sortStartTime, sort.getStartTime());
+
+        assertEquals(sortCreatedAt, sort.getCreatedAt());
     }
     
 }

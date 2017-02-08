@@ -26,7 +26,9 @@
 package io.swagger.client.api;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -35,12 +37,9 @@ import org.junit.Test;
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.AccountFull;
-import io.swagger.client.model.ApplicationFull;
 import io.swagger.client.model.FilterIdArray;
-import io.swagger.client.model.FilterIdNameArray;
 import io.swagger.client.model.ListAccountsFull;
 import io.swagger.client.model.SortId;
-import io.swagger.client.model.SortIdName;
 
 /**
  * API tests for AccountsApi
@@ -83,10 +82,15 @@ public class AccountsApiTest {
      */
     @Test
     public void listAccountsTest() throws ApiException {
-        List<String> filtersId = null;
-        String sortId = null;
-        Integer limit = null;
-        Integer offset = null;
+
+        List<String> filtersId = new ArrayList<>();
+        filtersId.add("lt:100000");
+        String lastFilterId = "gt:1"; 
+        filtersId.add(lastFilterId);
+        
+        String sortId = "asc";
+        Integer limit = 4;
+        Integer offset = 1;
         String fields = null;
         
         
@@ -98,14 +102,22 @@ public class AccountsApiTest {
         // assertNotNull(response);
          List<AccountFull> items = response.getItems();
          assertNotNull(items);
+
          FilterIdArray filters = response.getFilters();
          assertNotNull(filters);
-         Integer limit2 = response.getLimit();
-         assertNotNull(limit2);
-         Integer offset2 = response.getOffset();
-         assertNotNull(offset2);
+         assertEquals(lastFilterId, filters.getId());
+         
+         Integer limitActual = response.getLimit();
+         assertNotNull(limitActual);
+         assertEquals(limit, limitActual);
+         
+         Integer offsetActual = response.getOffset();
+         assertNotNull(offsetActual);
+         assertEquals(offset, offsetActual);
+         
          SortId sort = response.getSort();
          assertNotNull(sort);
+         assertEquals(sortId, sort.getId());
     }
 
 	

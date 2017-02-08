@@ -25,28 +25,23 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.ApiException;
-import io.swagger.client.helper.TestConfig;
-import io.swagger.client.model.PhoneNumberFull;
-import io.swagger.client.model.PhoneNumbersFull;
-import io.swagger.client.model.ApplicationFull;
-import io.swagger.client.model.CreatePhoneNumberParams;
-import io.swagger.client.model.FilterIdNameArray;
-import io.swagger.client.model.FilterIdNamePhoneNumberArray;
-import io.swagger.client.model.ListPhoneNumbersFull;
-import io.swagger.client.model.ReplacePhoneNumberParams;
-import io.swagger.client.model.SortIdName;
-import io.swagger.client.model.SortIdNamePhoneNumber;
+import static io.swagger.client.helper.TestConfig.GREATER_THAN_FILTER;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.CreatePhoneNumberParams;
+import io.swagger.client.model.FilterIdNamePhoneNumberArray;
+import io.swagger.client.model.ListPhoneNumbersFull;
+import io.swagger.client.model.PhoneNumbersFull;
+import io.swagger.client.model.ReplacePhoneNumberParams;
+import io.swagger.client.model.SortIdNamePhoneNumber;
 
 /**
  * API tests for PhonenumbersApi
@@ -105,28 +100,49 @@ public class PhonenumbersApiTest {
     @Test
     public void listAccountPhoneNumbersTest() throws ApiException {
         Integer accountId = 1315091;
-        List<String> filtersId = null;
-        List<String> filtersName = null;
+        List<String> filtersId = TestConfig.createDefaultFilter();
+        List<String> filtersName = TestConfig.createDefaultFilter();
+
+        // TODO API response: filter.phone_number "Unsupported filter type"
         List<String> filtersPhoneNumber = null;
-        String sortId = null;
-        String sortName = null;
+
+        String sortId = "asc";
+        String sortName = "asc";
+
+        // TODO API response: sort.phone_number "Invalid"
         String sortPhoneNumber = null;
-        Integer limit = null;
-        Integer offset = null;
+        Integer limit = 4;
+        Integer offset = 1;
         String fields = null;
         ListPhoneNumbersFull response = api.listAccountPhoneNumbers(accountId, filtersId, filtersName, filtersPhoneNumber, sortId, sortName, sortPhoneNumber, limit, offset, fields);
 
         assertNotNull(response);
         PhoneNumbersFull items = response.getItems();
         assertNotNull(items);
+        
         FilterIdNamePhoneNumberArray filters = response.getFilters();
         assertNotNull(filters);
-        Integer limit2 = response.getLimit();
-        assertNotNull(limit2);
-        Integer offset2 = response.getOffset();
-        assertNotNull(offset2);
+        assertEquals(GREATER_THAN_FILTER, filters.getId());
+
+        assertEquals(GREATER_THAN_FILTER, filters.getName());
+        
+//        assertEquals(lastFilterPhoneNumber, filters.getPhoneNumber());
+        
+        Integer limitActual = response.getLimit();
+        assertNotNull(limitActual);
+        assertEquals(limit, limitActual);
+        
+        Integer offsetActual = response.getOffset();
+        assertNotNull(offsetActual);
+        assertEquals(offset, offsetActual);
+        
         SortIdNamePhoneNumber sort = response.getSort();
         assertNotNull(sort);
+        assertEquals(sortId, sort.getId());
+        
+        assertEquals(sortName, sort.getName());
+        
+//        assertEquals(sortPhoneNumber, sort.getPhoneNumber());
     }
     
     /**

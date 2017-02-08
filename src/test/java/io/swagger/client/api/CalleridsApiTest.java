@@ -25,26 +25,21 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.ApiException;
-import io.swagger.client.helper.TestConfig;
-import io.swagger.client.model.CallLogFull;
-import io.swagger.client.model.CallerIdFull;
-import io.swagger.client.model.FilterCallLogs;
-import io.swagger.client.model.FilterNameNumberArray;
-import io.swagger.client.model.ListCallerIdsFull;
-import io.swagger.client.model.SortCallLogs;
-import io.swagger.client.model.SortNameNumber;
+import static io.swagger.client.helper.TestConfig.GREATER_THAN_FILTER;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.CallerIdFull;
+import io.swagger.client.model.FilterNameNumberArray;
+import io.swagger.client.model.ListCallerIdsFull;
+import io.swagger.client.model.SortNameNumber;
 /**
  * API tests for CalleridsApi
  */
@@ -69,26 +64,38 @@ public class CalleridsApiTest {
     public void getCallerIdsTest() throws ApiException {
         Integer accountId = 1315091;
         Integer extensionId = 1764590;
-        List<String> filtersNumber = null;
-        List<String> filtersName = null;
-        String sortNumber = null;
-        String sortName = null;
-        Integer limit = null;
-        Integer offset = null;
+        List<String> filtersNumber = TestConfig.createDefaultFilter();
+        List<String> filtersName = TestConfig.createDefaultFilter();
+        String sortNumber = "asc";
+        String sortName = "desc";
+        Integer limit = 4;
+        Integer offset = 1;
         String fields = null;
         ListCallerIdsFull response = api.getCallerIds(accountId, extensionId, filtersNumber, filtersName, sortNumber, sortName, limit, offset, fields);
 
         assertNotNull(response);
         List<CallerIdFull> items = response.getItems();
         assertNotNull(items);
+        
         FilterNameNumberArray filters = response.getFilters();
         assertNotNull(filters);
-        Integer limit2 = response.getLimit();
-        assertNotNull(limit2);
-        Integer offset2 = response.getOffset();
-        assertNotNull(offset2);
+        assertEquals(GREATER_THAN_FILTER, filters.getNumber());
+        
+        assertEquals(GREATER_THAN_FILTER, filters.getName());
+        
+        Integer limitActual = response.getLimit();
+        assertNotNull(limitActual);
+        assertEquals(limit, limitActual);
+        
+        Integer offsetActual = response.getOffset();
+        assertNotNull(offsetActual);
+        assertEquals(offset, offsetActual);
+        
         SortNameNumber sort = response.getSort();
         assertNotNull(sort);
+        assertEquals(sortName, sort.getName());
+        
+        assertEquals(sortNumber, sort.getNumber());
     }
     
 }

@@ -25,6 +25,8 @@
 
 package io.swagger.client.api;
 
+import static io.swagger.client.helper.TestConfig.GREATER_THAN_FILTER;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
@@ -39,7 +41,6 @@ import io.swagger.client.model.CreateContactParams;
 import io.swagger.client.model.FilterIdGroupIdUpdatedAtArray;
 import io.swagger.client.model.ListContactsFull;
 import io.swagger.client.model.SortIdUpdatedAt;
-
 /**
  * API tests for ContactsApi
  */
@@ -118,13 +119,13 @@ public class ContactsApiTest {
     public void listAccountExtensionContactsTest() throws ApiException {
     	Integer accountId = 1315091;
         Integer extensionId = 1764590;
-        List<String> filtersId = null;
-        List<String> filtersGroupId = null;
-        List<String> filtersUpdatedAt = null;
-        String sortId = null;
-        String sortUpdatedAt = null;
-        Integer limit = null;
-        Integer offset = null;
+        List<String> filtersId = TestConfig.createDefaultFilter();
+        List<String> filtersGroupId = TestConfig.createDefaultFilter();
+        List<String> filtersUpdatedAt = TestConfig.createDefaultFilter();
+        String sortId = "asc";
+        String sortUpdatedAt = "asc";
+        Integer limit = 4;
+        Integer offset = 1;
         String fields = null;
         
         ListContactsFull response = api.listAccountExtensionContacts(accountId, extensionId, filtersId, filtersGroupId, filtersUpdatedAt, sortId, sortUpdatedAt, limit, offset, fields);
@@ -132,14 +133,28 @@ public class ContactsApiTest {
         assertNotNull(response);
         List<ContactFull> items = response.getItems();
         assertNotNull(items);
+        
         FilterIdGroupIdUpdatedAtArray filters = response.getFilters();
         assertNotNull(filters);
-        Integer limit2 = response.getLimit();
-        assertNotNull(limit2);
-        Integer offset2 = response.getOffset();
-        assertNotNull(offset2);
+        assertEquals(GREATER_THAN_FILTER, filters.getId());
+        
+        assertEquals(GREATER_THAN_FILTER, filters.getGroupId());
+        
+        assertEquals(GREATER_THAN_FILTER, filters.getUpdatedAt());
+        
+        Integer limitActual = response.getLimit();
+        assertNotNull(limitActual);
+        assertEquals(limit, limitActual);
+        
+        Integer offsetActual = response.getOffset();
+        assertNotNull(offsetActual);
+        assertEquals(offset, offsetActual);
+        
         SortIdUpdatedAt sort = response.getSort();
         assertNotNull(sort);
+        assertEquals(sortId, sort.getId());
+        
+        assertEquals(sortUpdatedAt, sort.getUpdatedAt());
     }
     
     /**

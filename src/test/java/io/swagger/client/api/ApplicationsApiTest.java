@@ -25,25 +25,22 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.ApiException;
-import io.swagger.client.helper.TestConfig;
-import io.swagger.client.model.ApplicationFull;
-import io.swagger.client.model.ContactFull;
-import io.swagger.client.model.FilterIdGroupIdUpdatedAtArray;
-import io.swagger.client.model.FilterIdNameArray;
-import io.swagger.client.model.ListApplicationsFull;
-import io.swagger.client.model.SortIdName;
-import io.swagger.client.model.SortIdUpdatedAt;
+import static io.swagger.client.helper.TestConfig.GREATER_THAN_FILTER;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.ApplicationFull;
+import io.swagger.client.model.FilterIdNameArray;
+import io.swagger.client.model.ListApplicationsFull;
+import io.swagger.client.model.SortIdName;
 
 /**
  * API tests for ApplicationsApi
@@ -85,26 +82,39 @@ public class ApplicationsApiTest {
     @Test
     public void listAccountApplicationsTest() throws ApiException {
         Integer accountId = 1315091;
-        List<String> filtersId = null;
+        List<String> filtersId = TestConfig.createDefaultFilter();
         List<String> filtersName = null;
-        String sortId = null;
+
+        // TODO Response from API: "The filters.name filter is unsupported"
+
+        String sortId = "asc";
         String sortName = null;
-        Integer limit = null;
-        Integer offset = null;
+        Integer limit = 4;
+        Integer offset = 1;
         String fields = null;
         ListApplicationsFull response = api.listAccountApplications(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
 
         assertNotNull(response);
         List<ApplicationFull> items = response.getItems();
         assertNotNull(items);
+        
         FilterIdNameArray filters = response.getFilters();
         assertNotNull(filters);
-        Integer limit2 = response.getLimit();
-        assertNotNull(limit2);
-        Integer offset2 = response.getOffset();
-        assertNotNull(offset2);
+        assertEquals(GREATER_THAN_FILTER, filters.getId());
+        
+        Integer limitActual = response.getLimit();
+        assertNotNull(limitActual);
+        assertEquals(limit, limitActual);
+        
+        Integer offsetActual = response.getOffset();
+        assertNotNull(offsetActual);
+        assertEquals(offset, offsetActual);
+        
         SortIdName sort = response.getSort();
         assertNotNull(sort);
+        assertEquals(sortId, sort.getId());
+        
+        assertEquals(sortName, sort.getName());
     }
     
 }

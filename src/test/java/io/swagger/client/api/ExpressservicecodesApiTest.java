@@ -25,26 +25,20 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.ApiException;
-import io.swagger.client.helper.TestConfig;
-import io.swagger.client.model.ApplicationFull;
-import io.swagger.client.model.ExpressServiceCodeFull;
-import io.swagger.client.model.ExpressServiceCodesFull;
-import io.swagger.client.model.FilterIdArray;
-import io.swagger.client.model.FilterIdNameArray;
-import io.swagger.client.model.ListExpressServiceCodesFull;
-import io.swagger.client.model.SortId;
-import io.swagger.client.model.SortIdName;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.ExpressServiceCodesFull;
+import io.swagger.client.model.FilterIdArray;
+import io.swagger.client.model.ListExpressServiceCodesFull;
+import io.swagger.client.model.SortIdArray;
 
 /**
  * API tests for ExpressservicecodesApi
@@ -86,7 +80,7 @@ public class ExpressservicecodesApiTest {
     @Test
     public void listAccountExpressSrvCodesTest() throws ApiException {
         Integer accountId = 1315091;
-        List<String> filtersId = null;
+        List<String> filtersId = TestConfig.createDefaultFilter();
         ListExpressServiceCodesFull response = api.listAccountExpressSrvCodes(accountId, filtersId);
 
         assertNotNull(response);
@@ -94,11 +88,13 @@ public class ExpressservicecodesApiTest {
         assertNotNull(items);
         FilterIdArray filters = response.getFilters();
         assertNotNull(filters);
+        assertEquals(TestConfig.GREATER_THAN_FILTER, filters.getId());
+        
         Integer limit2 = response.getLimit();
         assertNotNull(limit2);
         Integer offset2 = response.getOffset();
         assertNotNull(offset2);
-        SortId sort = response.getSort();
+        SortIdArray sort = response.getSort();
         assertNotNull(sort);
     }
     
