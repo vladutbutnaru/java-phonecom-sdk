@@ -32,12 +32,14 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.ContactFull;
 import io.swagger.client.model.CreateContactParams;
+import io.swagger.client.model.DeleteContact;
 import io.swagger.client.model.FilterIdGroupIdUpdatedAtArray;
 import io.swagger.client.model.ListContactsFull;
 import io.swagger.client.model.SortIdUpdatedAt;
@@ -53,6 +55,94 @@ public class ContactsApiTest {
     	TestConfig.setAuthorization();
     }
     
+    @Test
+    public void createGetReplaceDeleteContact() throws ApiException {
+
+    	// Create
+    	Integer accountId = 1315091;
+        Integer extensionId = 1764590;
+        CreateContactParams data = new CreateContactParams();
+        String firstName = "Geordi";
+		data.setFirstName(firstName);
+        String lastName = "La Forge";
+		data.setLastName(lastName);
+		String company = "Company";
+		data.setCompany(company);
+		String department = "Department";
+		data.setDepartment(department);
+		String jobTitle = "JobTitle";
+		data.setJobTitle(jobTitle );
+		String middleName = "Middle Name";
+		data.setMiddleName(middleName);
+		String nickname = "Nickname";
+		data.setNickname(nickname);
+		String phoneticFirstName = "Phonetic First Name";
+		data.setPhoneticFirstName(phoneticFirstName);
+		String phoneticLastName = "Phonetic Last Name";
+		data.setPhoneticLastName(phoneticLastName);
+		String phoneticMiddleName = "Phonetic Middle Name";
+		data.setPhoneticMiddleName(phoneticMiddleName);
+		String prefix = "Prefix";
+		data.setPrefix(prefix);
+		String suffix = "Sufix";
+		data.setSuffix(suffix);
+
+		// TODO: [API Error] Replace call misses contact id to be replaced
+		// TODO: How to create objects???
+
+//		List<Object> emails = new ArrayList<>();
+//		data.setEmails(emails);
+
+        ContactFull responseCreate = api.createAccountExtensionContact(accountId, extensionId, data);
+        assertNotNull(responseCreate);
+        assertEquals(firstName, responseCreate.getFirstName());
+        assertEquals(lastName, responseCreate.getLastName());
+        assertEquals(company, responseCreate.getCompany());
+        assertEquals(department, responseCreate.getDepartment());
+        assertEquals(jobTitle, responseCreate.getJobTitle());
+        assertEquals(middleName, responseCreate.getMiddleName());
+        assertEquals(nickname, responseCreate.getNickname());
+        assertEquals(phoneticFirstName, responseCreate.getPhoneticFirstName());
+        assertEquals(phoneticLastName, responseCreate.getPhoneticLastName());
+        assertEquals(phoneticMiddleName, responseCreate.getPhoneticMiddleName());
+        assertEquals(prefix, responseCreate.getPrefix());
+        assertEquals(suffix, responseCreate.getSuffix());
+        
+
+        // Get After Create
+        ContactFull responseGetAfterCreate = 
+        		api.getAccountExtensionContact(accountId, extensionId, responseCreate.getId());
+        assertNotNull(responseGetAfterCreate);
+        assertEquals(firstName, responseCreate.getFirstName());
+        assertEquals(lastName, responseCreate.getLastName());
+        assertEquals(company, responseCreate.getCompany());
+        assertEquals(department, responseCreate.getDepartment());
+        assertEquals(jobTitle, responseCreate.getJobTitle());
+        assertEquals(middleName, responseCreate.getMiddleName());
+        assertEquals(nickname, responseCreate.getNickname());
+        assertEquals(phoneticFirstName, responseCreate.getPhoneticFirstName());
+        assertEquals(phoneticLastName, responseCreate.getPhoneticLastName());
+        assertEquals(phoneticMiddleName, responseCreate.getPhoneticMiddleName());
+        assertEquals(prefix, responseCreate.getPrefix());
+        assertEquals(suffix, responseCreate.getSuffix());
+
+        // Replace
+        data.setJobTitle("title");
+        ContactFull responseReplace = api.replaceAccountExtensionContact(accountId, extensionId, data);
+        assertNotNull(responseReplace);
+
+        // Get After Replace
+        ContactFull responseGetAfterReplace = 
+        		api.getAccountExtensionContact(accountId, extensionId, responseCreate.getId());
+        assertNotNull(responseGetAfterReplace);
+        assertEquals(firstName, responseGetAfterReplace.getFirstName());
+        
+        // Delete
+        DeleteContact responseDelete = api.deleteAccountExtensionContact(accountId, extensionId, responseCreate.getId());
+        assertNotNull(responseDelete);
+        assertEquals(true, responseDelete.getSuccess());
+    }
+    
     /**
      * Add a new address book contact for an extension
      *
@@ -62,13 +152,16 @@ public class ContactsApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void createAccountExtensionContactTest() throws ApiException {
-        Integer accountId = null;
-        Integer extensionId = null;
-        CreateContactParams data = null;
-        // ContactFull response = api.createAccountExtensionContact(accountId, extensionId, data);
 
-        // TODO: test validations
+        Integer accountId = 1315091;
+        Integer extensionId = 1764590;
+        CreateContactParams data = new CreateContactParams();
+        
+        ContactFull response = api.createAccountExtensionContact(accountId, extensionId, data);
+        
+        assertNotNull(response);
     }
     
     /**
@@ -80,13 +173,14 @@ public class ContactsApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void deleteAccountExtensionContactTest() throws ApiException {
         Integer accountId = null;
         Integer extensionId = null;
         Integer contactId = null;
-        // DeleteContact response = api.deleteAccountExtensionContact(accountId, extensionId, contactId);
+        DeleteContact response = api.deleteAccountExtensionContact(accountId, extensionId, contactId);
 
-        // TODO: test validations
+        assertNotNull(response);
     }
     
     /**
@@ -98,6 +192,7 @@ public class ContactsApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested multiple times in previous test")
     public void getAccountExtensionContactTest() throws ApiException {
         Integer accountId = 1315091;
         Integer extensionId = 1764590;
@@ -105,8 +200,6 @@ public class ContactsApiTest {
         ContactFull response = api.getAccountExtensionContact(accountId, extensionId, contactId);
         
         assertNotNull(response);
-
-        // TODO: test validations
     }
     
     /**
@@ -171,13 +264,15 @@ public class ContactsApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void replaceAccountExtensionContactTest() throws ApiException {
         Integer accountId = null;
         Integer extensionId = null;
         CreateContactParams data = null;
-        // ContactFull response = api.replaceAccountExtensionContact(accountId, extensionId, data);
 
-        // TODO: test validations
+        ContactFull response = api.replaceAccountExtensionContact(accountId, extensionId, data);
+
+        assertNotNull(response);
     }
     
 }

@@ -39,7 +39,6 @@ import io.swagger.client.model.ExpressServiceCodeFull;
 import io.swagger.client.model.ExpressServiceCodesFull;
 import io.swagger.client.model.FilterIdArray;
 import io.swagger.client.model.ListExpressServiceCodesFull;
-import io.swagger.client.model.SortId;
 import io.swagger.client.model.SortIdArray;
 
 /**
@@ -68,9 +67,7 @@ public class ExpressservicecodesApiTest {
         Integer codeId = 323446;
         ExpressServiceCodeFull response = api.getAccountExpressSrvCode(accountId, codeId);
         
-        
-
-        // TODO: test validations
+        assertNotNull(response);
     }
     
     /**

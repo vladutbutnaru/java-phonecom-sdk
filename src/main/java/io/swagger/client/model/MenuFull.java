@@ -25,7 +25,7 @@ import io.swagger.client.model.RouteSummary;
  * The Full Menu Object contains the same properties as the Menu Summary Object, along with the following:
  */
 @ApiModel(description = "The Full Menu Object contains the same properties as the Menu Summary Object, along with the following:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
 public class MenuFull {
   @SerializedName("id")
   private Integer id = null;

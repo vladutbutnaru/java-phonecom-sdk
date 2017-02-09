@@ -26,7 +26,7 @@ import io.swagger.client.model.SmsForwarding;
  * The Full Phone Number Object has all of the properties of the Phone Number Summary Object, along with several more, as shown below:
  */
 @ApiModel(description = "The Full Phone Number Object has all of the properties of the Phone Number Summary Object, along with several more, as shown below:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
 public class PhoneNumberFull {
   @SerializedName("id")
   private Integer id = null;

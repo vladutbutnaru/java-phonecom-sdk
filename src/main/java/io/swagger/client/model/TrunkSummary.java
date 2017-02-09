@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiModelProperty;
  * The Trunk Summary Object is used to briefly represent a trunk. It can be seen in several places throughout this API. Here are the properties:
  */
 @ApiModel(description = "The Trunk Summary Object is used to briefly represent a trunk. It can be seen in several places throughout this API. Here are the properties:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
 public class TrunkSummary {
   @SerializedName("id")
   private Integer id = null;

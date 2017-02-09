@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * ListContactsSummary
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
 public class ListContactsSummary {
   @SerializedName("filters")
   private FilterIdGroupIdUpdatedAtArray filters = null;

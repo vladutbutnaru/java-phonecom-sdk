@@ -32,19 +32,16 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateExtensionParams;
-import io.swagger.client.model.DeviceMembership;
 import io.swagger.client.model.ExtensionFull;
 import io.swagger.client.model.FilterIdExtensionNameArray;
 import io.swagger.client.model.ListExtensionsFull;
-import io.swagger.client.model.MediaSummary;
-import io.swagger.client.model.Notification;
 import io.swagger.client.model.ReplaceExtensionParams;
-import io.swagger.client.model.RouteSummary;
 import io.swagger.client.model.SortIdExtensionName;
 import io.swagger.client.model.Voicemail;
 /**
@@ -59,6 +56,178 @@ public class ExtensionsApiTest {
     	TestConfig.setAuthorization();
     }
     
+    @Test
+    public void createGetReplaceExtension() throws ApiException {
+
+    	// Create
+    	Integer accountId = 1315091;
+        Integer extensionId = 1764590;
+        CreateExtensionParams data = new CreateExtensionParams();
+        Boolean allowsCallWaiting = true;
+		data.setAllowsCallWaiting(allowsCallWaiting);
+//        String callerId = "Caller Id";
+//		data.setCallerId(callerId);
+//        String callNotificationsSms = "Call Notifications Sms";
+//		data.setCallNotificationsSms(callNotificationsSms);
+        Boolean enableCallWaiting = true;
+		data.setEnableCallWaiting(enableCallWaiting);
+        Boolean enableOutboundCalls = true;
+		data.setEnableOutboundCalls(enableOutboundCalls);
+//        Integer extension = 1;
+//		data.setExtension(extension);
+        String fullName = "Full Name";
+		data.setFullName(fullName);
+        Boolean includeInDirectory = true;
+		data.setIncludeInDirectory(includeInDirectory);
+//        Integer localAreaCode = 1;
+//		data.setLocalAreaCode(localAreaCode);
+        String name = "Name";
+		data.setName(name);
+//        String timezone = "Timezone";
+//		data.setTimezone(timezone);
+//        String usageType = "Usage Type";
+//		data.setUsageType(usageType);
+        Boolean voicemailEnabled = true;
+		data.setVoicemailEnabled(voicemailEnabled);
+        Boolean voicemailGreetingEnableLeaveMessagePrompt = true;
+		data.setVoicemailGreetingEnableLeaveMessagePrompt(voicemailGreetingEnableLeaveMessagePrompt);
+        String voicemailGreetingType = "standard";
+		data.setVoicemailGreetingType(voicemailGreetingType);
+        String voicemailNotificationsSms = "Voicemail Notifications Sms";
+		data.setVoicemailNotificationsSms(voicemailNotificationsSms);
+        Integer voicemailPassword = 1;
+		data.setVoicemailPassword(voicemailPassword);
+        String voicemailTranscription = "Voicemail Transcription";
+		data.setVoicemailTranscription(voicemailTranscription);
+
+        ExtensionFull responseCreate = api.createAccountExtension(accountId, data);
+        assertNotNull(responseCreate);
+//        assertEquals(allowsCallWaiting, responseCreate.getAllowsCallWaiting());
+//        assertEquals(callerId, responseCreate.getCallerId());
+//        assertEquals(callNotificationsSms, responseCreate.getCallNotifications().getSms());
+        assertEquals(enableCallWaiting, responseCreate.getEnableCallWaiting());
+        assertEquals(enableOutboundCalls, responseCreate.getEnableOutboundCalls());
+//        assertEquals(extension, responseCreate.getExtension());
+        assertEquals(fullName, responseCreate.getFullName());
+        assertEquals(includeInDirectory, responseCreate.getIncludeInDirectory());
+//        assertEquals(localAreaCode, responseCreate.getLocalAreaCode());
+        assertEquals(name, responseCreate.getName());
+//        assertEquals(timezone, responseCreate.getTimezone());
+//        assertEquals(usageType, responseCreate.getUsageType());
+        assertEquals(voicemailEnabled, responseCreate.getVoicemail().getEnabled());
+        assertEquals(voicemailGreetingEnableLeaveMessagePrompt, responseCreate.getVoicemail().getGreeting().getEnableLeaveMessagePrompt());
+        assertEquals(voicemailGreetingType, responseCreate.getVoicemail().getGreeting().getType());
+//        assertEquals(voicemailNotificationsSms, responseCreate.getVoicemail().getNotifications().getSms());
+        assertEquals("000000", responseCreate.getVoicemail().getPassword());
+//        assertEquals(voicemailTranscription, responseCreate.getVoicemail().getTranscription());
+        
+
+        // Get After Create
+        ExtensionFull responseGetAfterCreate = api.getAccountExtension(accountId, extensionId);
+        assertNotNull(responseGetAfterCreate);
+//      assertEquals(allowsCallWaiting, responseCreate.getAllowsCallWaiting());
+//        assertEquals(callerId, responseCreate.getCallerId());
+//        assertEquals(callNotificationsSms, responseCreate.getCallNotifications().getSms());
+        assertEquals(enableCallWaiting, responseCreate.getEnableCallWaiting());
+        assertEquals(enableOutboundCalls, responseCreate.getEnableOutboundCalls());
+//        assertEquals(extension, responseCreate.getExtension());
+        assertEquals(fullName, responseCreate.getFullName());
+        assertEquals(includeInDirectory, responseCreate.getIncludeInDirectory());
+//        assertEquals(localAreaCode, responseCreate.getLocalAreaCode());
+        assertEquals(name, responseCreate.getName());
+//        assertEquals(timezone, responseCreate.getTimezone());
+//        assertEquals(usageType, responseCreate.getUsageType());
+        assertEquals(voicemailEnabled, responseCreate.getVoicemail().getEnabled());
+        assertEquals(voicemailGreetingEnableLeaveMessagePrompt, responseCreate.getVoicemail().getGreeting().getEnableLeaveMessagePrompt());
+        assertEquals(voicemailGreetingType, responseCreate.getVoicemail().getGreeting().getType());
+//        assertEquals(voicemailNotificationsSms, responseCreate.getVoicemail().getNotifications().getSms());
+        assertEquals("000000", responseCreate.getVoicemail().getPassword());
+//        assertEquals(voicemailTranscription, responseCreate.getVoicemail().getTranscription());
+
+        // Replace
+        ReplaceExtensionParams data2 = new ReplaceExtensionParams();
+        String callerId2 = "Caller Id";
+		data2.setCallerId(callerId2);
+        String callNotificationsSms2 = "Call Notifications Sms";
+		data2.setCallNotificationsSms(callNotificationsSms2);
+        Boolean enableCallWaiting2 = true;
+		data2.setEnableCallWaiting(enableCallWaiting2);
+        Boolean enableOutboundCalls2 = true;
+		data2.setEnableOutboundCalls(enableOutboundCalls2);
+        Integer extension2 = 1;
+		data2.setExtension(extension2);
+        String fullName2 = "Full Name";
+		data2.setFullName(fullName2);
+        Boolean includeInDirectory2 = true;
+		data2.setIncludeInDirectory(includeInDirectory2);
+        Integer localAreaCode2 = 1;
+		data2.setLocalAreaCode(localAreaCode2);
+        String name2 = "Name";
+		data2.setName(name2);
+        String timezone2 = "Timezone";
+		data2.setTimezone(timezone2);
+        String usageType2 = "Usage Type";
+		data2.setUsageType(usageType2);
+        Boolean voicemailEnabled2 = true;
+		data2.setVoicemailEnabled(voicemailEnabled2);
+        Boolean voicemailGreetingEnableLeaveMessagePrompt2 = true;
+		data2.setVoicemailGreetingEnableLeaveMessagePrompt(voicemailGreetingEnableLeaveMessagePrompt2);
+        String voicemailGreetingType2 = "Voicemail Greeting Type";
+		data2.setVoicemailGreetingType(voicemailGreetingType2);
+        String voicemailNotificationsSms2 = "Voicemail Notifications Sms";
+		data2.setVoicemailNotificationsSms(voicemailNotificationsSms2);
+        Integer voicemailPassword2 = 1;
+		data2.setVoicemailPassword(voicemailPassword2);
+        String voicemailTranscription2 = "Voicemail Transcription";
+		data2.setVoicemailTranscription(voicemailTranscription2);
+
+		// TODO: [API Error] Unprocessable entity
+
+        ExtensionFull responseReplace = api.replaceAccountExtension(accountId, extensionId, data2);
+    	assertNotNull(responseReplace);
+    	
+//      assertEquals(allowsCallWaiting, responseCreate.getAllowsCallWaiting());
+//    	assertEquals(callerId2, responseCreate.getCallerId());
+//    	assertEquals(callNotificationsSms2, responseCreate.getCallNotifications().getSms());
+//    	assertEquals(enableCallWaiting2, responseCreate.getEnableCallWaiting());
+//    	assertEquals(enableOutboundCalls2, responseCreate.getEnableOutboundCalls());
+//    	assertEquals(extension2, responseCreate.getExtension());
+//    	assertEquals(fullName2, responseCreate.getFullName());
+//    	assertEquals(includeInDirectory2, responseCreate.getIncludeInDirectory());
+//    	assertEquals(localAreaCode2, responseCreate.getLocalAreaCode());
+//    	assertEquals(name2, responseCreate.getName());
+//    	assertEquals(timezone2, responseCreate.getTimezone());
+//    	assertEquals(usageType2, responseCreate.getUsageType());
+//    	assertEquals(voicemailEnabled2, responseCreate.getVoicemail().getEnabled());
+//    	assertEquals(voicemailGreetingEnableLeaveMessagePrompt2, responseCreate.getVoicemail().getGreeting().getEnableLeaveMessagePrompt());
+//    	assertEquals(voicemailGreetingType2, responseCreate.getVoicemail().getGreeting().getType());
+//    	assertEquals(voicemailNotificationsSms2, responseCreate.getVoicemail().getNotifications().getSms());
+//    	assertEquals(voicemailPassword2, responseCreate.getVoicemail().getPassword());
+//    	assertEquals(voicemailTranscription2, responseCreate.getVoicemail().getTranscription());
+
+//        // Get After Replace
+//        ExtensionFull responseGetAfterReplace = api.getAccountExtension(accountId, extensionId);
+//        assertNotNull(responseGetAfterReplace);
+////      assertEquals(allowsCallWaiting2, responseCreate.getAllowsCallWaiting());
+//        assertEquals(callerId2, responseCreate.getCallerId());
+//        assertEquals(callNotificationsSms2, responseCreate.getCallNotifications().getSms());
+//        assertEquals(enableCallWaiting2, responseCreate.getEnableCallWaiting());
+//        assertEquals(enableOutboundCalls2, responseCreate.getEnableOutboundCalls());
+//        assertEquals(extension2, responseCreate.getExtension());
+//        assertEquals(fullName2, responseCreate.getFullName());
+//        assertEquals(includeInDirectory2, responseCreate.getIncludeInDirectory());
+//        assertEquals(localAreaCode2, responseCreate.getLocalAreaCode());
+//        assertEquals(name2, responseCreate.getName());
+//        assertEquals(timezone2, responseCreate.getTimezone());
+//        assertEquals(usageType2, responseCreate.getUsageType());
+//        assertEquals(voicemailEnabled2, responseCreate.getVoicemail().getEnabled());
+//        assertEquals(voicemailGreetingEnableLeaveMessagePrompt2, responseCreate.getVoicemail().getGreeting().getEnableLeaveMessagePrompt());
+//        assertEquals(voicemailGreetingType2, responseCreate.getVoicemail().getGreeting().getType());
+//        assertEquals(voicemailNotificationsSms2, responseCreate.getVoicemail().getNotifications().getSms());
+//        assertEquals(voicemailPassword2, responseCreate.getVoicemail().getPassword());
+//        assertEquals(voicemailTranscription2, responseCreate.getVoicemail().getTranscription());
+    }
+    
     /**
      * Create an individual extension
      *
@@ -68,12 +237,13 @@ public class ExtensionsApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void createAccountExtensionTest() throws ApiException {
         Integer accountId = null;
         CreateExtensionParams data = null;
-        // ExtensionFull response = api.createAccountExtension(accountId, data);
+        ExtensionFull response = api.createAccountExtension(accountId, data);
 
-        // TODO: test validations
+        assertNotNull(response);
     }
     
     /**
@@ -86,6 +256,7 @@ public class ExtensionsApiTest {
      */
     @Test
     public void getAccountExtensionTest() throws ApiException {
+
         Integer accountId = 1315091;
         Integer extensionId = 1764590;
         ExtensionFull response = api.getAccountExtension(accountId, extensionId);
@@ -137,6 +308,7 @@ public class ExtensionsApiTest {
      */
     @Test
     public void listAccountExtensionsTest() throws ApiException {
+
         Integer accountId = 1315091;
         List<String> filtersId = TestConfig.createDefaultFilter();
         List<String> filtersExtension = TestConfig.createDefaultFilter();
@@ -187,13 +359,15 @@ public class ExtensionsApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void replaceAccountExtensionTest() throws ApiException {
+
         Integer accountId = null;
         Integer extensionId = null;
         ReplaceExtensionParams data = null;
-        // ExtensionFull response = api.replaceAccountExtension(accountId, extensionId, data);
+        ExtensionFull response = api.replaceAccountExtension(accountId, extensionId, data);
 
-        // TODO: test validations
+        assertNotNull(response);
     }
     
 }

@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * ReplaceExtensionParams
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
 public class ReplaceExtensionParams {
   @SerializedName("voicemail[greeting][alternate]")
   private Object voicemailGreetingAlternate = null;

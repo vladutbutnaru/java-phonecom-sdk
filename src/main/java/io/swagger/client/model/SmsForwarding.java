@@ -24,7 +24,7 @@ import io.swagger.client.model.ExtensionSummary;
  * SMS Forwarding Object, or NULL
  */
 @ApiModel(description = "SMS Forwarding Object, or NULL")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
 public class SmsForwarding {
   @SerializedName("type")
   private String type = null;

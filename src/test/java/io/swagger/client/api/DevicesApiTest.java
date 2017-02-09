@@ -32,6 +32,7 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.swagger.client.ApiException;
@@ -54,6 +55,37 @@ public class DevicesApiTest {
     	TestConfig.setAuthorization();
     }
     
+    @Test
+    public void createGetReplaceDeleteDevice() throws ApiException {
+
+    	// Create
+    	Integer accountId = 1315091;
+        CreateDeviceParams data = new CreateDeviceParams();
+        String name = "Geordi";
+		data.setName(name);
+
+		// TODO: [API Error] Create call: Unprocessable entity
+
+		DeviceFull responseCreate = api.createAccountDevice(accountId, data);
+        assertNotNull(responseCreate);
+        assertEquals(name, responseCreate.getName());
+
+        // Get After Create
+        DeviceFull responseGetAfterCreate = api.getAccountDevice(accountId, responseCreate.getId());
+        assertNotNull(responseGetAfterCreate);
+        assertEquals(name, responseCreate.getName());
+
+        // Replace
+        data.setName(name + "2");
+        DeviceFull responseReplace = api.replaceAccountDevice(accountId, responseCreate.getId(), data);
+        assertNotNull(responseReplace);
+
+        // Get After Replace
+        DeviceFull responseGetAfterReplace = api.getAccountDevice(accountId, responseCreate.getId());
+        assertNotNull(responseGetAfterReplace);
+        assertEquals(name, responseGetAfterReplace.getName());
+    }
+    
     /**
      * Register a generic VoIP device
      *
@@ -63,12 +95,13 @@ public class DevicesApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void createAccountDeviceTest() throws ApiException {
         Integer accountId = null;
         CreateDeviceParams data = null;
-        // DeviceFull response = api.createAccountDevice(accountId, data);
+        DeviceFull response = api.createAccountDevice(accountId, data);
 
-        // TODO: test validations
+        assertNotNull(response);
     }
     
     /**
@@ -80,11 +113,13 @@ public class DevicesApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void getAccountDeviceTest() throws ApiException {
         Integer accountId = 1315091;
         Integer deviceId = 142315;
         DeviceFull response = api.getAccountDevice(accountId, deviceId);
-        // TODO: test validations
+        
+        assertNotNull(response);
     }
     
     /**
@@ -144,13 +179,14 @@ public class DevicesApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void replaceAccountDeviceTest() throws ApiException {
         Integer accountId = null;
         Integer deviceId = null;
         CreateDeviceParams data = null;
-        // DeviceFull response = api.replaceAccountDevice(accountId, deviceId, data);
+        DeviceFull response = api.replaceAccountDevice(accountId, deviceId, data);
 
-        // TODO: test validations
+        assertNotNull(response);
     }
     
 }

@@ -25,7 +25,7 @@ import io.swagger.client.model.Members;
  * The Full QueueObject has the same properties as the Queue Summary Object, along with the following:
  */
 @ApiModel(description = "The Full QueueObject has the same properties as the Queue Summary Object, along with the following:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
 public class QueueFull {
   @SerializedName("id")
   private Integer id = null;

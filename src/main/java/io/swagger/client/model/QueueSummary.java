@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiModelProperty;
  * The Queue Summary Object is used to briefly represent a calling queue. It can be seen in several places throughout this API. Here are the properties:
  */
 @ApiModel(description = "The Queue Summary Object is used to briefly represent a calling queue. It can be seen in several places throughout this API. Here are the properties:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
 public class QueueSummary {
   @SerializedName("id")
   private Integer id = null;

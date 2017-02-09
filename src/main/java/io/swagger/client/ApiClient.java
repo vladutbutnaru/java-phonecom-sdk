@@ -730,7 +730,7 @@ public class ApiClient {
      */
     public boolean isJsonMime(String mime) {
 //        return mime != null && mime.matches("(?i)application\\/json(;.*)?");
-    	return mime != null && mime.equals("application/vnd.mason+json");
+    	return mime != null && mime.matches("(?i)application\\/(.*)json(;.*)?");
     }
 
     /**

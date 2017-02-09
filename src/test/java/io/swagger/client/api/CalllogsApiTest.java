@@ -33,6 +33,7 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.swagger.client.ApiException;
@@ -52,7 +53,7 @@ public class CalllogsApiTest {
     public void initTest() {
     	TestConfig.setAuthorization();
     }
-    
+
     /**
      * Show details of an individual Call Log entry
      *
@@ -62,12 +63,14 @@ public class CalllogsApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("[CANNOT TEST] No Call log, no method for creating call log")
     public void getAccountCallLogTest() throws ApiException {
         Integer accountId = 1315091;
         Integer callLogId = null;
         CallLogFull response = api.getAccountCallLog(accountId, callLogId);
 
-        // TODO: test validations
+        assertNotNull(response);
+        // TODO: [CANNOT TEST] No Call log, no method for creating call log
     }
 
     /**

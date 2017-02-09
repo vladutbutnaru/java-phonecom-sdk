@@ -23,7 +23,7 @@ import java.util.List;
  * Array of Contact Phone Number Objects. See below for details.
  */
 @ApiModel(description = "Array of Contact Phone Number Objects. See below for details.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
 public class PhoneNumbersSummary extends ArrayList<PhoneNumberSummary> {
 
   @Override

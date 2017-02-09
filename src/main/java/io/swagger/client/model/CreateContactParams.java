@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * CreateContactParams
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
 public class CreateContactParams {
   @SerializedName("first_name")
   private String firstName = null;

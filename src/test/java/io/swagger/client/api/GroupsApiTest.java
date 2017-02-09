@@ -32,11 +32,13 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateGroupParams;
+import io.swagger.client.model.DeleteGroup;
 import io.swagger.client.model.FilterIdNameArray;
 import io.swagger.client.model.GroupFull;
 import io.swagger.client.model.GroupsFull;
@@ -54,6 +56,45 @@ public class GroupsApiTest {
     	TestConfig.setAuthorization();
     }
     
+    @Test
+    public void createGetReplaceDeleteGroup() throws ApiException {
+
+    	// Create
+    	Integer accountId = 1315091;
+        Integer extensionId = 1764590;
+        CreateGroupParams data = new CreateGroupParams();
+        String name = "Geordi";
+		data.setName(name);
+
+		// TODO: [API Error] Replace call don't have a way to set data to be replaced
+
+		GroupFull responseCreate = api.createAccountExtensionContactGroup(accountId, extensionId, data);
+        assertNotNull(responseCreate);
+        assertEquals(name, responseCreate.getName());
+
+        // Get After Create
+        GroupFull responseGetAfterCreate = 
+        		api.getAccountExtensionContactGroup(accountId, extensionId, responseCreate.getId());
+        assertNotNull(responseGetAfterCreate);
+        assertEquals(name, responseCreate.getName());
+
+        // Replace
+//        data.setName("idroeG");
+//        GroupFull responseReplace = api.replaceAccountExtensionContactGroup(accountId, extensionId, responseCreate.getId());
+//        assertNotNull(responseReplace);
+
+        // Get After Replace
+//        GroupFull responseGetAfterReplace = 
+//        		api.getAccountExtensionContactGroup(accountId, extensionId, responseCreate.getId());
+//        assertNotNull(responseGetAfterReplace);
+//        assertEquals(name, responseGetAfterReplace.getName());
+        
+        // Delete
+        DeleteGroup responseDelete = api.deleteAccountExtensionContactGroup(accountId, extensionId, responseCreate.getId());
+        assertNotNull(responseDelete);
+        assertEquals(true, responseDelete.getSuccess());
+    }
+    
     /**
      * 
      *
@@ -63,13 +104,14 @@ public class GroupsApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void createAccountExtensionContactGroupTest() throws ApiException {
         Integer accountId = null;
         Integer extensionId = null;
         CreateGroupParams data = null;
-        // GroupFull response = api.createAccountExtensionContactGroup(accountId, extensionId, data);
+        GroupFull response = api.createAccountExtensionContactGroup(accountId, extensionId, data);
 
-        // TODO: test validations
+        assertNotNull(response);
     }
     
     /**
@@ -81,13 +123,14 @@ public class GroupsApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void deleteAccountExtensionContactGroupTest() throws ApiException {
         Integer accountId = null;
         Integer extensionId = null;
         Integer groupId = null;
-        // DeleteGroup response = api.deleteAccountExtensionContactGroup(accountId, extensionId, groupId);
+        DeleteGroup response = api.deleteAccountExtensionContactGroup(accountId, extensionId, groupId);
 
-        // TODO: test validations
+        assertNotNull(response);
     }
     
     /**
@@ -99,13 +142,14 @@ public class GroupsApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void getAccountExtensionContactGroupTest() throws ApiException {
         Integer accountId = 1315091;
         Integer extensionId = 1764590;
         Integer groupId = null;
         GroupFull response = api.getAccountExtensionContactGroup(accountId, extensionId, groupId);
 
-        // TODO: test validations
+        assertNotNull(response);
     }
     
     /**
@@ -167,13 +211,14 @@ public class GroupsApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void replaceAccountExtensionContactGroupTest() throws ApiException {
         Integer accountId = null;
         Integer extensionId = null;
         Integer groupId = null;
-        // GroupFull response = api.replaceAccountExtensionContactGroup(accountId, extensionId, groupId);
+        GroupFull response = api.replaceAccountExtensionContactGroup(accountId, extensionId, groupId);
 
-        // TODO: test validations
+        assertNotNull(response);
     }
     
 }

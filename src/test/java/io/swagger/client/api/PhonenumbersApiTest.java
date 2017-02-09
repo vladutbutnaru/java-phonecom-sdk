@@ -32,20 +32,17 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
-import io.swagger.client.model.CallNotifications;
-import io.swagger.client.model.CallerIdPhoneNumber;
 import io.swagger.client.model.CreatePhoneNumberParams;
 import io.swagger.client.model.FilterIdNamePhoneNumberArray;
 import io.swagger.client.model.ListPhoneNumbersFull;
 import io.swagger.client.model.PhoneNumberFull;
 import io.swagger.client.model.PhoneNumbersFull;
 import io.swagger.client.model.ReplacePhoneNumberParams;
-import io.swagger.client.model.RouteSummary;
-import io.swagger.client.model.SmsForwarding;
 import io.swagger.client.model.SortIdNamePhoneNumber;
 
 /**
@@ -60,6 +57,83 @@ public class PhonenumbersApiTest {
     	TestConfig.setAuthorization();
     }
     
+    @Test
+    public void createGetReplacePhoneNumber() throws ApiException {
+
+    	// Create
+    	Integer accountId = 1315091;
+        CreatePhoneNumberParams data = new CreatePhoneNumberParams();
+		Boolean blockAnonymous = true;
+		data.setBlockAnonymous(blockAnonymous);
+		Boolean blockIncoming = true;
+		data.setBlockIncoming(blockIncoming);
+		String callerIdName = "Caller Id Name";
+		data.setCallerIdName(callerIdName);
+		String callerIdType = "Caller Id Type";
+		data.setCallerIdType(callerIdType);
+		String callNotificationsSms = "Call Notifications Sms";
+		data.setCallNotificationsSms(callNotificationsSms);
+		String name = "Geordi";
+		data.setName(name);
+		String smsForwardingType = "Sms Forwarding Type";
+		data.setSmsForwardingType(smsForwardingType);
+		
+
+		// TODO: [API Error] Create: Unprocessable entity
+
+		PhoneNumberFull responseCreate = api.createAccountPhoneNumber(accountId, data);
+        assertNotNull(responseCreate);
+        assertEquals(blockAnonymous, responseCreate.getBlockAnonymous());
+        assertEquals(blockIncoming, responseCreate.getBlockIncoming());
+        assertEquals(callerIdName, responseCreate.getCallerId().getName());
+        assertEquals(callerIdType, responseCreate.getCallerId().getType());
+        assertEquals(callNotificationsSms, responseCreate.getCallNotifications().getSms());
+        assertEquals(name, responseCreate.getName());
+        assertEquals(smsForwardingType, responseCreate.getSmsForwarding().getType());
+        
+
+        // Get After Create
+        PhoneNumberFull responseGetAfterCreate = api.getAccountPhoneNumber(accountId, responseCreate.getId());
+        assertNotNull(responseGetAfterCreate);
+        assertEquals(blockAnonymous, responseCreate.getBlockAnonymous());
+        assertEquals(blockIncoming, responseCreate.getBlockIncoming());
+        assertEquals(callerIdName, responseCreate.getCallerId().getName());
+        assertEquals(callerIdType, responseCreate.getCallerId().getType());
+        assertEquals(callNotificationsSms, responseCreate.getCallNotifications().getSms());
+        assertEquals(name, responseCreate.getName());
+        assertEquals(smsForwardingType, responseCreate.getSmsForwarding().getType());
+
+        // Replace
+        ReplacePhoneNumberParams data2 = new ReplacePhoneNumberParams();
+        Boolean blockAnonymous2 = true;
+		data2.setBlockAnonymous(blockAnonymous2);
+		Boolean blockIncoming2 = true;
+		data2.setBlockIncoming(blockIncoming2);
+		String callerIdName2 = "Caller Id Name";
+		data2.setCallerIdName(callerIdName2);
+		String callerIdType2 = "Caller Id Type";
+		data2.setCallerIdType(callerIdType2);
+		String callNotificationsSms2 = "Call Notifications Sms";
+		data2.setCallNotificationsSms(callNotificationsSms2);
+		String name2 = "Geordi";
+		data2.setName(name2);
+		String smsForwardingType2 = "Sms Forwarding Type";
+		data2.setSmsForwardingType(smsForwardingType2);
+        PhoneNumberFull responseReplace = api.replaceAccountPhoneNumber(accountId, responseCreate.getId(), data2);
+        assertNotNull(responseReplace);
+
+        // Get After Replace
+        PhoneNumberFull responseGetAfterReplace = api.getAccountPhoneNumber(accountId, responseCreate.getId());
+        assertNotNull(responseGetAfterReplace);
+        assertEquals(blockAnonymous2, responseCreate.getBlockAnonymous());
+        assertEquals(blockIncoming2, responseCreate.getBlockIncoming());
+        assertEquals(callerIdName2, responseCreate.getCallerId().getName());
+        assertEquals(callerIdType2, responseCreate.getCallerId().getType());
+        assertEquals(callNotificationsSms2, responseCreate.getCallNotifications().getSms());
+        assertEquals(name2, responseCreate.getName());
+        assertEquals(smsForwardingType2, responseCreate.getSmsForwarding().getType());
+    }
+    
     /**
      * Add a phone number to an account
      *
@@ -69,12 +143,14 @@ public class PhonenumbersApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void createAccountPhoneNumberTest() throws ApiException {
+
         Integer accountId = null;
         CreatePhoneNumberParams data = null;
-        // PhoneNumberFull response = api.createAccountPhoneNumber(accountId, data);
+        PhoneNumberFull response = api.createAccountPhoneNumber(accountId, data);
 
-        // TODO: test validations
+        assertNotNull(response);
     }
     
     /**
@@ -179,13 +255,14 @@ public class PhonenumbersApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void replaceAccountPhoneNumberTest() throws ApiException {
         Integer accountId = null;
         Integer numberId = null;
         ReplacePhoneNumberParams data = null;
-        // PhoneNumberFull response = api.replaceAccountPhoneNumber(accountId, numberId, data);
+        PhoneNumberFull response = api.replaceAccountPhoneNumber(accountId, numberId, data);
 
-        // TODO: test validations
+        assertNotNull(response);
     }
     
 }

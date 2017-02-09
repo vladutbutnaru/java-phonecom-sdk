@@ -26,7 +26,7 @@ import org.joda.time.DateTime;
  * The Full SMS Object includes all of the properties in the SMS Summary Object, along with several more.
  */
 @ApiModel(description = "The Full SMS Object includes all of the properties in the SMS Summary Object, along with several more.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
 public class SmsFull {
   @SerializedName("id")
   private String id = null;

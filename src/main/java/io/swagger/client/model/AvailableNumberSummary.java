@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiModelProperty;
  * The Available Phone Number Summary Object is used to briefly represent a phone number. It can be seen in several places throughout this API. Here are the properties:
  */
 @ApiModel(description = "The Available Phone Number Summary Object is used to briefly represent a phone number. It can be seen in several places throughout this API. Here are the properties:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
 public class AvailableNumberSummary {
   @SerializedName("phone_number")
   private String phoneNumber = null;

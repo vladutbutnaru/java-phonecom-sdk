@@ -21,12 +21,14 @@ import io.swagger.client.model.Addresses;
 import io.swagger.client.model.Emails;
 import io.swagger.client.model.GroupListContacts;
 import io.swagger.client.model.PhoneNumberContact;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The Full Contact Object includes all of the properties in the Contact Summary Object, along with several more:
  */
 @ApiModel(description = "The Full Contact Object includes all of the properties in the Contact Summary Object, along with several more:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
 public class ContactFull {
   @SerializedName("id")
   private Integer id = null;
@@ -71,7 +73,7 @@ public class ContactFull {
   private Emails emails = null;
 
   @SerializedName("phone_numbers")
-  private PhoneNumberContact phoneNumbers = null;
+  private List<PhoneNumberContact> phoneNumbers = new ArrayList<PhoneNumberContact>();
 
   @SerializedName("addresses")
   private Addresses addresses = null;
@@ -337,8 +339,13 @@ public class ContactFull {
     this.emails = emails;
   }
 
-  public ContactFull phoneNumbers(PhoneNumberContact phoneNumbers) {
+  public ContactFull phoneNumbers(List<PhoneNumberContact> phoneNumbers) {
     this.phoneNumbers = phoneNumbers;
+    return this;
+  }
+
+  public ContactFull addPhoneNumbersItem(PhoneNumberContact phoneNumbersItem) {
+    this.phoneNumbers.add(phoneNumbersItem);
     return this;
   }
 
@@ -347,11 +354,11 @@ public class ContactFull {
    * @return phoneNumbers
   **/
   @ApiModelProperty(example = "null", value = "")
-  public PhoneNumberContact getPhoneNumbers() {
+  public List<PhoneNumberContact> getPhoneNumbers() {
     return phoneNumbers;
   }
 
-  public void setPhoneNumbers(PhoneNumberContact phoneNumbers) {
+  public void setPhoneNumbers(List<PhoneNumberContact> phoneNumbers) {
     this.phoneNumbers = phoneNumbers;
   }
 
