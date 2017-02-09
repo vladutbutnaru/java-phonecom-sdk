@@ -38,6 +38,7 @@ import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateGroupParams;
 import io.swagger.client.model.FilterIdNameArray;
+import io.swagger.client.model.GroupFull;
 import io.swagger.client.model.GroupsFull;
 import io.swagger.client.model.ListGroupsFull;
 import io.swagger.client.model.SortIdName;
@@ -99,10 +100,10 @@ public class GroupsApiTest {
      */
     @Test
     public void getAccountExtensionContactGroupTest() throws ApiException {
-        Integer accountId = null;
-        Integer extensionId = null;
+        Integer accountId = 1315091;
+        Integer extensionId = 1764590;
         Integer groupId = null;
-        // GroupFull response = api.getAccountExtensionContactGroup(accountId, extensionId, groupId);
+        GroupFull response = api.getAccountExtensionContactGroup(accountId, extensionId, groupId);
 
         // TODO: test validations
     }
@@ -117,6 +118,7 @@ public class GroupsApiTest {
      */
     @Test
     public void listAccountExtensionContactGroupsTest() throws ApiException {
+
         Integer accountId = 1315091;
         Integer extensionId = 1764590;
         List<String> filtersId = TestConfig.createDefaultFilter();
@@ -126,8 +128,11 @@ public class GroupsApiTest {
         Integer limit = 4;
         Integer offset = 1;
         String fields = null;
+        
+        // When
         ListGroupsFull response = api.listAccountExtensionContactGroups(accountId, extensionId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
 
+        // Then
         assertNotNull(response);
         GroupsFull items = response.getItems();
         assertNotNull(items);

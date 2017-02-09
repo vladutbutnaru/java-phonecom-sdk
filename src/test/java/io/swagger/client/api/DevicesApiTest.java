@@ -37,6 +37,7 @@ import org.junit.Test;
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateDeviceParams;
+import io.swagger.client.model.DeviceFull;
 import io.swagger.client.model.DevicesFull;
 import io.swagger.client.model.FilterIdNameArray;
 import io.swagger.client.model.ListDevicesFull;
@@ -80,10 +81,9 @@ public class DevicesApiTest {
      */
     @Test
     public void getAccountDeviceTest() throws ApiException {
-        Integer accountId = null;
-        Integer deviceId = null;
-        // DeviceFull response = api.getAccountDevice(accountId, deviceId);
-
+        Integer accountId = 1315091;
+        Integer deviceId = 142315;
+        DeviceFull response = api.getAccountDevice(accountId, deviceId);
         // TODO: test validations
     }
     
@@ -105,8 +105,11 @@ public class DevicesApiTest {
         Integer limit = 4;
         Integer offset = 1;
         String fields = null;
+        
+        // When
         ListDevicesFull response = api.listAccountDevices(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
 
+        //Then
         assertNotNull(response);
         DevicesFull items = response.getItems();
         assertNotNull(items);

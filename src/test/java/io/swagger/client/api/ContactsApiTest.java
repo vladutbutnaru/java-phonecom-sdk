@@ -99,10 +99,12 @@ public class ContactsApiTest {
      */
     @Test
     public void getAccountExtensionContactTest() throws ApiException {
-        Integer accountId = null;
-        Integer extensionId = null;
+        Integer accountId = 1315091;
+        Integer extensionId = 1764590;
         Integer contactId = null;
-        // ContactFull response = api.getAccountExtensionContact(accountId, extensionId, contactId);
+        ContactFull response = api.getAccountExtensionContact(accountId, extensionId, contactId);
+        
+        assertNotNull(response);
 
         // TODO: test validations
     }
@@ -117,6 +119,7 @@ public class ContactsApiTest {
      */
     @Test
     public void listAccountExtensionContactsTest() throws ApiException {
+    	
     	Integer accountId = 1315091;
         Integer extensionId = 1764590;
         List<String> filtersId = TestConfig.createDefaultFilter();
@@ -128,8 +131,10 @@ public class ContactsApiTest {
         Integer offset = 1;
         String fields = null;
         
+        // When
         ListContactsFull response = api.listAccountExtensionContacts(accountId, extensionId, filtersId, filtersGroupId, filtersUpdatedAt, sortId, sortUpdatedAt, limit, offset, fields);
 
+        // Then
         assertNotNull(response);
         List<ContactFull> items = response.getItems();
         assertNotNull(items);

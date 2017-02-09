@@ -37,11 +37,16 @@ import org.junit.Test;
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateExtensionParams;
+import io.swagger.client.model.DeviceMembership;
 import io.swagger.client.model.ExtensionFull;
 import io.swagger.client.model.FilterIdExtensionNameArray;
 import io.swagger.client.model.ListExtensionsFull;
+import io.swagger.client.model.MediaSummary;
+import io.swagger.client.model.Notification;
 import io.swagger.client.model.ReplaceExtensionParams;
+import io.swagger.client.model.RouteSummary;
 import io.swagger.client.model.SortIdExtensionName;
+import io.swagger.client.model.Voicemail;
 /**
  * API tests for ExtensionsApi
  */
@@ -81,11 +86,45 @@ public class ExtensionsApiTest {
      */
     @Test
     public void getAccountExtensionTest() throws ApiException {
-        Integer accountId = null;
-        Integer extensionId = null;
-        // ExtensionFull response = api.getAccountExtension(accountId, extensionId);
-
-        // TODO: test validations
+        Integer accountId = 1315091;
+        Integer extensionId = 1764590;
+        ExtensionFull response = api.getAccountExtension(accountId, extensionId);
+        
+        assertNotNull(response);
+        
+        String callerId = response.getCallerId();
+        assertNotNull(callerId);
+//        Notification callNotifications = response.getCallNotifications();
+//        assertNotNull(callNotifications);
+//        DeviceMembership deviceMembership = response.getDeviceMembership();
+//        assertNotNull(deviceMembership);
+        Boolean enableCallWaiting = response.getEnableCallWaiting();
+        assertNotNull(enableCallWaiting);
+        Boolean enableOutboundCalls = response.getEnableOutboundCalls();
+        assertNotNull(enableOutboundCalls);
+        Integer extension = response.getExtension();
+        assertNotNull(extension);
+//        String fullName = response.getFullName();
+//        assertNotNull(fullName);
+        Integer id = response.getId();
+        assertNotNull(id);
+        Boolean includeInDirectory = response.getIncludeInDirectory();
+        assertNotNull(includeInDirectory);
+//        String localAreaCode = response.getLocalAreaCode();
+//        assertNotNull(localAreaCode);
+        String name = response.getName();
+        assertNotNull(name);
+//        MediaSummary nameGreeting = response.getNameGreeting();
+//        assertNotNull(nameGreeting);
+//        RouteSummary route = response.getRoute();
+//        assertNotNull(route);
+        String timezone = response.getTimezone();
+        assertNotNull(timezone);
+        String usageType = response.getUsageType();
+        assertNotNull(usageType);
+        Voicemail voicemail = response.getVoicemail();
+        assertNotNull(voicemail);
+        
     }
     
     /**

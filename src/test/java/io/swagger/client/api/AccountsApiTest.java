@@ -25,8 +25,8 @@
 
 package io.swagger.client.api;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +37,7 @@ import org.junit.Test;
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.AccountFull;
+import io.swagger.client.model.ContactAccount;
 import io.swagger.client.model.FilterIdArray;
 import io.swagger.client.model.ListAccountsFull;
 import io.swagger.client.model.SortId;
@@ -64,12 +65,27 @@ public class AccountsApiTest {
     @Test
     public void getAccountTest() throws ApiException {
         
-    	//Integer accountId = 33;
-        
+    	Integer accountId = 1315091;
     	
-    	//AccountFull response = api.getAccount(accountId);
+    	AccountFull response = api.getAccount(accountId);
 
-        // TODO: test validations
+    	assertNotNull(response);
+    	
+    	ContactAccount billingContact = response.getBillingContact();
+    	assertNotNull(billingContact);
+    	ContactAccount contact = response.getContact();
+    	assertNotNull(contact);
+    	Integer id = response.getId();
+    	assertNotNull(id);
+//    	AccountSummary masterAccount = response.getMasterAccount();
+//    	assertNotNull(masterAccount);
+    	String name = response.getName();
+    	assertNotNull(name);
+    	String password = response.getPassword();
+    	assertNotNull(password);
+    	String username = response.getUsername();
+    	assertNotNull(username);
+    	
     }
     
     /**

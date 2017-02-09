@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiModelProperty;
  * The Full Recording Object includes all of the properties from the Recording Summary Object, along with the following:
  */
 @ApiModel(description = "The Full Recording Object includes all of the properties from the Recording Summary Object, along with the following:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-08T15:20:10.092Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
 public class MediaFull {
   @SerializedName("id")
   private Integer id = null;

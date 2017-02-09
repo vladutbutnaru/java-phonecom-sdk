@@ -54,6 +54,23 @@ public class CalllogsApiTest {
     }
     
     /**
+     * Show details of an individual Call Log entry
+     *
+     * This service shows the details of an individual Call Logs entry.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAccountCallLogTest() throws ApiException {
+        Integer accountId = 1315091;
+        Integer callLogId = null;
+        CallLogFull response = api.getAccountCallLog(accountId, callLogId);
+
+        // TODO: test validations
+    }
+
+    /**
      * Get a list of call details associated with your account
      *
      * Fetch a list of call logs associated with your account.
@@ -78,8 +95,11 @@ public class CalllogsApiTest {
         Integer limit = 4;
         Integer offset = 1;
         String fields = null;
+        
+        // When
         ListCallLogsFull response = api.listAccountCallLogs(accountId, filtersId, filtersStartTime, filtersCreatedAt, filtersDirection, filtersCalledNumber, filtersType, filtersExtension, sortId, sortStartTime, sortCreatedAt, limit, offset, fields);
 
+        // Then
         assertNotNull(response);
         List<CallLogFull> items = response.getItems();
         assertNotNull(items);

@@ -36,11 +36,16 @@ import org.junit.Test;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.CallNotifications;
+import io.swagger.client.model.CallerIdPhoneNumber;
 import io.swagger.client.model.CreatePhoneNumberParams;
 import io.swagger.client.model.FilterIdNamePhoneNumberArray;
 import io.swagger.client.model.ListPhoneNumbersFull;
+import io.swagger.client.model.PhoneNumberFull;
 import io.swagger.client.model.PhoneNumbersFull;
 import io.swagger.client.model.ReplacePhoneNumberParams;
+import io.swagger.client.model.RouteSummary;
+import io.swagger.client.model.SmsForwarding;
 import io.swagger.client.model.SortIdNamePhoneNumber;
 
 /**
@@ -82,11 +87,31 @@ public class PhonenumbersApiTest {
      */
     @Test
     public void getAccountPhoneNumberTest() throws ApiException {
-        Integer accountId = null;
-        Integer numberId = null;
-        // PhoneNumberFull response = api.getAccountPhoneNumber(accountId, numberId);
+        Integer accountId = 1315091;
+        Integer numberId = 2116986;
+        PhoneNumberFull response = api.getAccountPhoneNumber(accountId, numberId);
+        
+        assertNotNull(response);
+        
+        Boolean blockAnonymous = response.getBlockAnonymous();
+        assertNotNull(blockAnonymous);
+        Boolean blockIncoming = response.getBlockIncoming();
+        assertNotNull(blockIncoming);
+//        CallerIdPhoneNumber callerId = response.getCallerId();
+//        assertNotNull(callerId);
+//        CallNotifications callNotifications = response.getCallNotifications();
+//        assertNotNull(callNotifications);
+        Integer id = response.getId();
+        assertNotNull(id);
+        String name = response.getName();
+        assertNotNull(name);
+        String phoneNumber = response.getPhoneNumber();
+        assertNotNull(phoneNumber);
+//        RouteSummary route = response.getRoute();
+//        assertNotNull(route);
+//        SmsForwarding smsForwarding = response.getSmsForwarding();
+//        assertNotNull(smsForwarding);
 
-        // TODO: test validations
     }
     
     /**

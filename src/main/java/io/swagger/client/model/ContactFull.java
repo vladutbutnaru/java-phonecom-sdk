@@ -26,7 +26,7 @@ import io.swagger.client.model.PhoneNumberContact;
  * The Full Contact Object includes all of the properties in the Contact Summary Object, along with several more:
  */
 @ApiModel(description = "The Full Contact Object includes all of the properties in the Contact Summary Object, along with several more:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-08T15:20:10.092Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
 public class ContactFull {
   @SerializedName("id")
   private Integer id = null;

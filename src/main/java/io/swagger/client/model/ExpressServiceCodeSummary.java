@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiModelProperty;
  * The Express Service Code Summary Object is used to briefly represent a Express Service Code. It consists of the ID and code:
  */
 @ApiModel(description = "The Express Service Code Summary Object is used to briefly represent a Express Service Code. It consists of the ID and code:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-08T15:20:10.092Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
 public class ExpressServiceCodeSummary {
   @SerializedName("id")
   private Integer id = null;

@@ -64,11 +64,17 @@ public class ApplicationsApiTest {
      */
     @Test
     public void getAccountApplicationTest() throws ApiException {
-        Integer accountId = null;
-        Integer applicationId = null;
-        // ApplicationFull response = api.getAccountApplication(accountId, applicationId);
+    	Integer accountId = 1315091;
+        Integer applicationId = 1356077;
+        ApplicationFull response = api.getAccountApplication(accountId, applicationId);
+        
+        assertNotNull(response);
+        
+        Integer id = response.getId();
+        assertNotNull(id);
+        String name = response.getName();
+        assertNotNull(name);
 
-        // TODO: test validations
     }
     
     /**

@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiModelProperty;
  * The Account Summary Object is used to briefly represent an account. It can occur in several places throughout this API. Here are the properties:
  */
 @ApiModel(description = "The Account Summary Object is used to briefly represent an account. It can occur in several places throughout this API. Here are the properties:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-08T15:20:10.092Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T09:08:03.715Z")
 public class AccountSummary {
   @SerializedName("id")
   private Integer id = null;
