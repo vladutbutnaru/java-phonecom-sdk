@@ -66,7 +66,7 @@ public class GroupsApiTest {
         String name = "Geordi";
 		data.setName(name);
 
-		// TODO: [API Error] Replace call don't have a way to set data to be replaced
+		// TODO: [API Error] Replace call doesn't have id of the group for which the replace should occur 
 
 		GroupFull responseCreate = api.createAccountExtensionContactGroup(accountId, extensionId, data);
         assertNotNull(responseCreate);
