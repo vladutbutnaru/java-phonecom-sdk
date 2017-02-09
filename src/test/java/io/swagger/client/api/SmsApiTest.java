@@ -34,6 +34,8 @@ import io.swagger.client.model.ListSmsFull;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -95,7 +97,7 @@ public class SmsApiTest {
      */
     @Test
     public void listAccountSmsTest() throws ApiException {
-        Integer accountId = null;
+        Integer accountId = 1315091;
         List<String> filtersId = null;
         String filtersDirection = null;
         String filtersFrom = null;
@@ -104,8 +106,13 @@ public class SmsApiTest {
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-        // ListSmsFull response = api.listAccountSms(accountId, filtersId, filtersDirection, filtersFrom, sortId, sortCreatedAt, limit, offset, fields);
-
+        ListSmsFull response = api.listAccountSms(accountId, filtersId, filtersDirection, filtersFrom, sortId, sortCreatedAt, limit, offset, fields);
+        assertNotNull(response.getFilters());
+        assertNotNull(response.getItems());
+        assertNotNull(response.getLimit());
+        assertNotNull(response.getOffset());
+        assertNotNull(response.getSort());
+        assertNotNull(response.getTotal());
         // TODO: test validations
     }
     

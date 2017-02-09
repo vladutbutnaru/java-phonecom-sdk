@@ -22,126 +22,129 @@
  * limitations under the License.
  */
 
-
 package io.swagger.client.api;
 
-import io.swagger.client.ApiException;
-import io.swagger.client.helper.TestConfig;
-import io.swagger.client.model.RouteFull;
-import io.swagger.client.model.CreateRouteParams;
-import io.swagger.client.model.DeleteRoute;
-import io.swagger.client.model.ListRoutesFull;
+import static org.junit.Assert.*;
+
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.CreateRouteParams;
+import io.swagger.client.model.ListRoutesFull;
 
 /**
  * API tests for RoutesApi
  */
 public class RoutesApiTest {
 
-    private final RoutesApi api = new RoutesApi();
+	private final RoutesApi api = new RoutesApi();
 
-    @Before
-    public void initTest() {
-    	TestConfig.setAuthorization();
-    }
-    
-    /**
-     * Add a new address book contact for an extension
-     *
-     * For more on the input fields, see Intro to Routes.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void createRouteTest() throws ApiException {
-        Integer accountId = null;
-        CreateRouteParams data = null;
-        // RouteFull response = api.createRoute(accountId, data);
+	@Before
+	public void initTest() {
+		TestConfig.setAuthorization();
+	}
 
-        // TODO: test validations
-    }
-    
-    /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void deleteAccountRouteTest() throws ApiException {
-        Integer accountId = null;
-        Integer routeId = null;
-        // DeleteRoute response = api.deleteAccountRoute(accountId, routeId);
+	/**
+	 * Add a new address book contact for an extension
+	 *
+	 * For more on the input fields, see Intro to Routes.
+	 *
+	 * @throws ApiException
+	 *             if the Api call fails
+	 */
+	@Test
+	public void createRouteTest() throws ApiException {
+		Integer accountId = null;
+		CreateRouteParams data = null;
+		// RouteFull response = api.createRoute(accountId, data);
 
-        // TODO: test validations
-    }
-    
-    /**
-     * Show details of an individual route
-     *
-     * This service shows the details of an individual route.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getAccountRouteTest() throws ApiException {
-        Integer accountId = null;
-        Integer routeId = null;
-        // RouteFull response = api.getAccountRoute(accountId, routeId);
+		// TODO: test validations
+	}
 
-        // TODO: test validations
-    }
-    
-    /**
-     * Get a list of routes for an account
-     *
-     * See Intro to Routes for more info on the properties.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void listAccountRoutesTest() throws ApiException {
-        Integer accountId = null;
-        List<String> filtersId = null;
-        List<String> filtersName = null;
-        String sortId = null;
-        String sortName = null;
-        Integer limit = null;
-        Integer offset = null;
-        String fields = null;
-        // ListRoutesFull response = api.listAccountRoutes(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+	/**
+	 * 
+	 *
+	 * 
+	 *
+	 * @throws ApiException
+	 *             if the Api call fails
+	 */
+	@Test
+	public void deleteAccountRouteTest() throws ApiException {
+		Integer accountId = null;
+		Integer routeId = null;
+		// DeleteRoute response = api.deleteAccountRoute(accountId, routeId);
 
-        // TODO: test validations
-    }
-    
-    /**
-     * 
-     *
-     * For more on the input fields, see Intro to Routes.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void replaceAccountRouteTest() throws ApiException {
-        Integer accountId = null;
-        Integer routeId = null;
-        CreateRouteParams data = null;
-        // RouteFull response = api.replaceAccountRoute(accountId, routeId, data);
+		// TODO: test validations
+	}
 
-        // TODO: test validations
-    }
-    
+	/**
+	 * Show details of an individual route
+	 *
+	 * This service shows the details of an individual route.
+	 *
+	 * @throws ApiException
+	 *             if the Api call fails
+	 */
+	@Test
+	public void getAccountRouteTest() throws ApiException {
+		Integer accountId = null;
+		Integer routeId = null;
+		// RouteFull response = api.getAccountRoute(accountId, routeId);
+
+		// TODO: test validations
+	}
+
+	/**
+	 * Get a list of routes for an account
+	 *
+	 * See Intro to Routes for more info on the properties.
+	 *
+	 * @throws ApiException
+	 *             if the Api call fails
+	 */
+	@Test
+	public void listAccountRoutesTest() throws ApiException {
+		Integer accountId = 1315091;
+		List<String> filtersId = null;
+		List<String> filtersName = null;
+		String sortId = null;
+		String sortName = null;
+		Integer limit = null;
+		Integer offset = null;
+		String fields = null;
+		ListRoutesFull response = api.listAccountRoutes(accountId, filtersId, filtersName, sortId, sortName, limit,
+				offset, fields);
+		assertNotNull(response.getFilters());
+		assertNotNull(response.getItems());
+		assertNotNull(response.getLimit());
+		assertNotNull(response.getOffset());
+		assertNotNull(response.getSort());
+		assertNotNull(response.getTotal());
+		// TODO: test validations
+	}
+
+	/**
+	 * 
+	 *
+	 * For more on the input fields, see Intro to Routes.
+	 *
+	 * @throws ApiException
+	 *             if the Api call fails
+	 */
+	@Test
+	public void replaceAccountRouteTest() throws ApiException {
+		Integer accountId = null;
+		Integer routeId = null;
+		CreateRouteParams data = null;
+		// RouteFull response = api.replaceAccountRoute(accountId, routeId,
+		// data);
+
+		// TODO: test validations
+	}
+
 }

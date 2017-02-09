@@ -25,18 +25,16 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.ApiException;
-import io.swagger.client.helper.TestConfig;
-import io.swagger.client.model.ScheduleFull;
-import io.swagger.client.model.ListSchedulesFull;
+import static org.junit.Assert.*;
+
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.ListSchedulesFull;
 
 /**
  * API tests for SchedulesApi
@@ -77,7 +75,7 @@ public class SchedulesApiTest {
      */
     @Test
     public void listAccountSchedulesTest() throws ApiException {
-        Integer accountId = null;
+        Integer accountId = 1315091;
         List<String> filtersId = null;
         List<String> filtersName = null;
         String sortId = null;
@@ -85,8 +83,13 @@ public class SchedulesApiTest {
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-        // ListSchedulesFull response = api.listAccountSchedules(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
-
+        ListSchedulesFull response = api.listAccountSchedules(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+        assertNotNull(response.getFilters());
+        assertNotNull(response.getItems());
+        assertNotNull(response.getLimit());
+        assertNotNull(response.getOffset());
+        assertNotNull(response.getSort());
+        assertNotNull(response.getTotal());
         // TODO: test validations
     }
     
