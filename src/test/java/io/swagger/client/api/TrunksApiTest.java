@@ -36,6 +36,7 @@ import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateTrunkParams;
 import io.swagger.client.model.ListTrunksFull;
+import io.swagger.client.model.TrunkFull;
 
 /**
  * API tests for TrunksApi
@@ -61,7 +62,13 @@ public class TrunksApiTest {
     public void createAccountTrunkTest() throws ApiException {
         Integer accountId = null;
         CreateTrunkParams data = null;
-        // TrunkFull response = api.createAccountTrunk(accountId, data);
+        data.setErrorMessage("ERROR");
+        data.setMaxMinutesPerMonth(13);
+        data.setMaxConcurrentCalls(1);
+        data.setGreeting("HELLO");
+        data.setUrl("google.com");
+        data.setName("NAME");
+        TrunkFull response = api.createAccountTrunk(accountId, data);
 
         // TODO: test validations
     }

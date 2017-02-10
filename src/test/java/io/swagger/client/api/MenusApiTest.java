@@ -25,17 +25,18 @@
 
 package io.swagger.client.api;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateMenuParams;
+import io.swagger.client.model.DeleteMenu;
 import io.swagger.client.model.ListMenusFull;
 import io.swagger.client.model.MenuFull;
 import io.swagger.client.model.ReplaceMenuParams;
@@ -51,7 +52,35 @@ public class MenusApiTest {
     public void initTest() {
     	TestConfig.setAuthorization();
     }
-    
+    @Test
+    public void createGetReplaceDeleteDevice() throws ApiException {
+        Integer accountId = 1315091;
+        CreateMenuParams data = new CreateMenuParams();
+        data.setAllowExtensionDial(true);
+        data.setName("Test Menu");
+        data.setKeypressWaitTime(2);
+        data.setMainMessage("testMess");
+        data.setInvalidKeypressMessage("testMess");
+        data.setTimeoutHandler("testASD");
+        
+         MenuFull response = api.createAccountMenu(accountId, data);
+         assertNotNull(response.getId());
+         assertNotNull(response.getAllowExtensionDial());
+         assertNotNull(response.getGreeting());
+         assertNotNull(response.getKeypressError());
+         assertNotNull(response.getKeypressWaitTime());
+         assertNotNull(response.getName());
+         Integer menuID = response.getId();
+         
+         ReplaceMenuParams dataReplace = new ReplaceMenuParams();
+         dataReplace.setAllowExtensionDial(false);
+        
+         MenuFull responseReplace = api.replaceAccountMenu(accountId, menuID, dataReplace);
+         assertEquals(false, responseReplace.getAllowExtensionDial());
+         
+         DeleteMenu responseDelete = api.deleteAccountMenu(accountId, menuID);
+         assertTrue(responseDelete.getSuccess());
+    }
     /**
      * Create an individual menu
      *
@@ -61,18 +90,21 @@ public class MenusApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void createAccountMenuTest() throws ApiException {
         Integer accountId = 1315091;
         CreateMenuParams data = new CreateMenuParams();
         data.setAllowExtensionDial(true);
         data.setName("Test Menu");
-        data.setKeypressWaitTime(1234);
-        List<Object> options = new ArrayList<Object>();
-        data.setOptions(options);
+        data.setKeypressWaitTime(2);
+        data.setMainMessage("testMess");
+        data.setInvalidKeypressMessage("testMess");
+        data.setTimeoutHandler("testASD");
         
-         //MenuFull response = api.createAccountMenu(accountId, data);
-         //assertNotNull(response.getId());
-        // TODO: test validations
+         MenuFull response = api.createAccountMenu(accountId, data);
+         assertNotNull(response.getId());
+    
+       
     }
     
     /**
@@ -84,6 +116,7 @@ public class MenusApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void deleteAccountMenuTest() throws ApiException {
         Integer accountId = null;
         Integer menuId = null;
@@ -101,6 +134,7 @@ public class MenusApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void getAccountMenuTest() throws ApiException {
         Integer accountId = 1315091;
         Integer menuId = 87926;
@@ -152,6 +186,7 @@ public class MenusApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in previous test")
     public void replaceAccountMenuTest() throws ApiException {
         Integer accountId = null;
         Integer menuId = null;

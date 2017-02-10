@@ -32,6 +32,8 @@ import io.swagger.client.model.ListPhoneNumbersRegionsFull;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -77,8 +79,8 @@ public class NumberregionsApiTest {
         Integer offset = null;
         String fields = null;
         List<String> groupBy = null;
-        // ListPhoneNumbersRegionsFull response = api.listAvailablePhoneNumberRegions(filtersCountryCode, filtersNpa, filtersNxx, filtersIsTollFree, filtersCity, filtersProvincePostalCode, filtersCountryPostalCode, sortCountryCode, sortNpa, sortNxx, sortIsTollFree, sortCity, sortProvincePostalCode, sortCountryPostalCode, limit, offset, fields, groupBy);
-
+        ListPhoneNumbersRegionsFull response = api.listAvailablePhoneNumberRegions(filtersCountryCode, filtersNpa, filtersNxx, filtersIsTollFree, filtersCity, filtersProvincePostalCode, filtersCountryPostalCode, sortCountryCode, sortNpa, sortNxx, sortIsTollFree, sortCity, sortProvincePostalCode, sortCountryPostalCode, limit, offset, fields, groupBy);
+        assertNotNull(response.getItems());
         // TODO: test validations
     }
     

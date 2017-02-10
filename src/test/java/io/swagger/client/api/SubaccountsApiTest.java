@@ -25,21 +25,20 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.ApiException;
-import io.swagger.client.helper.TestConfig;
-import io.swagger.client.model.CreateSubaccountParams;
-import io.swagger.client.model.AccountFull;
-import io.swagger.client.model.ListAccountsFull;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.AccountFull;
+import io.swagger.client.model.Address;
+import io.swagger.client.model.ContactSubaccount;
+import io.swagger.client.model.CreateSubaccountParams;
+import io.swagger.client.model.ListAccountsFull;
 
 /**
  * API tests for SubaccountsApi
@@ -63,9 +62,27 @@ public class SubaccountsApiTest {
      */
     @Test
     public void createAccountSubaccountTest() throws ApiException {
-        Integer accountId = null;
-        CreateSubaccountParams data = null;
-        // AccountFull response = api.createAccountSubaccount(accountId, data);
+        Integer accountId = 1315091;
+        CreateSubaccountParams data = new CreateSubaccountParams();
+        ContactSubaccount x = new ContactSubaccount();
+        Address ad  = new Address();
+        ad.setCity("Iasi");
+        ad.setCountry("Romania");
+        ad.setLine1("test");
+        ad.setPostalCode("700134");
+        ad.setProvince("Iasi");
+        x.setAddress(ad);
+        x.setAlternateEmail("ad@yahoo.com");
+        x.setCompany("Company");
+        x.setName("NAME");
+        x.setPhone("+40754837620");
+        x.setPrimaryEmail("vlad2me@live.com");
+        data.setBillingContact(x);
+        data.setContact(x);
+        data.setPassword("password1234!");
+        data.setUsername("usernamesmecher1234!");
+      
+         AccountFull response = api.createAccountSubaccount(accountId, data);
 
         // TODO: test validations
     }

@@ -35,6 +35,7 @@ import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateRouteParams;
 import io.swagger.client.model.ListRoutesFull;
+import io.swagger.client.model.RouteFull;
 
 /**
  * API tests for RoutesApi
@@ -58,10 +59,13 @@ public class RoutesApiTest {
 	 */
 	@Test
 	public void createRouteTest() throws ApiException {
-		Integer accountId = null;
-		CreateRouteParams data = null;
-		// RouteFull response = api.createRoute(accountId, data);
-
+		Integer accountId = 1315091;
+		CreateRouteParams data = new CreateRouteParams();
+		data.setExtension("test");
+		data.setName("TEst naem");
+		
+		 RouteFull response = api.createRoute(accountId, data);
+		 assertNotNull(response);
 		// TODO: test validations
 	}
 
@@ -92,7 +96,7 @@ public class RoutesApiTest {
 	 */
 	@Test
 	public void getAccountRouteTest() throws ApiException {
-		Integer accountId = null;
+		Integer accountId = 1315091;
 		Integer routeId = null;
 		// RouteFull response = api.getAccountRoute(accountId, routeId);
 
