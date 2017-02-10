@@ -64,7 +64,7 @@ public class DevicesApiTest {
         String name = "Geordi";
 		data.setName(name);
 
-		// TODO: [API Error] Create call: Unprocessable entity
+		// TODO: [API Error] Create call: Response 422 Unprocessable entity even with very basic data info
 
 		DeviceFull responseCreate = api.createAccountDevice(accountId, data);
         assertNotNull(responseCreate);

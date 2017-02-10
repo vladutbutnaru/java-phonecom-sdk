@@ -86,11 +86,12 @@ public class ApplicationsApiTest {
      */
     @Test
     public void listAccountApplicationsTest() throws ApiException {
+
         Integer accountId = 1315091;
         List<String> filtersId = TestConfig.createDefaultFilter();
-        List<String> filtersName = null;
 
         // TODO Response from API: "The filters.name filter is unsupported"
+        List<String> filtersName = null;
 
         String sortId = "asc";
         String sortName = null;

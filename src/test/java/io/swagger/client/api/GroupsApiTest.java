@@ -66,7 +66,7 @@ public class GroupsApiTest {
         String name = "Geordi";
 		data.setName(name);
 
-		// TODO: [API Error] Replace call doesn't have id of the group for which the replace should occur 
+		
 
 		GroupFull responseCreate = api.createAccountExtensionContactGroup(accountId, extensionId, data);
         assertNotNull(responseCreate);
@@ -78,6 +78,7 @@ public class GroupsApiTest {
         assertNotNull(responseGetAfterCreate);
         assertEquals(name, responseCreate.getName());
 
+        // TODO: [API Error] Replace call givers 400 Bad request - data object missing in apidocs definitions
         // Replace
 //        data.setName("idroeG");
 //        GroupFull responseReplace = api.replaceAccountExtensionContactGroup(accountId, extensionId, responseCreate.getId());

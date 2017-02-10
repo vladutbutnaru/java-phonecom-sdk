@@ -64,22 +64,21 @@ public class PhonenumbersApiTest {
     	Integer accountId = 1315091;
         CreatePhoneNumberParams data = new CreatePhoneNumberParams();
 		Boolean blockAnonymous = true;
-		data.setBlockAnonymous(blockAnonymous);
+//		data.setBlockAnonymous(blockAnonymous);
 		Boolean blockIncoming = true;
-		data.setBlockIncoming(blockIncoming);
+//		data.setBlockIncoming(blockIncoming);
 		String callerIdName = "Caller Id Name";
 		data.setCallerIdName(callerIdName);
 		String callerIdType = "Caller Id Type";
-		data.setCallerIdType(callerIdType);
+//		data.setCallerIdType(callerIdType);
 		String callNotificationsSms = "Call Notifications Sms";
-		data.setCallNotificationsSms(callNotificationsSms);
+//		data.setCallNotificationsSms(callNotificationsSms);
 		String name = "Geordi";
-		data.setName(name);
+//		data.setName(name);
 		String smsForwardingType = "Sms Forwarding Type";
-		data.setSmsForwardingType(smsForwardingType);
+//		data.setSmsForwardingType(smsForwardingType);
 		
-
-		// TODO: [API Error] Create: Unprocessable entity
+		// TODO: [API Error] Create: Response 422 Unprocessable entity even with very basic data info
 
 		PhoneNumberFull responseCreate = api.createAccountPhoneNumber(accountId, data);
         assertNotNull(responseCreate);
@@ -133,7 +132,7 @@ public class PhonenumbersApiTest {
         assertEquals(name2, responseCreate.getName());
         assertEquals(smsForwardingType2, responseCreate.getSmsForwarding().getType());
     }
-    
+
     /**
      * Add a phone number to an account
      *
@@ -187,9 +186,8 @@ public class PhonenumbersApiTest {
 //        assertNotNull(route);
 //        SmsForwarding smsForwarding = response.getSmsForwarding();
 //        assertNotNull(smsForwarding);
-
     }
-    
+
     /**
      * Get a list of phone numbers registered to an account
      *
@@ -200,6 +198,7 @@ public class PhonenumbersApiTest {
      */
     @Test
     public void listAccountPhoneNumbersTest() throws ApiException {
+
         Integer accountId = 1315091;
         List<String> filtersId = TestConfig.createDefaultFilter();
         List<String> filtersName = TestConfig.createDefaultFilter();
@@ -210,7 +209,7 @@ public class PhonenumbersApiTest {
         String sortId = "asc";
         String sortName = "asc";
 
-        // TODO API response: sort.phone_number "Invalid"
+        // TODO API response: sort.phone_number "Invalid sort type"
         String sortPhoneNumber = null;
         Integer limit = 4;
         Integer offset = 1;

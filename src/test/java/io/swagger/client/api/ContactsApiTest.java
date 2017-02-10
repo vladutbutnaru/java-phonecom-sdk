@@ -87,9 +87,7 @@ public class ContactsApiTest {
 		String suffix = "Sufix";
 		data.setSuffix(suffix);
 
-		// TODO: [API Error] Replace call misses contact id to be replaced
-		// TODO: How to create objects???
-
+		// TODO: Note that there is no very straightforward way to create "Object" in java
 //		List<Object> emails = new ArrayList<>();
 //		data.setEmails(emails);
 
@@ -107,7 +105,6 @@ public class ContactsApiTest {
         assertEquals(phoneticMiddleName, responseCreate.getPhoneticMiddleName());
         assertEquals(prefix, responseCreate.getPrefix());
         assertEquals(suffix, responseCreate.getSuffix());
-        
 
         // Get After Create
         ContactFull responseGetAfterCreate = 
@@ -125,6 +122,9 @@ public class ContactsApiTest {
         assertEquals(phoneticMiddleName, responseCreate.getPhoneticMiddleName());
         assertEquals(prefix, responseCreate.getPrefix());
         assertEquals(suffix, responseCreate.getSuffix());
+
+        // TODO: [API Error] Replace call misses contact id to be replaced.
+        // In the API docs there does not exist a parameter for the contact id
 
         // Replace
         data.setJobTitle("title");

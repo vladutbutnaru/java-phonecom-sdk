@@ -61,7 +61,7 @@ public class ExtensionsApiTest {
 
     	// Create
     	Integer accountId = 1315091;
-        Integer extensionId = 1764590;
+
         CreateExtensionParams data = new CreateExtensionParams();
         Boolean allowsCallWaiting = true;
 		data.setAllowsCallWaiting(allowsCallWaiting);
@@ -123,7 +123,7 @@ public class ExtensionsApiTest {
         
 
         // Get After Create
-        ExtensionFull responseGetAfterCreate = api.getAccountExtension(accountId, extensionId);
+        ExtensionFull responseGetAfterCreate = api.getAccountExtension(accountId, responseCreate.getId());
         assertNotNull(responseGetAfterCreate);
 //      assertEquals(allowsCallWaiting, responseCreate.getAllowsCallWaiting());
 //        assertEquals(callerId, responseCreate.getCallerId());
@@ -146,44 +146,44 @@ public class ExtensionsApiTest {
 
         // Replace
         ReplaceExtensionParams data2 = new ReplaceExtensionParams();
-        String callerId2 = "Caller Id";
-		data2.setCallerId(callerId2);
-        String callNotificationsSms2 = "Call Notifications Sms";
-		data2.setCallNotificationsSms(callNotificationsSms2);
-        Boolean enableCallWaiting2 = true;
-		data2.setEnableCallWaiting(enableCallWaiting2);
-        Boolean enableOutboundCalls2 = true;
-		data2.setEnableOutboundCalls(enableOutboundCalls2);
-        Integer extension2 = 1;
-		data2.setExtension(extension2);
-        String fullName2 = "Full Name";
+        String fullName2 = "Full Name 2";
 		data2.setFullName(fullName2);
-        Boolean includeInDirectory2 = true;
-		data2.setIncludeInDirectory(includeInDirectory2);
-        Integer localAreaCode2 = 1;
-		data2.setLocalAreaCode(localAreaCode2);
-        String name2 = "Name";
-		data2.setName(name2);
-        String timezone2 = "Timezone";
-		data2.setTimezone(timezone2);
-        String usageType2 = "Usage Type";
-		data2.setUsageType(usageType2);
-        Boolean voicemailEnabled2 = true;
-		data2.setVoicemailEnabled(voicemailEnabled2);
-        Boolean voicemailGreetingEnableLeaveMessagePrompt2 = true;
-		data2.setVoicemailGreetingEnableLeaveMessagePrompt(voicemailGreetingEnableLeaveMessagePrompt2);
-        String voicemailGreetingType2 = "Voicemail Greeting Type";
-		data2.setVoicemailGreetingType(voicemailGreetingType2);
-        String voicemailNotificationsSms2 = "Voicemail Notifications Sms";
-		data2.setVoicemailNotificationsSms(voicemailNotificationsSms2);
-        Integer voicemailPassword2 = 1;
-		data2.setVoicemailPassword(voicemailPassword2);
-        String voicemailTranscription2 = "Voicemail Transcription";
-		data2.setVoicemailTranscription(voicemailTranscription2);
+//        String callerId2 = "Caller Id";
+//		data2.setCallerId(callerId2);
+//        String callNotificationsSms2 = "Call Notifications Sms";
+//		data2.setCallNotificationsSms(callNotificationsSms2);
+//        Boolean enableCallWaiting2 = true;
+//		data2.setEnableCallWaiting(enableCallWaiting2);
+//        Boolean enableOutboundCalls2 = true;
+//		data2.setEnableOutboundCalls(enableOutboundCalls2);
+//        Integer extension2 = 1;
+//		data2.setExtension(extension2);
+//        Boolean includeInDirectory2 = true;
+//		data2.setIncludeInDirectory(includeInDirectory2);
+//        Integer localAreaCode2 = 1;
+//		data2.setLocalAreaCode(localAreaCode2);
+//        String name2 = "Name";
+//		data2.setName(name2);
+//        String timezone2 = "Timezone";
+//		data2.setTimezone(timezone2);
+//        String usageType2 = "Usage Type";
+//		data2.setUsageType(usageType2);
+//        Boolean voicemailEnabled2 = true;
+//		data2.setVoicemailEnabled(voicemailEnabled2);
+//        Boolean voicemailGreetingEnableLeaveMessagePrompt2 = true;
+//		data2.setVoicemailGreetingEnableLeaveMessagePrompt(voicemailGreetingEnableLeaveMessagePrompt2);
+//        String voicemailGreetingType2 = "Voicemail Greeting Type";
+//		data2.setVoicemailGreetingType(voicemailGreetingType2);
+//        String voicemailNotificationsSms2 = "Voicemail Notifications Sms";
+//		data2.setVoicemailNotificationsSms(voicemailNotificationsSms2);
+//        Integer voicemailPassword2 = 1;
+//		data2.setVoicemailPassword(voicemailPassword2);
+//        String voicemailTranscription2 = "Voicemail Transcription";
+//		data2.setVoicemailTranscription(voicemailTranscription2);
 
-		// TODO: [API Error] Unprocessable entity
+		// TODO: [API Error] Response 422 Unprocessable entity even with very basic data info
 
-        ExtensionFull responseReplace = api.replaceAccountExtension(accountId, extensionId, data2);
+        ExtensionFull responseReplace = api.replaceAccountExtension(accountId, responseCreate.getId(), data2);
     	assertNotNull(responseReplace);
     	
 //      assertEquals(allowsCallWaiting, responseCreate.getAllowsCallWaiting());

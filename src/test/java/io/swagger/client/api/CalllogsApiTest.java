@@ -65,6 +65,7 @@ public class CalllogsApiTest {
     @Test
     @Ignore("[CANNOT TEST] No Call log, no method for creating call log")
     public void getAccountCallLogTest() throws ApiException {
+
         Integer accountId = 1315091;
         Integer callLogId = null;
         CallLogFull response = api.getAccountCallLog(accountId, callLogId);
@@ -110,21 +111,15 @@ public class CalllogsApiTest {
         FilterCallLogs filters = response.getFilters();
         assertNotNull(filters);
         assertEquals(GREATER_THAN_FILTER, filters.getId());
-        
-        assertEquals(GREATER_THAN_FILTER, filters.getId());
-        
-        assertEquals(GREATER_THAN_FILTER, filters.getId());
-        
+
         assertEquals(filtersCreatedAt, filters.getCreatedAt());
-        
-        // TODO API response: "@message": "Internal Server Error"
+
 //        assertEquals(filtersDirection, filters.getDirection());
-        
+
         assertEquals(filtersCalledNumber, filters.getCalledNumber());
 
-        // TODO API response: "@message": "Internal Server Error"
 //        assertEquals(filtersType, filters.getType());
-        
+
         Integer limitActual = response.getLimit();
         assertNotNull(limitActual);
         assertEquals(limit, limitActual);
