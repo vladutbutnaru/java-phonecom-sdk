@@ -39,18 +39,18 @@ import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreatePhoneNumberParams;
 import io.swagger.client.model.FilterIdNamePhoneNumberArray;
-import io.swagger.client.model.ListPhoneNumbersFull;
+import io.swagger.client.model.ListPhoneNumbers;
+import io.swagger.client.model.PhoneNumberContact;
 import io.swagger.client.model.PhoneNumberFull;
-import io.swagger.client.model.PhoneNumbersFull;
 import io.swagger.client.model.ReplacePhoneNumberParams;
 import io.swagger.client.model.SortIdNamePhoneNumber;
 
 /**
  * API tests for PhonenumbersApi
  */
-public class PhonenumbersApiTest {
+public class PhoneNumbersApiTest {
 
-    private final PhonenumbersApi api = new PhonenumbersApi();
+    private final PhoneNumbersApi api = new PhoneNumbersApi();
 
     @Before
     public void initTest() {
@@ -214,10 +214,10 @@ public class PhonenumbersApiTest {
         Integer limit = 4;
         Integer offset = 1;
         String fields = null;
-        ListPhoneNumbersFull response = api.listAccountPhoneNumbers(accountId, filtersId, filtersName, filtersPhoneNumber, sortId, sortName, sortPhoneNumber, limit, offset, fields);
+        ListPhoneNumbers response = api.listAccountPhoneNumbers(accountId, filtersId, filtersName, filtersPhoneNumber, sortId, sortName, sortPhoneNumber, limit, offset, fields);
 
         assertNotNull(response);
-        PhoneNumbersFull items = response.getItems();
+        List<PhoneNumberContact> items = response.getItems();
         assertNotNull(items);
         
         FilterIdNamePhoneNumberArray filters = response.getFilters();

@@ -25,7 +25,7 @@
 
 package io.swagger.client.api;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
@@ -34,14 +34,14 @@ import org.junit.Test;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
-import io.swagger.client.model.ListAvailableNumbersFull;
+import io.swagger.client.model.ListAvailableNumbers;
 
 /**
  * API tests for AvailablenumbersApi
  */
-public class AvailablenumbersApiTest {
+public class AvailableNumbersApiTest {
 
-    private final AvailablenumbersApi api = new AvailablenumbersApi();
+    private final AvailableNumbersApi api = new AvailableNumbersApi();
 
     @Before
     public void initTest() {
@@ -75,7 +75,7 @@ public class AvailablenumbersApiTest {
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-         ListAvailableNumbersFull response = api.listAvailablePhoneNumbers(filtersPhoneNumber, filtersCountryCode, filtersNpa, filtersNxx, filtersXxxx, filtersCity, filtersProvince, filtersCountry, filtersPrice, filtersCategory, filtersIsTollFree, sortInternal, sortPrice, sortPhoneNumber, limit, offset, fields);
+         ListAvailableNumbers response = api.listAvailablePhoneNumbers(filtersPhoneNumber, filtersCountryCode, filtersNpa, filtersNxx, filtersXxxx, filtersCity, filtersProvince, filtersCountry, filtersPrice, filtersCategory, sortInternal, sortPrice, sortPhoneNumber, limit, offset, fields);
          assertNotNull(response.getItems());
          assertNotNull(response.getFilters());
          assertNotNull(response.getLimit());

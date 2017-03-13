@@ -38,7 +38,7 @@ import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.ApplicationFull;
 import io.swagger.client.model.FilterIdNameArray;
-import io.swagger.client.model.ListApplicationsFull;
+import io.swagger.client.model.ListApplications;
 import io.swagger.client.model.SortIdName;
 
 /**
@@ -98,7 +98,7 @@ public class ApplicationsApiTest {
         Integer limit = 4;
         Integer offset = 1;
         String fields = null;
-        ListApplicationsFull response = api.listAccountApplications(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+        ListApplications response = api.listAccountApplications(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
 
         assertNotNull(response);
         List<ApplicationFull> items = response.getItems();

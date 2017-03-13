@@ -25,7 +25,9 @@
 
 package io.swagger.client.api;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -37,7 +39,7 @@ import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateMenuParams;
 import io.swagger.client.model.DeleteMenu;
-import io.swagger.client.model.ListMenusFull;
+import io.swagger.client.model.ListMenus;
 import io.swagger.client.model.MenuFull;
 import io.swagger.client.model.ReplaceMenuParams;
 
@@ -166,7 +168,7 @@ public class MenusApiTest {
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-        ListMenusFull response = api.listAccountMenus(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+        ListMenus response = api.listAccountMenus(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
         assertNotNull(response.getFilters());
         assertNotNull(response.getItems());
         assertNotNull(response.getLimit());

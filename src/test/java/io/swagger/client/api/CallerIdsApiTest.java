@@ -38,14 +38,14 @@ import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CallerIdFull;
 import io.swagger.client.model.FilterNameNumberArray;
-import io.swagger.client.model.ListCallerIdsFull;
+import io.swagger.client.model.ListCallerIds;
 import io.swagger.client.model.SortNameNumber;
 /**
  * API tests for CalleridsApi
  */
-public class CalleridsApiTest {
+public class CallerIdsApiTest {
 
-    private final CalleridsApi api = new CalleridsApi();
+    private final CallerIdsApi api = new CallerIdsApi();
 
     @Before
     public void initTest() {
@@ -71,7 +71,7 @@ public class CalleridsApiTest {
         Integer limit = 4;
         Integer offset = 1;
         String fields = null;
-        ListCallerIdsFull response = api.getCallerIds(accountId, extensionId, filtersNumber, filtersName, sortNumber, sortName, limit, offset, fields);
+        ListCallerIds response = api.getCallerIds(accountId, extensionId, filtersNumber, filtersName, sortNumber, sortName, limit, offset, fields);
 
         assertNotNull(response);
         List<CallerIdFull> items = response.getItems();

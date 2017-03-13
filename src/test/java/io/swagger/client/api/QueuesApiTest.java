@@ -35,8 +35,7 @@ import org.junit.Test;
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateQueueParams;
-import io.swagger.client.model.ListQueuesFull;
-import io.swagger.client.model.QueueFull;
+import io.swagger.client.model.ListQueues;
 
 /**
  * API tests for QueuesApi
@@ -125,13 +124,13 @@ public class QueuesApiTest {
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-         ListQueuesFull response = api.listAccountQueues(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
-         assertNotNull(response.getFilters());
-         assertNotNull(response.getItems());
-         assertNotNull(response.getLimit());
-         assertNotNull(response.getOffset());
-         assertNotNull(response.getSort());
-         assertNotNull(response.getTotal());
+        ListQueues response = api.listAccountQueues(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+        assertNotNull(response.getFilters());
+        assertNotNull(response.getItems());
+        assertNotNull(response.getLimit());
+        assertNotNull(response.getOffset());
+        assertNotNull(response.getSort());
+        assertNotNull(response.getTotal());
         // TODO: test validations
     }
     

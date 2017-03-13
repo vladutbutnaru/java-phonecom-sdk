@@ -41,8 +41,7 @@ import io.swagger.client.model.CreateGroupParams;
 import io.swagger.client.model.DeleteGroup;
 import io.swagger.client.model.FilterIdNameArray;
 import io.swagger.client.model.GroupFull;
-import io.swagger.client.model.GroupsFull;
-import io.swagger.client.model.ListGroupsFull;
+import io.swagger.client.model.ListGroups;
 import io.swagger.client.model.SortIdName;
 /**
  * API tests for GroupsApi
@@ -175,11 +174,11 @@ public class GroupsApiTest {
         String fields = null;
         
         // When
-        ListGroupsFull response = api.listAccountExtensionContactGroups(accountId, extensionId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+        ListGroups response = api.listAccountExtensionContactGroups(accountId, extensionId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
 
         // Then
         assertNotNull(response);
-        GroupsFull items = response.getItems();
+        List<GroupFull> items = response.getItems();
         assertNotNull(items);
         
         FilterIdNameArray filters = response.getFilters();
@@ -217,7 +216,10 @@ public class GroupsApiTest {
         Integer accountId = null;
         Integer extensionId = null;
         Integer groupId = null;
-        GroupFull response = api.replaceAccountExtensionContactGroup(accountId, extensionId, groupId);
+        CreateGroupParams data = new CreateGroupParams();
+        String name = "Geordi";
+		data.setName(name);
+        GroupFull response = api.replaceAccountExtensionContactGroup(accountId, extensionId, groupId, data);
 
         assertNotNull(response);
     }

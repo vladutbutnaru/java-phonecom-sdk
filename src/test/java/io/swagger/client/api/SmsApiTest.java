@@ -25,21 +25,18 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.ApiException;
-import io.swagger.client.helper.TestConfig;
-import io.swagger.client.model.SmsFull;
-import io.swagger.client.model.CreateSmsParams;
-import io.swagger.client.model.ListSmsFull;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.CreateSmsParams;
+import io.swagger.client.model.ListSms;
+import io.swagger.client.model.SmsFull;
 
 /**
  * API tests for SmsApi
@@ -110,7 +107,7 @@ public class SmsApiTest {
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-        ListSmsFull response = api.listAccountSms(accountId, filtersId, filtersDirection, filtersFrom, sortId, sortCreatedAt, limit, offset, fields);
+        ListSms response = api.listAccountSms(accountId, filtersId, filtersDirection, filtersFrom, sortId, sortCreatedAt, limit, offset, fields);
         assertNotNull(response.getFilters());
         assertNotNull(response.getItems());
         assertNotNull(response.getLimit());

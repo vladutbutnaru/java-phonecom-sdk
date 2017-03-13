@@ -34,7 +34,7 @@ import org.junit.Test;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
-import io.swagger.client.model.ListMediaFull;
+import io.swagger.client.model.ListMedia;
 import io.swagger.client.model.MediaFull;
 
 /**
@@ -88,7 +88,7 @@ public class MediaApiTest {
         String fields = null;
        
         
-         ListMediaFull response = api.listAccountMedia(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+         ListMedia response = api.listAccountMedia(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
          assertNotNull(response.getFilters());
          assertNotNull(response.getItems());
          assertNotNull(response.getLimit());

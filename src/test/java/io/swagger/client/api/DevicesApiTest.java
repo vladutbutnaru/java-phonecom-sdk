@@ -39,9 +39,8 @@ import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateDeviceParams;
 import io.swagger.client.model.DeviceFull;
-import io.swagger.client.model.DevicesFull;
 import io.swagger.client.model.FilterIdNameArray;
-import io.swagger.client.model.ListDevicesFull;
+import io.swagger.client.model.ListDevices;
 import io.swagger.client.model.SortIdName;
 /**
  * API tests for DevicesApi
@@ -142,11 +141,11 @@ public class DevicesApiTest {
         String fields = null;
         
         // When
-        ListDevicesFull response = api.listAccountDevices(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+        ListDevices response = api.listAccountDevices(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
 
         //Then
         assertNotNull(response);
-        DevicesFull items = response.getItems();
+        List<DeviceFull> items = response.getItems();
         assertNotNull(items);
         
         FilterIdNameArray filters = response.getFilters();

@@ -24,7 +24,7 @@
 
 package io.swagger.client.api;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ import org.junit.Test;
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateRouteParams;
-import io.swagger.client.model.ListRoutesFull;
+import io.swagger.client.model.ListRoutes;
 import io.swagger.client.model.RouteFull;
 
 /**
@@ -121,7 +121,7 @@ public class RoutesApiTest {
 		Integer limit = null;
 		Integer offset = null;
 		String fields = null;
-		ListRoutesFull response = api.listAccountRoutes(accountId, filtersId, filtersName, sortId, sortName, limit,
+		ListRoutes response = api.listAccountRoutes(accountId, filtersId, filtersName, sortId, sortName, limit,
 				offset, fields);
 		assertNotNull(response.getFilters());
 		assertNotNull(response.getItems());

@@ -25,7 +25,7 @@
 
 package io.swagger.client.api;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ import org.junit.Test;
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateTrunkParams;
-import io.swagger.client.model.ListTrunksFull;
+import io.swagger.client.model.ListTrunks;
 import io.swagger.client.model.TrunkFull;
 
 /**
@@ -66,7 +66,7 @@ public class TrunksApiTest {
         data.setMaxMinutesPerMonth(13);
         data.setMaxConcurrentCalls(1);
         data.setGreeting("HELLO");
-        data.setUrl("google.com");
+        data.setUri("google.com");
         data.setName("NAME");
         TrunkFull response = api.createAccountTrunk(accountId, data);
 
@@ -125,7 +125,7 @@ public class TrunksApiTest {
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-        ListTrunksFull response = api.listAccountTrunks(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+        ListTrunks response = api.listAccountTrunks(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
         assertNotNull(response.getFilters());
         assertNotNull(response.getItems());
         assertNotNull(response.getLimit());

@@ -39,7 +39,7 @@ import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.AccountFull;
 import io.swagger.client.model.ContactAccount;
 import io.swagger.client.model.FilterIdArray;
-import io.swagger.client.model.ListAccountsFull;
+import io.swagger.client.model.ListAccounts;
 import io.swagger.client.model.SortId;
 
 /**
@@ -113,7 +113,7 @@ public class AccountsApiTest {
         // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
         //apiKey.setApiKeyPrefix("Token");
        
-         ListAccountsFull response = api.listAccounts(filtersId, sortId, limit, offset, fields);
+         ListAccounts response = api.listAccounts(filtersId, sortId, limit, offset, fields);
          
         // assertNotNull(response);
          List<AccountFull> items = response.getItems();

@@ -38,7 +38,7 @@ import io.swagger.client.model.AccountFull;
 import io.swagger.client.model.Address;
 import io.swagger.client.model.ContactSubaccount;
 import io.swagger.client.model.CreateSubaccountParams;
-import io.swagger.client.model.ListAccountsFull;
+import io.swagger.client.model.ListAccounts;
 
 /**
  * API tests for SubaccountsApi
@@ -103,7 +103,7 @@ public class SubaccountsApiTest {
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-        ListAccountsFull response = api.listAccountSubaccounts(accountId, filtersId, sortId, limit, offset, fields);
+        ListAccounts response = api.listAccountSubaccounts(accountId, filtersId, sortId, limit, offset, fields);
         assertNotNull(response.getFilters());
         assertNotNull(response.getItems());
         assertNotNull(response.getLimit());

@@ -41,7 +41,7 @@ import io.swagger.client.model.ContactFull;
 import io.swagger.client.model.CreateContactParams;
 import io.swagger.client.model.DeleteContact;
 import io.swagger.client.model.FilterIdGroupIdUpdatedAtArray;
-import io.swagger.client.model.ListContactsFull;
+import io.swagger.client.model.ListContacts;
 import io.swagger.client.model.SortIdUpdatedAt;
 /**
  * API tests for ContactsApi
@@ -128,7 +128,7 @@ public class ContactsApiTest {
 
         // Replace
         data.setJobTitle("title");
-        ContactFull responseReplace = api.replaceAccountExtensionContact(accountId, extensionId, data);
+        ContactFull responseReplace = api.replaceAccountExtensionContact(accountId, extensionId, responseCreate.getId(), data);
         assertNotNull(responseReplace);
 
         // Get After Replace
@@ -225,7 +225,7 @@ public class ContactsApiTest {
         String fields = null;
         
         // When
-        ListContactsFull response = api.listAccountExtensionContacts(accountId, extensionId, filtersId, filtersGroupId, filtersUpdatedAt, sortId, sortUpdatedAt, limit, offset, fields);
+        ListContacts response = api.listAccountExtensionContacts(accountId, extensionId, filtersId, filtersGroupId, filtersUpdatedAt, sortId, sortUpdatedAt, limit, offset, fields);
 
         // Then
         assertNotNull(response);
@@ -268,9 +268,10 @@ public class ContactsApiTest {
     public void replaceAccountExtensionContactTest() throws ApiException {
         Integer accountId = null;
         Integer extensionId = null;
+        Integer contactId = null;
         CreateContactParams data = null;
 
-        ContactFull response = api.replaceAccountExtensionContact(accountId, extensionId, data);
+        ContactFull response = api.replaceAccountExtensionContact(accountId, extensionId, contactId, data);
 
         assertNotNull(response);
     }

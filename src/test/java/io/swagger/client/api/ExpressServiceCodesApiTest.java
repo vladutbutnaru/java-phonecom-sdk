@@ -36,17 +36,16 @@ import org.junit.Test;
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.ExpressServiceCodeFull;
-import io.swagger.client.model.ExpressServiceCodesFull;
 import io.swagger.client.model.FilterIdArray;
-import io.swagger.client.model.ListExpressServiceCodesFull;
-import io.swagger.client.model.SortIdArray;
+import io.swagger.client.model.ListExpressServiceCodes;
+import io.swagger.client.model.SortId;
 
 /**
  * API tests for ExpressservicecodesApi
  */
-public class ExpressservicecodesApiTest {
+public class ExpressServiceCodesApiTest {
 
-    private final ExpressservicecodesApi api = new ExpressservicecodesApi();
+    private final ExpressServiceCodesApi api = new ExpressServiceCodesApi();
 
     @Before
     public void initTest() {
@@ -82,10 +81,10 @@ public class ExpressservicecodesApiTest {
     public void listAccountExpressSrvCodesTest() throws ApiException {
         Integer accountId = 1315091;
         List<String> filtersId = TestConfig.createDefaultFilter();
-        ListExpressServiceCodesFull response = api.listAccountExpressSrvCodes(accountId, filtersId);
+        ListExpressServiceCodes response = api.listAccountExpressSrvCodes(accountId, filtersId);
 
         assertNotNull(response);
-        ExpressServiceCodesFull items = response.getItems();
+        List<ExpressServiceCodeFull> items = response.getItems();
         assertNotNull(items);
         FilterIdArray filters = response.getFilters();
         assertNotNull(filters);
@@ -95,7 +94,7 @@ public class ExpressservicecodesApiTest {
         assertNotNull(limit2);
         Integer offset2 = response.getOffset();
         assertNotNull(offset2);
-        SortIdArray sort = response.getSort();
+        List<SortId> sort = response.getSort();
         assertNotNull(sort);
     }
     

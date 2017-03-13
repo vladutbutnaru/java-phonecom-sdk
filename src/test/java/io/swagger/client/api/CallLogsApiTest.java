@@ -40,14 +40,14 @@ import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CallLogFull;
 import io.swagger.client.model.FilterCallLogs;
-import io.swagger.client.model.ListCallLogsFull;
+import io.swagger.client.model.ListCallLogs;
 import io.swagger.client.model.SortCallLogs;
 /**
  * API tests for CalllogsApi
  */
-public class CalllogsApiTest {
+public class CallLogsApiTest {
 
-    private final CalllogsApi api = new CalllogsApi();
+    private final CallLogsApi api = new CallLogsApi();
 
     @Before
     public void initTest() {
@@ -67,8 +67,8 @@ public class CalllogsApiTest {
     public void getAccountCallLogTest() throws ApiException {
 
         Integer accountId = 1315091;
-        Integer callLogId = null;
-        CallLogFull response = api.getAccountCallLog(accountId, callLogId);
+        String callId = null;
+        CallLogFull response = api.getAccountCallLogs(accountId, callId);
 
         assertNotNull(response);
         // TODO: [CANNOT TEST] No Call log, no method for creating call log
@@ -101,7 +101,7 @@ public class CalllogsApiTest {
         String fields = null;
         
         // When
-        ListCallLogsFull response = api.listAccountCallLogs(accountId, filtersId, filtersStartTime, filtersCreatedAt, filtersDirection, filtersCalledNumber, filtersType, filtersExtension, sortId, sortStartTime, sortCreatedAt, limit, offset, fields);
+        ListCallLogs response = api.listAccountCallLogs(accountId, filtersId, filtersStartTime, filtersCreatedAt, filtersDirection, filtersCalledNumber, filtersType, filtersExtension, sortId, sortStartTime, sortCreatedAt, limit, offset, fields);
 
         // Then
         assertNotNull(response);
