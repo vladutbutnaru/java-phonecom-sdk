@@ -48,17 +48,17 @@ public class TrunksApiTest {
      */
     @Test
     public void createAccountTrunkTest() throws ApiException {
-        Integer accountId = null;
-        CreateTrunkParams data = null;
-        data.setErrorMessage("ERROR");
-        data.setMaxMinutesPerMonth(13);
-        data.setMaxConcurrentCalls(1);
-        data.setGreeting("HELLO");
-        data.setUri("google.com");
-        data.setName("NAME");
+        Integer accountId = 1315091;
+        CreateTrunkParams data = new CreateTrunkParams();
+//        data.setErrorMessage("ERROR");
+        data.setMaxMinutesPerMonth(800);
+        data.setMaxConcurrentCalls(60);
+//        data.setGreeting("HELLO");
+        data.setUri("SIP/1234@phone.com:5060");
+        data.setName("NAMENAMENAME");
         TrunkFull response = api.createAccountTrunk(accountId, data);
 
-        // TODO: test validations
+        assertNotNull(response);
     }
     
     /**
@@ -120,7 +120,6 @@ public class TrunksApiTest {
         assertNotNull(response.getOffset());
         assertNotNull(response.getSort());
         assertNotNull(response.getTotal());
-        // TODO: test validations
     }
     
     /**

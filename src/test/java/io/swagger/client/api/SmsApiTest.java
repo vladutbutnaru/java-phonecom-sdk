@@ -50,13 +50,11 @@ public class SmsApiTest {
     public void createAccountSmsTest() throws ApiException {
         Integer accountId = 1315091;
         CreateSmsParams data = new CreateSmsParams();
-        data.setFrom("+12015880100");
-        data.setText("+17328810138");
-        data.setTo("+17328810138");
+        data.setFrom("+16309624775");
+        data.setText("Another message for create");
+        data.setTo("+12019570328");
         SmsFull response = api.createAccountSms(accountId, data);
         assertNotNull(response);
-        System.out.println(response.getId());
-        // TODO: test validations
     }
     
     /**

@@ -48,9 +48,9 @@ public class GroupsApiTest {
 
     	// Create
     	Integer accountId = 1315091;
-        Integer extensionId = 1764590;
+        Integer extensionId = 1767963;
         CreateGroupParams data = new CreateGroupParams();
-        String name = "Geordi";
+        String name = "name" + TestConfig.nextRandom();
 		data.setName(name);
 
 		
@@ -65,20 +65,21 @@ public class GroupsApiTest {
         assertNotNull(responseGetAfterCreate);
         assertEquals(name, responseCreate.getName());
 
-        // TODO: [API Error] Replace call givers 400 Bad request - data object missing in apidocs definitions
+
         // Replace
-//        data.setName("idroeG");
-//        GroupFull responseReplace = api.replaceAccountExtensionContactGroup(accountId, extensionId, responseCreate.getId());
-//        assertNotNull(responseReplace);
+        String name2 = "idroeG";
+        data.setName(name2);
+        GroupFull responseReplace = api.replaceAccountExtensionContactGroup(accountId, extensionId, responseCreate.getId(), data);
+        assertNotNull(responseReplace);
 
         // Get After Replace
-//        GroupFull responseGetAfterReplace = 
-//        		api.getAccountExtensionContactGroup(accountId, extensionId, responseCreate.getId());
-//        assertNotNull(responseGetAfterReplace);
-//        assertEquals(name, responseGetAfterReplace.getName());
+        GroupFull responseGetAfterReplace = 
+        		api.getAccountExtensionContactGroup(accountId, extensionId, responseCreate.getId());
+        assertNotNull(responseGetAfterReplace);
+        assertEquals(name2, responseGetAfterReplace.getName());
         
         // Delete
-        DeleteGroup responseDelete = api.deleteAccountExtensionContactGroup(accountId, extensionId, responseCreate.getId());
+        DeleteGroup responseDelete = api.deleteAccountExtensionContactGroup(accountId, extensionId, responseReplace.getId());
         assertNotNull(responseDelete);
         assertEquals(true, responseDelete.getSuccess());
     }

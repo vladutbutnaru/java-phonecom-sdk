@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.api;
 
 import static org.junit.Assert.assertNotNull;
@@ -30,61 +29,58 @@ import io.swagger.client.model.MediaFull;
  */
 public class MediaApiTest {
 
-    private final MediaApi api = new MediaApi();
+	private final MediaApi api = new MediaApi();
 
-    @Before
-    public void initTest() {
-    	TestConfig.setAuthorization();
-    }
-    
-    /**
-     * Show details of an individual media recording (Greeting or Hold Music)
-     *
-     * Get individual media recording
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getAccountMediaTest() throws ApiException {
-        Integer accountId = 1315091;
-        Integer recordingId = 11;
-        MediaFull response = api.getAccountMedia(accountId, recordingId);
-        assertNotNull(response.getId());
-        assertNotNull(response.getName());
-        assertNotNull(response.getType());
-        // TODO: test validations
-    }
-    
-    /**
-     * Get a list of media recordings for an account
-     *
-     * See Account Menus for more info on the properties.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void listAccountMediaTest() throws ApiException {
-        Integer accountId = 1315091;
-        List<String> filtersId = null;
-        List<String> filtersName = null;
-        String sortId = null;
-        String sortName = null;
-        Integer limit = null;
-        Integer offset = null;
-        String fields = null;
-       
-        
-         ListMedia response = api.listAccountMedia(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
-         assertNotNull(response.getFilters());
-         assertNotNull(response.getItems());
-         assertNotNull(response.getLimit());
-         assertNotNull(response.getOffset());
-         assertNotNull(response.getSort());
-         assertNotNull(response.getTotal());
-         
-        // TODO: test validations
-    }
-    
+	@Before
+	public void initTest() {
+		TestConfig.setAuthorization();
+	}
+
+	/**
+	 * Show details of an individual media recording (Greeting or Hold Music)
+	 *
+	 * Get individual media recording
+	 *
+	 * @throws ApiException
+	 *             if the Api call fails
+	 */
+	@Test
+	public void getAccountMediaTest() throws ApiException {
+		Integer accountId = 1315091;
+		Integer recordingId = 11;
+		MediaFull response = api.getAccountMedia(accountId, recordingId);
+		assertNotNull(response.getId());
+		assertNotNull(response.getName());
+		assertNotNull(response.getType());
+	}
+
+	/**
+	 * Get a list of media recordings for an account
+	 *
+	 * See Account Menus for more info on the properties.
+	 *
+	 * @throws ApiException
+	 *             if the Api call fails
+	 */
+	@Test
+	public void listAccountMediaTest() throws ApiException {
+		Integer accountId = 1315091;
+		List<String> filtersId = null;
+		List<String> filtersName = null;
+		String sortId = null;
+		String sortName = null;
+		Integer limit = null;
+		Integer offset = null;
+		String fields = null;
+
+		ListMedia response = api.listAccountMedia(accountId, filtersId, filtersName, sortId, sortName, limit, offset,
+				fields);
+		assertNotNull(response.getFilters());
+		assertNotNull(response.getItems());
+		assertNotNull(response.getLimit());
+		assertNotNull(response.getOffset());
+		assertNotNull(response.getSort());
+		assertNotNull(response.getTotal());
+	}
+
 }

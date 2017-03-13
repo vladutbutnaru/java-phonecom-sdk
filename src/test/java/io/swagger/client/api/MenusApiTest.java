@@ -47,23 +47,24 @@ public class MenusApiTest {
         Integer accountId = 1315091;
         CreateMenuParams data = new CreateMenuParams();
         data.setAllowExtensionDial(true);
-        data.setName("Test Menu");
-        data.setKeypressWaitTime(2);
-        data.setMainMessage("testMess");
-        data.setInvalidKeypressMessage("testMess");
-        data.setTimeoutHandler("testASD");
+        data.setName("nccswfhjfetk");
+        data.setKeypressWaitTime(3);
+//        data.setMainMessage("testMess");
+//        data.setInvalidKeypressMessage("testMess");
+//        data.setTimeoutHandler("testASD");
         
          MenuFull response = api.createAccountMenu(accountId, data);
          assertNotNull(response.getId());
          assertNotNull(response.getAllowExtensionDial());
-         assertNotNull(response.getGreeting());
-         assertNotNull(response.getKeypressError());
+//         assertNotNull(response.getGreeting());
+//         assertNotNull(response.getKeypressError());
          assertNotNull(response.getKeypressWaitTime());
          assertNotNull(response.getName());
          Integer menuID = response.getId();
          
          ReplaceMenuParams dataReplace = new ReplaceMenuParams();
-         dataReplace.setAllowExtensionDial(false);
+         dataReplace.setName("nccswfeeeebk");
+         dataReplace.setKeypressWaitTime(5);
         
          MenuFull responseReplace = api.replaceAccountMenu(accountId, menuID, dataReplace);
          assertEquals(false, responseReplace.getAllowExtensionDial());

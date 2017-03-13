@@ -54,25 +54,24 @@ public class SubaccountsApiTest {
         CreateSubaccountParams data = new CreateSubaccountParams();
         ContactSubaccount x = new ContactSubaccount();
         Address ad  = new Address();
-        ad.setCity("Iasi");
-        ad.setCountry("Romania");
-        ad.setLine1("test");
-        ad.setPostalCode("700134");
-        ad.setProvince("Iasi");
+        ad.setCity("Poway");
+        ad.setCountry("US");
+        ad.setLine1("14282 Danielson Street");
+        ad.setPostalCode("92064");
+        ad.setProvince("CA");
         x.setAddress(ad);
         x.setAlternateEmail("ad@yahoo.com");
         x.setCompany("Company");
-        x.setName("NAME");
-        x.setPhone("+40754837620");
-        x.setPrimaryEmail("vlad2me@live.com");
+        x.setName("Teddy3");
+        x.setPhone("+18585551113");
+        x.setPrimaryEmail("test3@phone.com");
         data.setBillingContact(x);
         data.setContact(x);
-        data.setPassword("password1234!");
-        data.setUsername("usernamesmecher1234!");
+        data.setPassword("Teddy3");
+        data.setUsername(TestConfig.nextRandom());
       
-         AccountFull response = api.createAccountSubaccount(accountId, data);
-
-        // TODO: test validations
+        AccountFull response = api.createAccountSubaccount(accountId, data);
+        assertNotNull(response);
     }
     
     /**
@@ -98,7 +97,6 @@ public class SubaccountsApiTest {
         assertNotNull(response.getOffset());
         assertNotNull(response.getSort());
         assertNotNull(response.getTotal());
-        // TODO: test validations
     }
     
 }

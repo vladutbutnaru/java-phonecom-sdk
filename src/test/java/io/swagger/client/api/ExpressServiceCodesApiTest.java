@@ -51,7 +51,7 @@ public class ExpressServiceCodesApiTest {
     @Test
     public void getAccountExpressSrvCodeTest() throws ApiException {
         Integer accountId = 1315091;
-        Integer codeId = 324202;
+        Integer codeId = 329273;
         ExpressServiceCodeFull response = api.getAccountExpressSrvCode(accountId, codeId);
         
         assertNotNull(response);

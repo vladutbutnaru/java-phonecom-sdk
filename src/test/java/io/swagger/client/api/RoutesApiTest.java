@@ -14,6 +14,7 @@ package io.swagger.client.api;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -23,7 +24,10 @@ import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateRouteParams;
 import io.swagger.client.model.ListRoutes;
+import io.swagger.client.model.QueueSummary;
 import io.swagger.client.model.RouteFull;
+import io.swagger.client.model.RuleSet;
+import io.swagger.client.model.RuleSetAction;
 
 /**
  * API tests for RoutesApi
@@ -49,12 +53,31 @@ public class RoutesApiTest {
 	public void createRouteTest() throws ApiException {
 		Integer accountId = 1315091;
 		CreateRouteParams data = new CreateRouteParams();
-		data.setExtension("test");
-		data.setName("TEst naem");
+//		data.setExtension("test");
+		data.setName("name" + TestConfig.nextRandom());
 		
-		 RouteFull response = api.createRoute(accountId, data);
-		 assertNotNull(response);
-		// TODO: test validations
+		RuleSetAction action = new RuleSetAction();
+		action.action("queue");
+		
+		QueueSummary queue = new QueueSummary();
+		queue.id(22176);
+		queue.name("w8zqw3avqaa2");
+		
+		action.queue(queue);
+		List<RuleSetAction> actions = new ArrayList<>();
+		
+		actions.add(action);
+		
+		RuleSet rule = new RuleSet();
+		rule.actions(actions);
+		
+		List<Object> rules = new ArrayList<>();
+		rules.add(rule);
+
+		data.setRules(rules);
+		
+		RouteFull response = api.createRoute(accountId, data);
+		assertNotNull(response);
 	}
 
 	/**

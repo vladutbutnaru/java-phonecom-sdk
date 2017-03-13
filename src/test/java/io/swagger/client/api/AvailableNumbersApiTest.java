@@ -56,22 +56,19 @@ public class AvailableNumbersApiTest {
         List<String> filtersCountry = null;
         List<String> filtersPrice = null;
         List<String> filtersCategory = null;
-        List<String> filtersIsTollFree = null;
         String sortInternal = null;
         String sortPrice = null;
         String sortPhoneNumber = null;
         Integer limit = null;
         Integer offset = null;
         String fields = null;
-         ListAvailableNumbers response = api.listAvailablePhoneNumbers(filtersPhoneNumber, filtersCountryCode, filtersNpa, filtersNxx, filtersXxxx, filtersCity, filtersProvince, filtersCountry, filtersPrice, filtersCategory, sortInternal, sortPrice, sortPhoneNumber, limit, offset, fields);
-         assertNotNull(response.getItems());
-         assertNotNull(response.getFilters());
-         assertNotNull(response.getLimit());
-         assertNotNull(response.getOffset());
-         assertNotNull(response.getSort());
-         assertNotNull(response.getTotal());
-         
-        // TODO: test validations
+        ListAvailableNumbers response = api.listAvailablePhoneNumbers(filtersPhoneNumber, filtersCountryCode, filtersNpa, filtersNxx, filtersXxxx, filtersCity, filtersProvince, filtersCountry, filtersPrice, filtersCategory, sortInternal, sortPrice, sortPhoneNumber, limit, offset, fields);
+        assertNotNull(response.getItems());
+        assertNotNull(response.getFilters());
+        assertNotNull(response.getLimit());
+        assertNotNull(response.getOffset());
+        assertNotNull(response.getSort());
+        assertNotNull(response.getTotal());
     }
     
 }

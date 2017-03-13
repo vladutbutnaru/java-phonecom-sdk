@@ -48,10 +48,8 @@ public class DevicesApiTest {
     	// Create
     	Integer accountId = 1315091;
         CreateDeviceParams data = new CreateDeviceParams();
-        String name = "Geordi";
+        String name = "name" + TestConfig.nextRandom();
 		data.setName(name);
-
-		// TODO: [API Error] Create call: Response 422 Unprocessable entity even with very basic data info
 
 		DeviceFull responseCreate = api.createAccountDevice(accountId, data);
         assertNotNull(responseCreate);
@@ -70,7 +68,7 @@ public class DevicesApiTest {
         // Get After Replace
         DeviceFull responseGetAfterReplace = api.getAccountDevice(accountId, responseCreate.getId());
         assertNotNull(responseGetAfterReplace);
-        assertEquals(name, responseGetAfterReplace.getName());
+        assertEquals(name + "2", responseGetAfterReplace.getName());
     }
     
     /**
