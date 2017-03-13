@@ -101,20 +101,23 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**listAccounts**](docs/AccountsApi.md#listAccounts) | **GET** /accounts | Get a list of accounts visible to the authenticated user or client
 *ApplicationsApi* | [**getAccountApplication**](docs/ApplicationsApi.md#getAccountApplication) | **GET** /accounts/{account_id}/applications/{application_id} | Show details of an individual application
 *ApplicationsApi* | [**listAccountApplications**](docs/ApplicationsApi.md#listAccountApplications) | **GET** /accounts/{account_id}/applications | Get a list of applications you have defined
-*AvailablenumbersApi* | [**listAvailablePhoneNumbers**](docs/AvailablenumbersApi.md#listAvailablePhoneNumbers) | **GET** /phone-numbers/available | 
-*CalleridsApi* | [**getCallerIds**](docs/CalleridsApi.md#getCallerIds) | **GET** /accounts/{account_id}/extensions/{extension_id}/caller-ids | Show the Caller ID options a given extension can use
-*CalllogsApi* | [**listAccountCallLogs**](docs/CalllogsApi.md#listAccountCallLogs) | **GET** /accounts/{account_id}/call-logs | Get a list of call details associated with your account
+*AvailableNumbersApi* | [**listAvailablePhoneNumbers**](docs/AvailableNumbersApi.md#listAvailablePhoneNumbers) | **GET** /phone-numbers/available | 
+*CallLogsApi* | [**getAccountCallLogs**](docs/CallLogsApi.md#getAccountCallLogs) | **GET** /accounts/{account_id}/call-logs/{call_id} | Show details of an individual Call Log entry
+*CallLogsApi* | [**listAccountCallLogs**](docs/CallLogsApi.md#listAccountCallLogs) | **GET** /accounts/{account_id}/call-logs | Get a list of call details associated with your account
+*CallerIdsApi* | [**getCallerIds**](docs/CallerIdsApi.md#getCallerIds) | **GET** /accounts/{account_id}/extensions/{extension_id}/caller-ids | Show the Caller ID options a given extension can use
+*CallsApi* | [**createAccountCalls**](docs/CallsApi.md#createAccountCalls) | **POST** /accounts/{account_id}/calls | Make a phone call
 *ContactsApi* | [**createAccountExtensionContact**](docs/ContactsApi.md#createAccountExtensionContact) | **POST** /accounts/{account_id}/extensions/{extension_id}/contacts | Add a new address book contact for an extension
 *ContactsApi* | [**deleteAccountExtensionContact**](docs/ContactsApi.md#deleteAccountExtensionContact) | **DELETE** /accounts/{account_id}/extensions/{extension_id}/contacts/{contact_id} | 
 *ContactsApi* | [**getAccountExtensionContact**](docs/ContactsApi.md#getAccountExtensionContact) | **GET** /accounts/{account_id}/extensions/{extension_id}/contacts/{contact_id} | Retrieve the details of an address book contact
 *ContactsApi* | [**listAccountExtensionContacts**](docs/ContactsApi.md#listAccountExtensionContacts) | **GET** /accounts/{account_id}/extensions/{extension_id}/contacts | Show a list of address book contacts
-*ContactsApi* | [**replaceAccountExtensionContact**](docs/ContactsApi.md#replaceAccountExtensionContact) | **PUT** /accounts/{account_id}/extensions/{extension_id}/contacts | 
+*ContactsApi* | [**replaceAccountExtensionContact**](docs/ContactsApi.md#replaceAccountExtensionContact) | **PUT** /accounts/{account_id}/extensions/{extension_id}/contacts/{contact_id} | 
+*DefaultApi* | [**ping**](docs/DefaultApi.md#ping) | **GET** /ping | The default API command
 *DevicesApi* | [**createAccountDevice**](docs/DevicesApi.md#createAccountDevice) | **POST** /accounts/{account_id}/devices | Register a generic VoIP device
-*DevicesApi* | [**getAccountDevice**](docs/DevicesApi.md#getAccountDevice) | **GET** /accounts/{account_id}/device/{device_id} | Show details of an individual VoIP device
+*DevicesApi* | [**getAccountDevice**](docs/DevicesApi.md#getAccountDevice) | **GET** /accounts/{account_id}/devices/{device_id} | Show details of an individual VoIP device
 *DevicesApi* | [**listAccountDevices**](docs/DevicesApi.md#listAccountDevices) | **GET** /accounts/{account_id}/devices | Get a list of VoIP devices associated with your account
-*DevicesApi* | [**replaceAccountDevice**](docs/DevicesApi.md#replaceAccountDevice) | **PUT** /accounts/{account_id}/device/{device_id} | Update the settings for an individual VoIP device
-*ExpressservicecodesApi* | [**getAccountExpressSrvCode**](docs/ExpressservicecodesApi.md#getAccountExpressSrvCode) | **GET** /accounts/{account_id}/express-service-codes/{code_id} | Show details of an account Express Service Code
-*ExpressservicecodesApi* | [**listAccountExpressSrvCodes**](docs/ExpressservicecodesApi.md#listAccountExpressSrvCodes) | **GET** /accounts/{account_id}/express-service-codes | Get the Express Service Code associated with your account in list format
+*DevicesApi* | [**replaceAccountDevice**](docs/DevicesApi.md#replaceAccountDevice) | **PUT** /accounts/{account_id}/devices/{device_id} | Update the settings for an individual VoIP device
+*ExpressServiceCodesApi* | [**getAccountExpressSrvCode**](docs/ExpressServiceCodesApi.md#getAccountExpressSrvCode) | **GET** /accounts/{account_id}/express-service-codes/{code_id} | Show details of an account Express Service Code
+*ExpressServiceCodesApi* | [**listAccountExpressSrvCodes**](docs/ExpressServiceCodesApi.md#listAccountExpressSrvCodes) | **GET** /accounts/{account_id}/express-service-codes | Get the Express Service Code associated with your account in list format
 *ExtensionsApi* | [**createAccountExtension**](docs/ExtensionsApi.md#createAccountExtension) | **POST** /accounts/{account_id}/extensions | Create an individual extension
 *ExtensionsApi* | [**getAccountExtension**](docs/ExtensionsApi.md#getAccountExtension) | **GET** /accounts/{account_id}/extensions/{extension_id} | Show details of an individual extension
 *ExtensionsApi* | [**listAccountExtensions**](docs/ExtensionsApi.md#listAccountExtensions) | **GET** /accounts/{account_id}/extensions | Get a list of extensions visible to the authenticated user or client
@@ -131,11 +134,11 @@ Class | Method | HTTP request | Description
 *MenusApi* | [**getAccountMenu**](docs/MenusApi.md#getAccountMenu) | **GET** /accounts/{account_id}/menus/{menu_id} | Show details of an individual menu
 *MenusApi* | [**listAccountMenus**](docs/MenusApi.md#listAccountMenus) | **GET** /accounts/{account_id}/menus | Get a list of menus for an account
 *MenusApi* | [**replaceAccountMenu**](docs/MenusApi.md#replaceAccountMenu) | **PUT** /accounts/{account_id}/menus/{menu_id} | Replace an individual menu
-*NumberregionsApi* | [**listAvailablePhoneNumberRegions**](docs/NumberregionsApi.md#listAvailablePhoneNumberRegions) | **GET** /phone-numbers/available/regions | 
-*PhonenumbersApi* | [**createAccountPhoneNumber**](docs/PhonenumbersApi.md#createAccountPhoneNumber) | **POST** /accounts/{account_id}/phone-numbers | Add a phone number to an account
-*PhonenumbersApi* | [**getAccountPhoneNumber**](docs/PhonenumbersApi.md#getAccountPhoneNumber) | **GET** /accounts/{account_id}/phone-numbers/{number_id} | Show details of an individual phone number
-*PhonenumbersApi* | [**listAccountPhoneNumbers**](docs/PhonenumbersApi.md#listAccountPhoneNumbers) | **GET** /accounts/{account_id}/phone-numbers | Get a list of phone numbers registered to an account
-*PhonenumbersApi* | [**replaceAccountPhoneNumber**](docs/PhonenumbersApi.md#replaceAccountPhoneNumber) | **PUT** /accounts/{account_id}/phone-numbers/{number_id} | Update the settings for an existing phone number on your account
+*NumberRegionsApi* | [**listAvailablePhoneNumberRegions**](docs/NumberRegionsApi.md#listAvailablePhoneNumberRegions) | **GET** /phone-numbers/available/regions | 
+*PhoneNumbersApi* | [**createAccountPhoneNumber**](docs/PhoneNumbersApi.md#createAccountPhoneNumber) | **POST** /accounts/{account_id}/phone-numbers | Add a phone number to an account
+*PhoneNumbersApi* | [**getAccountPhoneNumber**](docs/PhoneNumbersApi.md#getAccountPhoneNumber) | **GET** /accounts/{account_id}/phone-numbers/{number_id} | Show details of an individual phone number
+*PhoneNumbersApi* | [**listAccountPhoneNumbers**](docs/PhoneNumbersApi.md#listAccountPhoneNumbers) | **GET** /accounts/{account_id}/phone-numbers | Get a list of phone numbers registered to an account
+*PhoneNumbersApi* | [**replaceAccountPhoneNumber**](docs/PhoneNumbersApi.md#replaceAccountPhoneNumber) | **PUT** /accounts/{account_id}/phone-numbers/{number_id} | Update the settings for an existing phone number on your account
 *QueuesApi* | [**createAccountQueue**](docs/QueuesApi.md#createAccountQueue) | **POST** /accounts/{account_id}/queues | Create a queue
 *QueuesApi* | [**deleteAccountQueue**](docs/QueuesApi.md#deleteAccountQueue) | **DELETE** /accounts/{account_id}/queues/{queue_id} | Delete a queue
 *QueuesApi* | [**getAccountQueue**](docs/QueuesApi.md#getAccountQueue) | **GET** /accounts/{account_id}/queues/{queue_id} | Show details of an individual queue
@@ -166,16 +169,12 @@ Class | Method | HTTP request | Description
  - [AccountSummary](docs/AccountSummary.md)
  - [Address](docs/Address.md)
  - [AddressListContacts](docs/AddressListContacts.md)
- - [Addresses](docs/Addresses.md)
  - [ApplicationFull](docs/ApplicationFull.md)
  - [ApplicationSummary](docs/ApplicationSummary.md)
- - [AvailableNumberFull](docs/AvailableNumberFull.md)
- - [AvailableNumberSummary](docs/AvailableNumberSummary.md)
  - [AvailableNumbersFull](docs/AvailableNumbersFull.md)
- - [AvailableNumbersSummary](docs/AvailableNumbersSummary.md)
  - [CallDetails](docs/CallDetails.md)
+ - [CallFull](docs/CallFull.md)
  - [CallLogFull](docs/CallLogFull.md)
- - [CallLogSummary](docs/CallLogSummary.md)
  - [CallNotifications](docs/CallNotifications.md)
  - [CallerIdFull](docs/CallerIdFull.md)
  - [CallerIdPhoneNumber](docs/CallerIdPhoneNumber.md)
@@ -183,6 +182,7 @@ Class | Method | HTTP request | Description
  - [ContactFull](docs/ContactFull.md)
  - [ContactSubaccount](docs/ContactSubaccount.md)
  - [ContactSummary](docs/ContactSummary.md)
+ - [CreateCallParams](docs/CreateCallParams.md)
  - [CreateContactParams](docs/CreateContactParams.md)
  - [CreateDeviceParams](docs/CreateDeviceParams.md)
  - [CreateExtensionParams](docs/CreateExtensionParams.md)
@@ -203,14 +203,8 @@ Class | Method | HTTP request | Description
  - [DeviceFull](docs/DeviceFull.md)
  - [DeviceMembership](docs/DeviceMembership.md)
  - [DeviceSummary](docs/DeviceSummary.md)
- - [DevicesFull](docs/DevicesFull.md)
- - [DevicesSummary](docs/DevicesSummary.md)
  - [Email](docs/Email.md)
- - [Emails](docs/Emails.md)
  - [ExpressServiceCodeFull](docs/ExpressServiceCodeFull.md)
- - [ExpressServiceCodeSummary](docs/ExpressServiceCodeSummary.md)
- - [ExpressServiceCodesFull](docs/ExpressServiceCodesFull.md)
- - [ExpressServiceCodesSummary](docs/ExpressServiceCodesSummary.md)
  - [ExtensionFull](docs/ExtensionFull.md)
  - [ExtensionSummary](docs/ExtensionSummary.md)
  - [FilterCallLogs](docs/FilterCallLogs.md)
@@ -224,82 +218,49 @@ Class | Method | HTTP request | Description
  - [FilterListPhoneNumbersRegions](docs/FilterListPhoneNumbersRegions.md)
  - [FilterNameNumberArray](docs/FilterNameNumberArray.md)
  - [Greeting](docs/Greeting.md)
- - [GroupByListPhoneNumbersRegions](docs/GroupByListPhoneNumbersRegions.md)
  - [GroupFull](docs/GroupFull.md)
  - [GroupListContacts](docs/GroupListContacts.md)
  - [GroupSummary](docs/GroupSummary.md)
- - [GroupsFull](docs/GroupsFull.md)
- - [GroupsSummary](docs/GroupsSummary.md)
  - [HoldMusic](docs/HoldMusic.md)
  - [Line](docs/Line.md)
- - [ListAccountsFull](docs/ListAccountsFull.md)
- - [ListAccountsSummary](docs/ListAccountsSummary.md)
- - [ListApplicationsFull](docs/ListApplicationsFull.md)
- - [ListApplicationsSummary](docs/ListApplicationsSummary.md)
- - [ListAvailableNumbersFull](docs/ListAvailableNumbersFull.md)
- - [ListAvailableNumbersSummary](docs/ListAvailableNumbersSummary.md)
- - [ListCallLogsFull](docs/ListCallLogsFull.md)
- - [ListCallLogsSummary](docs/ListCallLogsSummary.md)
- - [ListCallerIdsFull](docs/ListCallerIdsFull.md)
- - [ListCallerIdsSummary](docs/ListCallerIdsSummary.md)
- - [ListContactsFull](docs/ListContactsFull.md)
- - [ListContactsSummary](docs/ListContactsSummary.md)
- - [ListDevicesFull](docs/ListDevicesFull.md)
- - [ListDevicesSummary](docs/ListDevicesSummary.md)
- - [ListExpressServiceCodesFull](docs/ListExpressServiceCodesFull.md)
- - [ListExpressServiceCodesSummary](docs/ListExpressServiceCodesSummary.md)
- - [ListExtensionsFull](docs/ListExtensionsFull.md)
- - [ListExtensionsSummary](docs/ListExtensionsSummary.md)
- - [ListGroupsFull](docs/ListGroupsFull.md)
- - [ListGroupsSummary](docs/ListGroupsSummary.md)
- - [ListMediaFull](docs/ListMediaFull.md)
- - [ListMediaSummary](docs/ListMediaSummary.md)
- - [ListMenusFull](docs/ListMenusFull.md)
- - [ListMenusSummary](docs/ListMenusSummary.md)
- - [ListPhoneNumbersFull](docs/ListPhoneNumbersFull.md)
- - [ListPhoneNumbersRegionsFull](docs/ListPhoneNumbersRegionsFull.md)
- - [ListPhoneNumbersRegionsSummary](docs/ListPhoneNumbersRegionsSummary.md)
- - [ListPhoneNumbersSummary](docs/ListPhoneNumbersSummary.md)
- - [ListQueuesFull](docs/ListQueuesFull.md)
- - [ListQueuesSummary](docs/ListQueuesSummary.md)
- - [ListRoutesFull](docs/ListRoutesFull.md)
- - [ListRoutesSummary](docs/ListRoutesSummary.md)
- - [ListSchedulesFull](docs/ListSchedulesFull.md)
- - [ListSchedulesSummary](docs/ListSchedulesSummary.md)
- - [ListSmsFull](docs/ListSmsFull.md)
- - [ListSmsSummary](docs/ListSmsSummary.md)
- - [ListTrunksFull](docs/ListTrunksFull.md)
- - [ListTrunksSummary](docs/ListTrunksSummary.md)
+ - [ListAccounts](docs/ListAccounts.md)
+ - [ListApplications](docs/ListApplications.md)
+ - [ListAvailableNumbers](docs/ListAvailableNumbers.md)
+ - [ListCallLogs](docs/ListCallLogs.md)
+ - [ListCallerIds](docs/ListCallerIds.md)
+ - [ListContacts](docs/ListContacts.md)
+ - [ListDevices](docs/ListDevices.md)
+ - [ListExpressServiceCodes](docs/ListExpressServiceCodes.md)
+ - [ListExtensions](docs/ListExtensions.md)
+ - [ListGroups](docs/ListGroups.md)
+ - [ListMedia](docs/ListMedia.md)
+ - [ListMenus](docs/ListMenus.md)
+ - [ListPhoneNumbers](docs/ListPhoneNumbers.md)
+ - [ListPhoneNumbersRegions](docs/ListPhoneNumbersRegions.md)
+ - [ListQueues](docs/ListQueues.md)
+ - [ListRoutes](docs/ListRoutes.md)
+ - [ListSchedules](docs/ListSchedules.md)
+ - [ListSms](docs/ListSms.md)
+ - [ListTrunks](docs/ListTrunks.md)
  - [MediaFull](docs/MediaFull.md)
  - [MediaSummary](docs/MediaSummary.md)
  - [Member](docs/Member.md)
- - [Members](docs/Members.md)
  - [MenuFull](docs/MenuFull.md)
  - [MenuSummary](docs/MenuSummary.md)
- - [MenusFull](docs/MenusFull.md)
- - [MenusSummary](docs/MenusSummary.md)
  - [Notification](docs/Notification.md)
  - [Option](docs/Option.md)
- - [OptionsListMenus](docs/OptionsListMenus.md)
  - [PhoneNumberContact](docs/PhoneNumberContact.md)
  - [PhoneNumberFull](docs/PhoneNumberFull.md)
- - [PhoneNumberSummary](docs/PhoneNumberSummary.md)
- - [PhoneNumbersFull](docs/PhoneNumbersFull.md)
  - [PhoneNumbersRegionFull](docs/PhoneNumbersRegionFull.md)
- - [PhoneNumbersRegionsFull](docs/PhoneNumbersRegionsFull.md)
- - [PhoneNumbersSummary](docs/PhoneNumbersSummary.md)
+ - [PingResponse](docs/PingResponse.md)
  - [QueueFull](docs/QueueFull.md)
  - [QueueSummary](docs/QueueSummary.md)
- - [Queues](docs/Queues.md)
- - [QueuesSummary](docs/QueuesSummary.md)
  - [Recipient](docs/Recipient.md)
  - [ReplaceExtensionParams](docs/ReplaceExtensionParams.md)
  - [ReplaceMenuParams](docs/ReplaceMenuParams.md)
  - [ReplacePhoneNumberParams](docs/ReplacePhoneNumberParams.md)
  - [RouteFull](docs/RouteFull.md)
  - [RouteSummary](docs/RouteSummary.md)
- - [RoutesFull](docs/RoutesFull.md)
- - [RoutesSummary](docs/RoutesSummary.md)
  - [RuleSet](docs/RuleSet.md)
  - [RuleSetAction](docs/RuleSetAction.md)
  - [RuleSetFilter](docs/RuleSetFilter.md)
@@ -309,7 +270,6 @@ Class | Method | HTTP request | Description
  - [SipAuthentication](docs/SipAuthentication.md)
  - [SmsForwarding](docs/SmsForwarding.md)
  - [SmsFull](docs/SmsFull.md)
- - [SmsSummary](docs/SmsSummary.md)
  - [SortCallLogs](docs/SortCallLogs.md)
  - [SortId](docs/SortId.md)
  - [SortIdCreatedAt](docs/SortIdCreatedAt.md)
@@ -337,7 +297,7 @@ Authentication schemes defined for the API:
 
 ## Recommendation
 
-It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issue.
+It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
 
 ## Author
 

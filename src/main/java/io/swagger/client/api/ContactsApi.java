@@ -30,7 +30,7 @@ import java.io.IOException;
 import io.swagger.client.model.ContactFull;
 import io.swagger.client.model.CreateContactParams;
 import io.swagger.client.model.DeleteContact;
-import io.swagger.client.model.ListContactsFull;
+import io.swagger.client.model.ListContacts;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -557,11 +557,11 @@ public class ContactsApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ListContactsFull
+     * @return ListContacts
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ListContactsFull listAccountExtensionContacts(Integer accountId, Integer extensionId, List<String> filtersId, List<String> filtersGroupId, List<String> filtersUpdatedAt, String sortId, String sortUpdatedAt, Integer limit, Integer offset, String fields) throws ApiException {
-        ApiResponse<ListContactsFull> resp = listAccountExtensionContactsWithHttpInfo(accountId, extensionId, filtersId, filtersGroupId, filtersUpdatedAt, sortId, sortUpdatedAt, limit, offset, fields);
+    public ListContacts listAccountExtensionContacts(Integer accountId, Integer extensionId, List<String> filtersId, List<String> filtersGroupId, List<String> filtersUpdatedAt, String sortId, String sortUpdatedAt, Integer limit, Integer offset, String fields) throws ApiException {
+        ApiResponse<ListContacts> resp = listAccountExtensionContactsWithHttpInfo(accountId, extensionId, filtersId, filtersGroupId, filtersUpdatedAt, sortId, sortUpdatedAt, limit, offset, fields);
         return resp.getData();
     }
 
@@ -578,12 +578,12 @@ public class ContactsApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ApiResponse&lt;ListContactsFull&gt;
+     * @return ApiResponse&lt;ListContacts&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ListContactsFull> listAccountExtensionContactsWithHttpInfo(Integer accountId, Integer extensionId, List<String> filtersId, List<String> filtersGroupId, List<String> filtersUpdatedAt, String sortId, String sortUpdatedAt, Integer limit, Integer offset, String fields) throws ApiException {
+    public ApiResponse<ListContacts> listAccountExtensionContactsWithHttpInfo(Integer accountId, Integer extensionId, List<String> filtersId, List<String> filtersGroupId, List<String> filtersUpdatedAt, String sortId, String sortUpdatedAt, Integer limit, Integer offset, String fields) throws ApiException {
         com.squareup.okhttp.Call call = listAccountExtensionContactsValidateBeforeCall(accountId, extensionId, filtersId, filtersGroupId, filtersUpdatedAt, sortId, sortUpdatedAt, limit, offset, fields, null, null);
-        Type localVarReturnType = new TypeToken<ListContactsFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListContacts>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -604,7 +604,7 @@ public class ContactsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listAccountExtensionContactsAsync(Integer accountId, Integer extensionId, List<String> filtersId, List<String> filtersGroupId, List<String> filtersUpdatedAt, String sortId, String sortUpdatedAt, Integer limit, Integer offset, String fields, final ApiCallback<ListContactsFull> callback) throws ApiException {
+    public com.squareup.okhttp.Call listAccountExtensionContactsAsync(Integer accountId, Integer extensionId, List<String> filtersId, List<String> filtersGroupId, List<String> filtersUpdatedAt, String sortId, String sortUpdatedAt, Integer limit, Integer offset, String fields, final ApiCallback<ListContacts> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -626,18 +626,19 @@ public class ContactsApi {
         }
 
         com.squareup.okhttp.Call call = listAccountExtensionContactsValidateBeforeCall(accountId, extensionId, filtersId, filtersGroupId, filtersUpdatedAt, sortId, sortUpdatedAt, limit, offset, fields, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListContactsFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListContacts>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for replaceAccountExtensionContact */
-    private com.squareup.okhttp.Call replaceAccountExtensionContactCall(Integer accountId, Integer extensionId, CreateContactParams data, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call replaceAccountExtensionContactCall(Integer accountId, Integer extensionId, Integer contactId, CreateContactParams data, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = data;
         
         // create path and map variables
-        String localVarPath = "/accounts/{account_id}/extensions/{extension_id}/contacts".replaceAll("\\{format\\}","json")
+        String localVarPath = "/accounts/{account_id}/extensions/{extension_id}/contacts/{contact_id}".replaceAll("\\{format\\}","json")
         .replaceAll("\\{" + "account_id" + "\\}", apiClient.escapeString(accountId.toString()))
-        .replaceAll("\\{" + "extension_id" + "\\}", apiClient.escapeString(extensionId.toString()));
+        .replaceAll("\\{" + "extension_id" + "\\}", apiClient.escapeString(extensionId.toString()))
+        .replaceAll("\\{" + "contact_id" + "\\}", apiClient.escapeString(contactId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -674,7 +675,7 @@ public class ContactsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call replaceAccountExtensionContactValidateBeforeCall(Integer accountId, Integer extensionId, CreateContactParams data, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call replaceAccountExtensionContactValidateBeforeCall(Integer accountId, Integer extensionId, Integer contactId, CreateContactParams data, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
@@ -686,8 +687,13 @@ public class ContactsApi {
             throw new ApiException("Missing the required parameter 'extensionId' when calling replaceAccountExtensionContact(Async)");
         }
         
+        // verify the required parameter 'contactId' is set
+        if (contactId == null) {
+            throw new ApiException("Missing the required parameter 'contactId' when calling replaceAccountExtensionContact(Async)");
+        }
         
-        com.squareup.okhttp.Call call = replaceAccountExtensionContactCall(accountId, extensionId, data, progressListener, progressRequestListener);
+        
+        com.squareup.okhttp.Call call = replaceAccountExtensionContactCall(accountId, extensionId, contactId, data, progressListener, progressRequestListener);
         return call;
 
         
@@ -701,12 +707,13 @@ public class ContactsApi {
      * For more on the input fields, see Account Contacts.
      * @param accountId Account ID (required)
      * @param extensionId Extension ID (required)
+     * @param contactId Contact ID (required)
      * @param data Contact data (optional)
      * @return ContactFull
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ContactFull replaceAccountExtensionContact(Integer accountId, Integer extensionId, CreateContactParams data) throws ApiException {
-        ApiResponse<ContactFull> resp = replaceAccountExtensionContactWithHttpInfo(accountId, extensionId, data);
+    public ContactFull replaceAccountExtensionContact(Integer accountId, Integer extensionId, Integer contactId, CreateContactParams data) throws ApiException {
+        ApiResponse<ContactFull> resp = replaceAccountExtensionContactWithHttpInfo(accountId, extensionId, contactId, data);
         return resp.getData();
     }
 
@@ -715,12 +722,13 @@ public class ContactsApi {
      * For more on the input fields, see Account Contacts.
      * @param accountId Account ID (required)
      * @param extensionId Extension ID (required)
+     * @param contactId Contact ID (required)
      * @param data Contact data (optional)
      * @return ApiResponse&lt;ContactFull&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ContactFull> replaceAccountExtensionContactWithHttpInfo(Integer accountId, Integer extensionId, CreateContactParams data) throws ApiException {
-        com.squareup.okhttp.Call call = replaceAccountExtensionContactValidateBeforeCall(accountId, extensionId, data, null, null);
+    public ApiResponse<ContactFull> replaceAccountExtensionContactWithHttpInfo(Integer accountId, Integer extensionId, Integer contactId, CreateContactParams data) throws ApiException {
+        com.squareup.okhttp.Call call = replaceAccountExtensionContactValidateBeforeCall(accountId, extensionId, contactId, data, null, null);
         Type localVarReturnType = new TypeToken<ContactFull>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -730,12 +738,13 @@ public class ContactsApi {
      * For more on the input fields, see Account Contacts.
      * @param accountId Account ID (required)
      * @param extensionId Extension ID (required)
+     * @param contactId Contact ID (required)
      * @param data Contact data (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call replaceAccountExtensionContactAsync(Integer accountId, Integer extensionId, CreateContactParams data, final ApiCallback<ContactFull> callback) throws ApiException {
+    public com.squareup.okhttp.Call replaceAccountExtensionContactAsync(Integer accountId, Integer extensionId, Integer contactId, CreateContactParams data, final ApiCallback<ContactFull> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -756,7 +765,7 @@ public class ContactsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = replaceAccountExtensionContactValidateBeforeCall(accountId, extensionId, data, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = replaceAccountExtensionContactValidateBeforeCall(accountId, extensionId, contactId, data, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ContactFull>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

@@ -729,7 +729,6 @@ public class ApiClient {
      * @return True if the given MIME is JSON, false otherwise.
      */
     public boolean isJsonMime(String mime) {
-//        return mime != null && mime.matches("(?i)application\\/json(;.*)?");
     	return mime != null && mime.matches("(?i)application\\/(.*)json(;.*)?");
     }
 

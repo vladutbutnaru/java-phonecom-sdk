@@ -29,7 +29,7 @@ import java.io.IOException;
 
 import io.swagger.client.model.CreateRouteParams;
 import io.swagger.client.model.DeleteRoute;
-import io.swagger.client.model.ListRoutesFull;
+import io.swagger.client.model.ListRoutes;
 import io.swagger.client.model.RouteFull;
 
 import java.lang.reflect.Type;
@@ -520,11 +520,11 @@ public class RoutesApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ListRoutesFull
+     * @return ListRoutes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ListRoutesFull listAccountRoutes(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
-        ApiResponse<ListRoutesFull> resp = listAccountRoutesWithHttpInfo(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+    public ListRoutes listAccountRoutes(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
+        ApiResponse<ListRoutes> resp = listAccountRoutesWithHttpInfo(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
         return resp.getData();
     }
 
@@ -539,12 +539,12 @@ public class RoutesApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ApiResponse&lt;ListRoutesFull&gt;
+     * @return ApiResponse&lt;ListRoutes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ListRoutesFull> listAccountRoutesWithHttpInfo(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
+    public ApiResponse<ListRoutes> listAccountRoutesWithHttpInfo(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
         com.squareup.okhttp.Call call = listAccountRoutesValidateBeforeCall(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields, null, null);
-        Type localVarReturnType = new TypeToken<ListRoutesFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListRoutes>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -563,7 +563,7 @@ public class RoutesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listAccountRoutesAsync(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields, final ApiCallback<ListRoutesFull> callback) throws ApiException {
+    public com.squareup.okhttp.Call listAccountRoutesAsync(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields, final ApiCallback<ListRoutes> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -585,7 +585,7 @@ public class RoutesApi {
         }
 
         com.squareup.okhttp.Call call = listAccountRoutesValidateBeforeCall(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListRoutesFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListRoutes>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

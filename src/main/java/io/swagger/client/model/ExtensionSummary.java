@@ -19,10 +19,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * The Full Extension Object has the same properties as the Extension Summary Object, along with the following:
+ * The Extension Summary Object is used to briefly represent an extension. It can be seen in several places throughout this API. Here are the properties:
  */
-@ApiModel(description = "The Full Extension Object has the same properties as the Extension Summary Object, along with the following:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
+@ApiModel(description = "The Extension Summary Object is used to briefly represent an extension. It can be seen in several places throughout this API. Here are the properties:")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
 public class ExtensionSummary {
   @SerializedName("id")
   private Integer id = null;
@@ -42,7 +42,7 @@ public class ExtensionSummary {
    * ID of the extension. This is the internal Phone.com ID, not the extension number callers may dial.
    * @return id
   **/
-  @ApiModelProperty(example = "null", required = true, value = "ID of the extension. This is the internal Phone.com ID, not the extension number callers may dial.")
+  @ApiModelProperty(example = "null", value = "ID of the extension. This is the internal Phone.com ID, not the extension number callers may dial.")
   public Integer getId() {
     return id;
   }
@@ -60,7 +60,7 @@ public class ExtensionSummary {
    * User-supplied name for the extension. On POST, leaving this empty will result in an auto-generated value. On PUT, this field is required.
    * @return name
   **/
-  @ApiModelProperty(example = "null", required = true, value = "User-supplied name for the extension. On POST, leaving this empty will result in an auto-generated value. On PUT, this field is required.")
+  @ApiModelProperty(example = "null", value = "User-supplied name for the extension. On POST, leaving this empty will result in an auto-generated value. On PUT, this field is required.")
   public String getName() {
     return name;
   }
@@ -78,7 +78,7 @@ public class ExtensionSummary {
    * Extension number that callers may dial. On POST, leaving this empty will result in an auto-generated value. On PUT, this field is required.
    * @return extension
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Extension number that callers may dial. On POST, leaving this empty will result in an auto-generated value. On PUT, this field is required.")
+  @ApiModelProperty(example = "null", value = "Extension number that callers may dial. On POST, leaving this empty will result in an auto-generated value. On PUT, this field is required.")
   public Integer getExtension() {
     return extension;
   }

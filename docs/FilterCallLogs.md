@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **List&lt;String&gt;** |  |  [optional]
-**startTime** | **List&lt;String&gt;** |  |  [optional]
+**id** | **String** |  |  [optional]
+**startTime** | **String** |  |  [optional]
 **createdAt** | **String** |  |  [optional]
 **direction** | **String** |  |  [optional]
 **calledNumber** | **String** |  |  [optional]

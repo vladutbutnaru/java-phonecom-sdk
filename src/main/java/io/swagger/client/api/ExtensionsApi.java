@@ -29,7 +29,7 @@ import java.io.IOException;
 
 import io.swagger.client.model.CreateExtensionParams;
 import io.swagger.client.model.ExtensionFull;
-import io.swagger.client.model.ListExtensionsFull;
+import io.swagger.client.model.ListExtensions;
 import io.swagger.client.model.ReplaceExtensionParams;
 
 import java.lang.reflect.Type;
@@ -398,11 +398,11 @@ public class ExtensionsApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ListExtensionsFull
+     * @return ListExtensions
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ListExtensionsFull listAccountExtensions(Integer accountId, List<String> filtersId, List<String> filtersExtension, List<String> filtersName, String sortId, String sortExtension, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
-        ApiResponse<ListExtensionsFull> resp = listAccountExtensionsWithHttpInfo(accountId, filtersId, filtersExtension, filtersName, sortId, sortExtension, sortName, limit, offset, fields);
+    public ListExtensions listAccountExtensions(Integer accountId, List<String> filtersId, List<String> filtersExtension, List<String> filtersName, String sortId, String sortExtension, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
+        ApiResponse<ListExtensions> resp = listAccountExtensionsWithHttpInfo(accountId, filtersId, filtersExtension, filtersName, sortId, sortExtension, sortName, limit, offset, fields);
         return resp.getData();
     }
 
@@ -419,12 +419,12 @@ public class ExtensionsApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ApiResponse&lt;ListExtensionsFull&gt;
+     * @return ApiResponse&lt;ListExtensions&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ListExtensionsFull> listAccountExtensionsWithHttpInfo(Integer accountId, List<String> filtersId, List<String> filtersExtension, List<String> filtersName, String sortId, String sortExtension, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
+    public ApiResponse<ListExtensions> listAccountExtensionsWithHttpInfo(Integer accountId, List<String> filtersId, List<String> filtersExtension, List<String> filtersName, String sortId, String sortExtension, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
         com.squareup.okhttp.Call call = listAccountExtensionsValidateBeforeCall(accountId, filtersId, filtersExtension, filtersName, sortId, sortExtension, sortName, limit, offset, fields, null, null);
-        Type localVarReturnType = new TypeToken<ListExtensionsFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListExtensions>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -445,7 +445,7 @@ public class ExtensionsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listAccountExtensionsAsync(Integer accountId, List<String> filtersId, List<String> filtersExtension, List<String> filtersName, String sortId, String sortExtension, String sortName, Integer limit, Integer offset, String fields, final ApiCallback<ListExtensionsFull> callback) throws ApiException {
+    public com.squareup.okhttp.Call listAccountExtensionsAsync(Integer accountId, List<String> filtersId, List<String> filtersExtension, List<String> filtersName, String sortId, String sortExtension, String sortName, Integer limit, Integer offset, String fields, final ApiCallback<ListExtensions> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -467,7 +467,7 @@ public class ExtensionsApi {
         }
 
         com.squareup.okhttp.Call call = listAccountExtensionsValidateBeforeCall(accountId, filtersId, filtersExtension, filtersName, sortId, sortExtension, sortName, limit, offset, fields, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListExtensionsFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListExtensions>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

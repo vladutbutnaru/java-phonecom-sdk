@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 <a name="listAccountMenus"></a>
 # **listAccountMenus**
-> ListMenusFull listAccountMenus(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields)
+> ListMenus listAccountMenus(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields)
 
 Get a list of menus for an account
 
@@ -217,7 +217,7 @@ Integer limit = 56; // Integer | Max results
 Integer offset = 56; // Integer | Results to skip
 String fields = "fields_example"; // String | Field set
 try {
-    ListMenusFull result = apiInstance.listAccountMenus(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+    ListMenus result = apiInstance.listAccountMenus(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MenusApi#listAccountMenus");
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListMenusFull**](ListMenusFull.md)
+[**ListMenus**](ListMenus.md)
 
 ### Authorization
 

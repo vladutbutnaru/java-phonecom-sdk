@@ -28,7 +28,7 @@ import java.io.IOException;
 
 
 import io.swagger.client.model.ApplicationFull;
-import io.swagger.client.model.ListApplicationsFull;
+import io.swagger.client.model.ListApplications;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -268,11 +268,11 @@ public class ApplicationsApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ListApplicationsFull
+     * @return ListApplications
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ListApplicationsFull listAccountApplications(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
-        ApiResponse<ListApplicationsFull> resp = listAccountApplicationsWithHttpInfo(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+    public ListApplications listAccountApplications(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
+        ApiResponse<ListApplications> resp = listAccountApplicationsWithHttpInfo(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
         return resp.getData();
     }
 
@@ -287,12 +287,12 @@ public class ApplicationsApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ApiResponse&lt;ListApplicationsFull&gt;
+     * @return ApiResponse&lt;ListApplications&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ListApplicationsFull> listAccountApplicationsWithHttpInfo(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
+    public ApiResponse<ListApplications> listAccountApplicationsWithHttpInfo(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
         com.squareup.okhttp.Call call = listAccountApplicationsValidateBeforeCall(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields, null, null);
-        Type localVarReturnType = new TypeToken<ListApplicationsFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListApplications>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -311,7 +311,7 @@ public class ApplicationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listAccountApplicationsAsync(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields, final ApiCallback<ListApplicationsFull> callback) throws ApiException {
+    public com.squareup.okhttp.Call listAccountApplicationsAsync(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields, final ApiCallback<ListApplications> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -333,7 +333,7 @@ public class ApplicationsApi {
         }
 
         com.squareup.okhttp.Call call = listAccountApplicationsValidateBeforeCall(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListApplicationsFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListApplications>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

@@ -23,7 +23,7 @@ import io.swagger.client.model.ExtensionSummary;
  * Array of Forward Item Objects. See below for details. Required.
  */
 @ApiModel(description = "Array of Forward Item Objects. See below for details. Required.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
 public class RuleSetForwardItem {
   @SerializedName("type")
   private String type = null;

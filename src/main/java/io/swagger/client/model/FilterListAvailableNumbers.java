@@ -17,13 +17,11 @@ import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * FilterListAvailableNumbers
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
 public class FilterListAvailableNumbers {
   @SerializedName("phone_number")
   private String phoneNumber = null;
@@ -32,7 +30,7 @@ public class FilterListAvailableNumbers {
   private String countryCode = null;
 
   @SerializedName("npa")
-  private List<Integer> npa = new ArrayList<Integer>();
+  private String npa = null;
 
   @SerializedName("nxx")
   private String nxx = null;
@@ -91,13 +89,8 @@ public class FilterListAvailableNumbers {
     this.countryCode = countryCode;
   }
 
-  public FilterListAvailableNumbers npa(List<Integer> npa) {
+  public FilterListAvailableNumbers npa(String npa) {
     this.npa = npa;
-    return this;
-  }
-
-  public FilterListAvailableNumbers addNpaItem(Integer npaItem) {
-    this.npa.add(npaItem);
     return this;
   }
 
@@ -106,11 +99,11 @@ public class FilterListAvailableNumbers {
    * @return npa
   **/
   @ApiModelProperty(example = "null", value = "")
-  public List<Integer> getNpa() {
+  public String getNpa() {
     return npa;
   }
 
-  public void setNpa(List<Integer> npa) {
+  public void setNpa(String npa) {
     this.npa = npa;
   }
 

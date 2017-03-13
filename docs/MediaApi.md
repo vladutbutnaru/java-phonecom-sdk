@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 <a name="listAccountMedia"></a>
 # **listAccountMedia**
-> ListMediaFull listAccountMedia(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields)
+> ListMedia listAccountMedia(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields)
 
 Get a list of media recordings for an account
 
@@ -100,7 +100,7 @@ Integer limit = 56; // Integer | Max results
 Integer offset = 56; // Integer | Results to skip
 String fields = "fields_example"; // String | Field set
 try {
-    ListMediaFull result = apiInstance.listAccountMedia(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+    ListMedia result = apiInstance.listAccountMedia(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MediaApi#listAccountMedia");
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListMediaFull**](ListMediaFull.md)
+[**ListMedia**](ListMedia.md)
 
 ### Authorization
 

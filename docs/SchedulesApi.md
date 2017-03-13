@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 <a name="listAccountSchedules"></a>
 # **listAccountSchedules**
-> ListSchedulesFull listAccountSchedules(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields)
+> ListSchedules listAccountSchedules(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields)
 
 Get a list of schedules for an account
 
@@ -100,7 +100,7 @@ Integer limit = 56; // Integer | Max results
 Integer offset = 56; // Integer | Results to skip
 String fields = "fields_example"; // String | Field set
 try {
-    ListSchedulesFull result = apiInstance.listAccountSchedules(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+    ListSchedules result = apiInstance.listAccountSchedules(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SchedulesApi#listAccountSchedules");
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListSchedulesFull**](ListSchedulesFull.md)
+[**ListSchedules**](ListSchedules.md)
 
 ### Authorization
 

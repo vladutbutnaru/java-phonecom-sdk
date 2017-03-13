@@ -29,7 +29,7 @@ import java.io.IOException;
 
 import io.swagger.client.model.CreateTrunkParams;
 import io.swagger.client.model.DeleteTrunk;
-import io.swagger.client.model.ListTrunksFull;
+import io.swagger.client.model.ListTrunks;
 import io.swagger.client.model.TrunkFull;
 
 import java.lang.reflect.Type;
@@ -525,11 +525,11 @@ public class TrunksApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ListTrunksFull
+     * @return ListTrunks
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ListTrunksFull listAccountTrunks(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
-        ApiResponse<ListTrunksFull> resp = listAccountTrunksWithHttpInfo(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+    public ListTrunks listAccountTrunks(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
+        ApiResponse<ListTrunks> resp = listAccountTrunksWithHttpInfo(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
         return resp.getData();
     }
 
@@ -544,12 +544,12 @@ public class TrunksApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ApiResponse&lt;ListTrunksFull&gt;
+     * @return ApiResponse&lt;ListTrunks&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ListTrunksFull> listAccountTrunksWithHttpInfo(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
+    public ApiResponse<ListTrunks> listAccountTrunksWithHttpInfo(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
         com.squareup.okhttp.Call call = listAccountTrunksValidateBeforeCall(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields, null, null);
-        Type localVarReturnType = new TypeToken<ListTrunksFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListTrunks>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -568,7 +568,7 @@ public class TrunksApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listAccountTrunksAsync(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields, final ApiCallback<ListTrunksFull> callback) throws ApiException {
+    public com.squareup.okhttp.Call listAccountTrunksAsync(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields, final ApiCallback<ListTrunks> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -590,7 +590,7 @@ public class TrunksApi {
         }
 
         com.squareup.okhttp.Call call = listAccountTrunksValidateBeforeCall(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListTrunksFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListTrunks>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

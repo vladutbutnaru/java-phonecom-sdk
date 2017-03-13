@@ -22,7 +22,7 @@ import io.swagger.client.model.ContactSubaccount;
 /**
  * CreateSubaccountParams
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
 public class CreateSubaccountParams {
   @SerializedName("username")
   private String username = null;
@@ -42,10 +42,10 @@ public class CreateSubaccountParams {
   }
 
    /**
-   * Sub account user name
+   * Sub account password
    * @return username
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Sub account user name")
+  @ApiModelProperty(example = "null", required = true, value = "Sub account password")
   public String getUsername() {
     return username;
   }

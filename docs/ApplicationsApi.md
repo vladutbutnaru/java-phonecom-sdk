@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 <a name="listAccountApplications"></a>
 # **listAccountApplications**
-> ListApplicationsFull listAccountApplications(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields)
+> ListApplications listAccountApplications(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields)
 
 Get a list of applications you have defined
 
@@ -100,7 +100,7 @@ Integer limit = 56; // Integer | Max results
 Integer offset = 56; // Integer | Results to skip
 String fields = "fields_example"; // String | Field set
 try {
-    ListApplicationsFull result = apiInstance.listAccountApplications(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+    ListApplications result = apiInstance.listAccountApplications(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ApplicationsApi#listAccountApplications");
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListApplicationsFull**](ListApplicationsFull.md)
+[**ListApplications**](ListApplications.md)
 
 ### Authorization
 

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**deleteAccountExtensionContact**](ContactsApi.md#deleteAccountExtensionContact) | **DELETE** /accounts/{account_id}/extensions/{extension_id}/contacts/{contact_id} | 
 [**getAccountExtensionContact**](ContactsApi.md#getAccountExtensionContact) | **GET** /accounts/{account_id}/extensions/{extension_id}/contacts/{contact_id} | Retrieve the details of an address book contact
 [**listAccountExtensionContacts**](ContactsApi.md#listAccountExtensionContacts) | **GET** /accounts/{account_id}/extensions/{extension_id}/contacts | Show a list of address book contacts
-[**replaceAccountExtensionContact**](ContactsApi.md#replaceAccountExtensionContact) | **PUT** /accounts/{account_id}/extensions/{extension_id}/contacts | 
+[**replaceAccountExtensionContact**](ContactsApi.md#replaceAccountExtensionContact) | **PUT** /accounts/{account_id}/extensions/{extension_id}/contacts/{contact_id} | 
 
 
 <a name="createAccountExtensionContact"></a>
@@ -190,7 +190,7 @@ Name | Type | Description  | Notes
 
 <a name="listAccountExtensionContacts"></a>
 # **listAccountExtensionContacts**
-> ListContactsFull listAccountExtensionContacts(accountId, extensionId, filtersId, filtersGroupId, filtersUpdatedAt, sortId, sortUpdatedAt, limit, offset, fields)
+> ListContacts listAccountExtensionContacts(accountId, extensionId, filtersId, filtersGroupId, filtersUpdatedAt, sortId, sortUpdatedAt, limit, offset, fields)
 
 Show a list of address book contacts
 
@@ -225,7 +225,7 @@ Integer limit = 56; // Integer | Max results
 Integer offset = 56; // Integer | Results to skip
 String fields = "fields_example"; // String | Field set
 try {
-    ListContactsFull result = apiInstance.listAccountExtensionContacts(accountId, extensionId, filtersId, filtersGroupId, filtersUpdatedAt, sortId, sortUpdatedAt, limit, offset, fields);
+    ListContacts result = apiInstance.listAccountExtensionContacts(accountId, extensionId, filtersId, filtersGroupId, filtersUpdatedAt, sortId, sortUpdatedAt, limit, offset, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContactsApi#listAccountExtensionContacts");
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListContactsFull**](ListContactsFull.md)
+[**ListContacts**](ListContacts.md)
 
 ### Authorization
 
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 
 <a name="replaceAccountExtensionContact"></a>
 # **replaceAccountExtensionContact**
-> ContactFull replaceAccountExtensionContact(accountId, extensionId, data)
+> ContactFull replaceAccountExtensionContact(accountId, extensionId, contactId, data)
 
 
 
@@ -289,9 +289,10 @@ apiKey.setApiKey("YOUR API KEY");
 ContactsApi apiInstance = new ContactsApi();
 Integer accountId = 56; // Integer | Account ID
 Integer extensionId = 56; // Integer | Extension ID
+Integer contactId = 56; // Integer | Contact ID
 CreateContactParams data = new CreateContactParams(); // CreateContactParams | Contact data
 try {
-    ContactFull result = apiInstance.replaceAccountExtensionContact(accountId, extensionId, data);
+    ContactFull result = apiInstance.replaceAccountExtensionContact(accountId, extensionId, contactId, data);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContactsApi#replaceAccountExtensionContact");
@@ -305,6 +306,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountId** | **Integer**| Account ID |
  **extensionId** | **Integer**| Extension ID |
+ **contactId** | **Integer**| Contact ID |
  **data** | [**CreateContactParams**](CreateContactParams.md)| Contact data | [optional]
 
 ### Return type

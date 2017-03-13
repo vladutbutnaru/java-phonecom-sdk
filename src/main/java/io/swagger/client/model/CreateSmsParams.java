@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * CreateSmsParams
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
 public class CreateSmsParams {
   @SerializedName("from")
   private String from = null;
@@ -31,6 +31,9 @@ public class CreateSmsParams {
 
   @SerializedName("text")
   private String text = null;
+
+  @SerializedName("extension_id")
+  private Integer extensionId = null;
 
   public CreateSmsParams from(String from) {
     this.from = from;
@@ -86,6 +89,24 @@ public class CreateSmsParams {
     this.text = text;
   }
 
+  public CreateSmsParams extensionId(Integer extensionId) {
+    this.extensionId = extensionId;
+    return this;
+  }
+
+   /**
+   * ID of Extension where the sms is saved
+   * @return extensionId
+  **/
+  @ApiModelProperty(example = "null", value = "ID of Extension where the sms is saved")
+  public Integer getExtensionId() {
+    return extensionId;
+  }
+
+  public void setExtensionId(Integer extensionId) {
+    this.extensionId = extensionId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -98,12 +119,13 @@ public class CreateSmsParams {
     CreateSmsParams createSmsParams = (CreateSmsParams) o;
     return Objects.equals(this.from, createSmsParams.from) &&
         Objects.equals(this.to, createSmsParams.to) &&
-        Objects.equals(this.text, createSmsParams.text);
+        Objects.equals(this.text, createSmsParams.text) &&
+        Objects.equals(this.extensionId, createSmsParams.extensionId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(from, to, text);
+    return Objects.hash(from, to, text, extensionId);
   }
 
 
@@ -115,6 +137,7 @@ public class CreateSmsParams {
     sb.append("    from: ").append(toIndentedString(from)).append("\n");
     sb.append("    to: ").append(toIndentedString(to)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    extensionId: ").append(toIndentedString(extensionId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

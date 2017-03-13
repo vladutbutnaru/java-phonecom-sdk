@@ -30,7 +30,7 @@ import java.io.IOException;
 import io.swagger.client.model.CreateGroupParams;
 import io.swagger.client.model.DeleteGroup;
 import io.swagger.client.model.GroupFull;
-import io.swagger.client.model.ListGroupsFull;
+import io.swagger.client.model.ListGroups;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -559,11 +559,11 @@ public class GroupsApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ListGroupsFull
+     * @return ListGroups
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ListGroupsFull listAccountExtensionContactGroups(Integer accountId, Integer extensionId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
-        ApiResponse<ListGroupsFull> resp = listAccountExtensionContactGroupsWithHttpInfo(accountId, extensionId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+    public ListGroups listAccountExtensionContactGroups(Integer accountId, Integer extensionId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
+        ApiResponse<ListGroups> resp = listAccountExtensionContactGroupsWithHttpInfo(accountId, extensionId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
         return resp.getData();
     }
 
@@ -579,12 +579,12 @@ public class GroupsApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ApiResponse&lt;ListGroupsFull&gt;
+     * @return ApiResponse&lt;ListGroups&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ListGroupsFull> listAccountExtensionContactGroupsWithHttpInfo(Integer accountId, Integer extensionId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
+    public ApiResponse<ListGroups> listAccountExtensionContactGroupsWithHttpInfo(Integer accountId, Integer extensionId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
         com.squareup.okhttp.Call call = listAccountExtensionContactGroupsValidateBeforeCall(accountId, extensionId, filtersId, filtersName, sortId, sortName, limit, offset, fields, null, null);
-        Type localVarReturnType = new TypeToken<ListGroupsFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListGroups>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -604,7 +604,7 @@ public class GroupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listAccountExtensionContactGroupsAsync(Integer accountId, Integer extensionId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields, final ApiCallback<ListGroupsFull> callback) throws ApiException {
+    public com.squareup.okhttp.Call listAccountExtensionContactGroupsAsync(Integer accountId, Integer extensionId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields, final ApiCallback<ListGroups> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -626,13 +626,13 @@ public class GroupsApi {
         }
 
         com.squareup.okhttp.Call call = listAccountExtensionContactGroupsValidateBeforeCall(accountId, extensionId, filtersId, filtersName, sortId, sortName, limit, offset, fields, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListGroupsFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListGroups>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for replaceAccountExtensionContactGroup */
-    private com.squareup.okhttp.Call replaceAccountExtensionContactGroupCall(Integer accountId, Integer extensionId, Integer groupId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
+    private com.squareup.okhttp.Call replaceAccountExtensionContactGroupCall(Integer accountId, Integer extensionId, Integer groupId, CreateGroupParams data, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = data;
         
         // create path and map variables
         String localVarPath = "/accounts/{account_id}/extensions/{extension_id}/contact-groups/{group_id}".replaceAll("\\{format\\}","json")
@@ -675,7 +675,7 @@ public class GroupsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call replaceAccountExtensionContactGroupValidateBeforeCall(Integer accountId, Integer extensionId, Integer groupId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call replaceAccountExtensionContactGroupValidateBeforeCall(Integer accountId, Integer extensionId, Integer groupId, CreateGroupParams data, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
@@ -692,8 +692,13 @@ public class GroupsApi {
             throw new ApiException("Missing the required parameter 'groupId' when calling replaceAccountExtensionContactGroup(Async)");
         }
         
+        // verify the required parameter 'data' is set
+        if (data == null) {
+            throw new ApiException("Missing the required parameter 'data' when calling replaceAccountExtensionContactGroup(Async)");
+        }
         
-        com.squareup.okhttp.Call call = replaceAccountExtensionContactGroupCall(accountId, extensionId, groupId, progressListener, progressRequestListener);
+        
+        com.squareup.okhttp.Call call = replaceAccountExtensionContactGroupCall(accountId, extensionId, groupId, data, progressListener, progressRequestListener);
         return call;
 
         
@@ -708,11 +713,12 @@ public class GroupsApi {
      * @param accountId Account ID (required)
      * @param extensionId Extension ID (required)
      * @param groupId Group ID (required)
+     * @param data Group name (required)
      * @return GroupFull
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public GroupFull replaceAccountExtensionContactGroup(Integer accountId, Integer extensionId, Integer groupId) throws ApiException {
-        ApiResponse<GroupFull> resp = replaceAccountExtensionContactGroupWithHttpInfo(accountId, extensionId, groupId);
+    public GroupFull replaceAccountExtensionContactGroup(Integer accountId, Integer extensionId, Integer groupId, CreateGroupParams data) throws ApiException {
+        ApiResponse<GroupFull> resp = replaceAccountExtensionContactGroupWithHttpInfo(accountId, extensionId, groupId, data);
         return resp.getData();
     }
 
@@ -722,11 +728,12 @@ public class GroupsApi {
      * @param accountId Account ID (required)
      * @param extensionId Extension ID (required)
      * @param groupId Group ID (required)
+     * @param data Group name (required)
      * @return ApiResponse&lt;GroupFull&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<GroupFull> replaceAccountExtensionContactGroupWithHttpInfo(Integer accountId, Integer extensionId, Integer groupId) throws ApiException {
-        com.squareup.okhttp.Call call = replaceAccountExtensionContactGroupValidateBeforeCall(accountId, extensionId, groupId, null, null);
+    public ApiResponse<GroupFull> replaceAccountExtensionContactGroupWithHttpInfo(Integer accountId, Integer extensionId, Integer groupId, CreateGroupParams data) throws ApiException {
+        com.squareup.okhttp.Call call = replaceAccountExtensionContactGroupValidateBeforeCall(accountId, extensionId, groupId, data, null, null);
         Type localVarReturnType = new TypeToken<GroupFull>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -737,11 +744,12 @@ public class GroupsApi {
      * @param accountId Account ID (required)
      * @param extensionId Extension ID (required)
      * @param groupId Group ID (required)
+     * @param data Group name (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call replaceAccountExtensionContactGroupAsync(Integer accountId, Integer extensionId, Integer groupId, final ApiCallback<GroupFull> callback) throws ApiException {
+    public com.squareup.okhttp.Call replaceAccountExtensionContactGroupAsync(Integer accountId, Integer extensionId, Integer groupId, CreateGroupParams data, final ApiCallback<GroupFull> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -762,7 +770,7 @@ public class GroupsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = replaceAccountExtensionContactGroupValidateBeforeCall(accountId, extensionId, groupId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = replaceAccountExtensionContactGroupValidateBeforeCall(accountId, extensionId, groupId, data, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<GroupFull>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

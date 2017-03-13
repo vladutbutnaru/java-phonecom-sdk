@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiModelProperty;
  * The Full Group Object is identical to the Group Summary Object. See above for details.
  */
 @ApiModel(description = "The Full Group Object is identical to the Group Summary Object. See above for details.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
 public class GroupFull {
   @SerializedName("id")
   private Integer id = null;

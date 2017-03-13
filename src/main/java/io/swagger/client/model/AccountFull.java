@@ -24,7 +24,7 @@ import io.swagger.client.model.ContactAccount;
  * The Full Account Object includes all of the properties in the Account Summary Object, along with the following:
  */
 @ApiModel(description = "The Full Account Object includes all of the properties in the Account Summary Object, along with the following:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
 public class AccountFull {
   @SerializedName("id")
   private Integer id = null;

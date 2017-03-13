@@ -18,14 +18,16 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.client.model.MediaSummary;
-import io.swagger.client.model.OptionsListMenus;
+import io.swagger.client.model.Option;
 import io.swagger.client.model.RouteSummary;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The Full Menu Object contains the same properties as the Menu Summary Object, along with the following:
  */
 @ApiModel(description = "The Full Menu Object contains the same properties as the Menu Summary Object, along with the following:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
 public class MenuFull {
   @SerializedName("id")
   private Integer id = null;
@@ -49,7 +51,7 @@ public class MenuFull {
   private RouteSummary timeoutHandler = null;
 
   @SerializedName("options")
-  private OptionsListMenus options = null;
+  private List<Option> options = new ArrayList<Option>();
 
   public MenuFull id(Integer id) {
     this.id = id;
@@ -177,21 +179,26 @@ public class MenuFull {
     this.timeoutHandler = timeoutHandler;
   }
 
-  public MenuFull options(OptionsListMenus options) {
+  public MenuFull options(List<Option> options) {
     this.options = options;
     return this;
   }
 
+  public MenuFull addOptionsItem(Option optionsItem) {
+    this.options.add(optionsItem);
+    return this;
+  }
+
    /**
-   * Get options
+   * Array of menu option objects. See below for details.
    * @return options
   **/
-  @ApiModelProperty(example = "null", value = "")
-  public OptionsListMenus getOptions() {
+  @ApiModelProperty(example = "null", value = "Array of menu option objects. See below for details.")
+  public List<Option> getOptions() {
     return options;
   }
 
-  public void setOptions(OptionsListMenus options) {
+  public void setOptions(List<Option> options) {
     this.options = options;
   }
 

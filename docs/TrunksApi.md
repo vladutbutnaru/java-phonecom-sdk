@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 <a name="listAccountTrunks"></a>
 # **listAccountTrunks**
-> ListTrunksFull listAccountTrunks(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields)
+> ListTrunks listAccountTrunks(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields)
 
 Get a list of trunks for an account
 
@@ -217,7 +217,7 @@ Integer limit = 56; // Integer | Max results
 Integer offset = 56; // Integer | Results to skip
 String fields = "fields_example"; // String | Field set
 try {
-    ListTrunksFull result = apiInstance.listAccountTrunks(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+    ListTrunks result = apiInstance.listAccountTrunks(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TrunksApi#listAccountTrunks");
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListTrunksFull**](ListTrunksFull.md)
+[**ListTrunks**](ListTrunks.md)
 
 ### Authorization
 

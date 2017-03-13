@@ -29,7 +29,7 @@ import java.io.IOException;
 
 import io.swagger.client.model.CreateDeviceParams;
 import io.swagger.client.model.DeviceFull;
-import io.swagger.client.model.ListDevicesFull;
+import io.swagger.client.model.ListDevices;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -183,7 +183,7 @@ public class DevicesApi {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/accounts/{account_id}/device/{device_id}".replaceAll("\\{format\\}","json")
+        String localVarPath = "/accounts/{account_id}/devices/{device_id}".replaceAll("\\{format\\}","json")
         .replaceAll("\\{" + "account_id" + "\\}", apiClient.escapeString(accountId.toString()))
         .replaceAll("\\{" + "device_id" + "\\}", apiClient.escapeString(deviceId.toString()));
 
@@ -391,11 +391,11 @@ public class DevicesApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ListDevicesFull
+     * @return ListDevices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ListDevicesFull listAccountDevices(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
-        ApiResponse<ListDevicesFull> resp = listAccountDevicesWithHttpInfo(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+    public ListDevices listAccountDevices(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
+        ApiResponse<ListDevices> resp = listAccountDevicesWithHttpInfo(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
         return resp.getData();
     }
 
@@ -410,12 +410,12 @@ public class DevicesApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ApiResponse&lt;ListDevicesFull&gt;
+     * @return ApiResponse&lt;ListDevices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ListDevicesFull> listAccountDevicesWithHttpInfo(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
+    public ApiResponse<ListDevices> listAccountDevicesWithHttpInfo(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
         com.squareup.okhttp.Call call = listAccountDevicesValidateBeforeCall(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields, null, null);
-        Type localVarReturnType = new TypeToken<ListDevicesFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListDevices>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -434,7 +434,7 @@ public class DevicesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listAccountDevicesAsync(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields, final ApiCallback<ListDevicesFull> callback) throws ApiException {
+    public com.squareup.okhttp.Call listAccountDevicesAsync(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields, final ApiCallback<ListDevices> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -456,7 +456,7 @@ public class DevicesApi {
         }
 
         com.squareup.okhttp.Call call = listAccountDevicesValidateBeforeCall(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListDevicesFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListDevices>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -465,7 +465,7 @@ public class DevicesApi {
         Object localVarPostBody = data;
         
         // create path and map variables
-        String localVarPath = "/accounts/{account_id}/device/{device_id}".replaceAll("\\{format\\}","json")
+        String localVarPath = "/accounts/{account_id}/devices/{device_id}".replaceAll("\\{format\\}","json")
         .replaceAll("\\{" + "account_id" + "\\}", apiClient.escapeString(accountId.toString()))
         .replaceAll("\\{" + "device_id" + "\\}", apiClient.escapeString(deviceId.toString()));
 

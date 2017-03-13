@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 <a name="listAccountRoutes"></a>
 # **listAccountRoutes**
-> ListRoutesFull listAccountRoutes(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields)
+> ListRoutes listAccountRoutes(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields)
 
 Get a list of routes for an account
 
@@ -217,7 +217,7 @@ Integer limit = 56; // Integer | Max results
 Integer offset = 56; // Integer | Results to skip
 String fields = "fields_example"; // String | Field set
 try {
-    ListRoutesFull result = apiInstance.listAccountRoutes(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+    ListRoutes result = apiInstance.listAccountRoutes(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RoutesApi#listAccountRoutes");
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListRoutesFull**](ListRoutesFull.md)
+[**ListRoutes**](ListRoutes.md)
 
 ### Authorization
 

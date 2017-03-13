@@ -28,7 +28,7 @@ import java.io.IOException;
 
 
 import io.swagger.client.model.CreateSmsParams;
-import io.swagger.client.model.ListSmsFull;
+import io.swagger.client.model.ListSms;
 import io.swagger.client.model.SmsFull;
 
 import java.lang.reflect.Type;
@@ -184,7 +184,7 @@ public class SmsApi {
         return call;
     }
     /* Build call for getAccountSms */
-    private com.squareup.okhttp.Call getAccountSmsCall(Integer accountId, Integer smsId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAccountSmsCall(Integer accountId, String smsId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -227,7 +227,7 @@ public class SmsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAccountSmsValidateBeforeCall(Integer accountId, Integer smsId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAccountSmsValidateBeforeCall(Integer accountId, String smsId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
@@ -257,7 +257,7 @@ public class SmsApi {
      * @return SmsFull
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SmsFull getAccountSms(Integer accountId, Integer smsId) throws ApiException {
+    public SmsFull getAccountSms(Integer accountId, String smsId) throws ApiException {
         ApiResponse<SmsFull> resp = getAccountSmsWithHttpInfo(accountId, smsId);
         return resp.getData();
     }
@@ -270,7 +270,7 @@ public class SmsApi {
      * @return ApiResponse&lt;SmsFull&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SmsFull> getAccountSmsWithHttpInfo(Integer accountId, Integer smsId) throws ApiException {
+    public ApiResponse<SmsFull> getAccountSmsWithHttpInfo(Integer accountId, String smsId) throws ApiException {
         com.squareup.okhttp.Call call = getAccountSmsValidateBeforeCall(accountId, smsId, null, null);
         Type localVarReturnType = new TypeToken<SmsFull>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -285,7 +285,7 @@ public class SmsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAccountSmsAsync(Integer accountId, Integer smsId, final ApiCallback<SmsFull> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAccountSmsAsync(Integer accountId, String smsId, final ApiCallback<SmsFull> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -399,11 +399,11 @@ public class SmsApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ListSmsFull
+     * @return ListSms
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ListSmsFull listAccountSms(Integer accountId, List<String> filtersId, String filtersDirection, String filtersFrom, String sortId, String sortCreatedAt, Integer limit, Integer offset, String fields) throws ApiException {
-        ApiResponse<ListSmsFull> resp = listAccountSmsWithHttpInfo(accountId, filtersId, filtersDirection, filtersFrom, sortId, sortCreatedAt, limit, offset, fields);
+    public ListSms listAccountSms(Integer accountId, List<String> filtersId, String filtersDirection, String filtersFrom, String sortId, String sortCreatedAt, Integer limit, Integer offset, String fields) throws ApiException {
+        ApiResponse<ListSms> resp = listAccountSmsWithHttpInfo(accountId, filtersId, filtersDirection, filtersFrom, sortId, sortCreatedAt, limit, offset, fields);
         return resp.getData();
     }
 
@@ -419,12 +419,12 @@ public class SmsApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ApiResponse&lt;ListSmsFull&gt;
+     * @return ApiResponse&lt;ListSms&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ListSmsFull> listAccountSmsWithHttpInfo(Integer accountId, List<String> filtersId, String filtersDirection, String filtersFrom, String sortId, String sortCreatedAt, Integer limit, Integer offset, String fields) throws ApiException {
+    public ApiResponse<ListSms> listAccountSmsWithHttpInfo(Integer accountId, List<String> filtersId, String filtersDirection, String filtersFrom, String sortId, String sortCreatedAt, Integer limit, Integer offset, String fields) throws ApiException {
         com.squareup.okhttp.Call call = listAccountSmsValidateBeforeCall(accountId, filtersId, filtersDirection, filtersFrom, sortId, sortCreatedAt, limit, offset, fields, null, null);
-        Type localVarReturnType = new TypeToken<ListSmsFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListSms>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -444,7 +444,7 @@ public class SmsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listAccountSmsAsync(Integer accountId, List<String> filtersId, String filtersDirection, String filtersFrom, String sortId, String sortCreatedAt, Integer limit, Integer offset, String fields, final ApiCallback<ListSmsFull> callback) throws ApiException {
+    public com.squareup.okhttp.Call listAccountSmsAsync(Integer accountId, List<String> filtersId, String filtersDirection, String filtersFrom, String sortId, String sortCreatedAt, Integer limit, Integer offset, String fields, final ApiCallback<ListSms> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -466,7 +466,7 @@ public class SmsApi {
         }
 
         com.squareup.okhttp.Call call = listAccountSmsValidateBeforeCall(accountId, filtersId, filtersDirection, filtersFrom, sortId, sortCreatedAt, limit, offset, fields, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListSmsFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListSms>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

@@ -93,7 +93,7 @@ apiKey.setApiKey("YOUR API KEY");
 
 SmsApi apiInstance = new SmsApi();
 Integer accountId = 56; // Integer | Account ID
-Integer smsId = 56; // Integer | SMS ID
+String smsId = "smsId_example"; // String | SMS ID
 try {
     SmsFull result = apiInstance.getAccountSms(accountId, smsId);
     System.out.println(result);
@@ -108,7 +108,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountId** | **Integer**| Account ID |
- **smsId** | **Integer**| SMS ID |
+ **smsId** | **String**| SMS ID |
 
 ### Return type
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 <a name="listAccountSms"></a>
 # **listAccountSms**
-> ListSmsFull listAccountSms(accountId, filtersId, filtersDirection, filtersFrom, sortId, sortCreatedAt, limit, offset, fields)
+> ListSms listAccountSms(accountId, filtersId, filtersDirection, filtersFrom, sortId, sortCreatedAt, limit, offset, fields)
 
 Get a list of SMS messages for an account
 
@@ -159,7 +159,7 @@ Integer limit = 56; // Integer | Max results
 Integer offset = 56; // Integer | Results to skip
 String fields = "fields_example"; // String | Field set
 try {
-    ListSmsFull result = apiInstance.listAccountSms(accountId, filtersId, filtersDirection, filtersFrom, sortId, sortCreatedAt, limit, offset, fields);
+    ListSms result = apiInstance.listAccountSms(accountId, filtersId, filtersDirection, filtersFrom, sortId, sortCreatedAt, limit, offset, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SmsApi#listAccountSms");
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListSmsFull**](ListSmsFull.md)
+[**ListSms**](ListSms.md)
 
 ### Authorization
 

@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **List&lt;String&gt;** |  |  [optional]
-**groupId** | **List&lt;String&gt;** |  |  [optional]
-**updatedAt** | **List&lt;String&gt;** |  |  [optional]
+**id** | **String** |  |  [optional]
+**groupId** | **String** |  |  [optional]
+**updatedAt** | **String** |  |  [optional]
 
 
 

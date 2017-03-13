@@ -17,20 +17,19 @@ import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.client.model.Line;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * CreateDeviceParams
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
 public class CreateDeviceParams {
   @SerializedName("name")
   private String name = null;
 
   @SerializedName("lines")
-  private List<Line> lines = new ArrayList<Line>();
+  private List<Object> lines = new ArrayList<Object>();
 
   public CreateDeviceParams name(String name) {
     this.name = name;
@@ -50,12 +49,12 @@ public class CreateDeviceParams {
     this.name = name;
   }
 
-  public CreateDeviceParams lines(List<Line> lines) {
+  public CreateDeviceParams lines(List<Object> lines) {
     this.lines = lines;
     return this;
   }
 
-  public CreateDeviceParams addLinesItem(Line linesItem) {
+  public CreateDeviceParams addLinesItem(Object linesItem) {
     this.lines.add(linesItem);
     return this;
   }
@@ -65,11 +64,11 @@ public class CreateDeviceParams {
    * @return lines
   **/
   @ApiModelProperty(example = "null", value = "List of line objects")
-  public List<Line> getLines() {
+  public List<Object> getLines() {
     return lines;
   }
 
-  public void setLines(List<Line> lines) {
+  public void setLines(List<Object> lines) {
     this.lines = lines;
   }
 

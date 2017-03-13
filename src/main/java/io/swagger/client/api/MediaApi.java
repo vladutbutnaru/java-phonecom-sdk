@@ -27,7 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import io.swagger.client.model.ListMediaFull;
+import io.swagger.client.model.ListMedia;
 import io.swagger.client.model.MediaFull;
 
 import java.lang.reflect.Type;
@@ -268,11 +268,11 @@ public class MediaApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ListMediaFull
+     * @return ListMedia
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ListMediaFull listAccountMedia(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
-        ApiResponse<ListMediaFull> resp = listAccountMediaWithHttpInfo(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+    public ListMedia listAccountMedia(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
+        ApiResponse<ListMedia> resp = listAccountMediaWithHttpInfo(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
         return resp.getData();
     }
 
@@ -287,12 +287,12 @@ public class MediaApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ApiResponse&lt;ListMediaFull&gt;
+     * @return ApiResponse&lt;ListMedia&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ListMediaFull> listAccountMediaWithHttpInfo(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
+    public ApiResponse<ListMedia> listAccountMediaWithHttpInfo(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
         com.squareup.okhttp.Call call = listAccountMediaValidateBeforeCall(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields, null, null);
-        Type localVarReturnType = new TypeToken<ListMediaFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListMedia>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -311,7 +311,7 @@ public class MediaApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listAccountMediaAsync(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields, final ApiCallback<ListMediaFull> callback) throws ApiException {
+    public com.squareup.okhttp.Call listAccountMediaAsync(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields, final ApiCallback<ListMedia> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -333,7 +333,7 @@ public class MediaApi {
         }
 
         com.squareup.okhttp.Call call = listAccountMediaValidateBeforeCall(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListMediaFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListMedia>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

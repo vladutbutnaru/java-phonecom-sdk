@@ -5,9 +5,9 @@ All URIs are relative to *https://api.phone.com/v4*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createAccountDevice**](DevicesApi.md#createAccountDevice) | **POST** /accounts/{account_id}/devices | Register a generic VoIP device
-[**getAccountDevice**](DevicesApi.md#getAccountDevice) | **GET** /accounts/{account_id}/device/{device_id} | Show details of an individual VoIP device
+[**getAccountDevice**](DevicesApi.md#getAccountDevice) | **GET** /accounts/{account_id}/devices/{device_id} | Show details of an individual VoIP device
 [**listAccountDevices**](DevicesApi.md#listAccountDevices) | **GET** /accounts/{account_id}/devices | Get a list of VoIP devices associated with your account
-[**replaceAccountDevice**](DevicesApi.md#replaceAccountDevice) | **PUT** /accounts/{account_id}/device/{device_id} | Update the settings for an individual VoIP device
+[**replaceAccountDevice**](DevicesApi.md#replaceAccountDevice) | **PUT** /accounts/{account_id}/devices/{device_id} | Update the settings for an individual VoIP device
 
 
 <a name="createAccountDevice"></a>
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 <a name="listAccountDevices"></a>
 # **listAccountDevices**
-> ListDevicesFull listAccountDevices(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields)
+> ListDevices listAccountDevices(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields)
 
 Get a list of VoIP devices associated with your account
 
@@ -159,7 +159,7 @@ Integer limit = 56; // Integer | Max results
 Integer offset = 56; // Integer | Results to skip
 String fields = "fields_example"; // String | Field set
 try {
-    ListDevicesFull result = apiInstance.listAccountDevices(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+    ListDevices result = apiInstance.listAccountDevices(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DevicesApi#listAccountDevices");
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListDevicesFull**](ListDevicesFull.md)
+[**ListDevices**](ListDevices.md)
 
 ### Authorization
 

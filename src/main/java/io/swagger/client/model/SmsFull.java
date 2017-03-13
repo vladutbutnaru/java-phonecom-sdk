@@ -23,10 +23,10 @@ import java.util.List;
 import org.joda.time.DateTime;
 
 /**
- * The Full SMS Object includes all of the properties in the SMS Summary Object, along with several more.
+ * The Full SMS Object is identical to the SMS Summary Object. See above for details.
  */
-@ApiModel(description = "The Full SMS Object includes all of the properties in the SMS Summary Object, along with several more.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
+@ApiModel(description = "The Full SMS Object is identical to the SMS Summary Object. See above for details.")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
 public class SmsFull {
   @SerializedName("id")
   private String id = null;

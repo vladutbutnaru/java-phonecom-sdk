@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 <a name="listAccounts"></a>
 # **listAccounts**
-> ListAccountsFull listAccounts(filtersId, sortId, limit, offset, fields)
+> ListAccounts listAccounts(filtersId, sortId, limit, offset, fields)
 
 Get a list of accounts visible to the authenticated user or client
 
@@ -95,7 +95,7 @@ Integer limit = 56; // Integer | Max results
 Integer offset = 56; // Integer | Results to skip
 String fields = "fields_example"; // String | Field set
 try {
-    ListAccountsFull result = apiInstance.listAccounts(filtersId, sortId, limit, offset, fields);
+    ListAccounts result = apiInstance.listAccounts(filtersId, sortId, limit, offset, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#listAccounts");
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListAccountsFull**](ListAccountsFull.md)
+[**ListAccounts**](ListAccounts.md)
 
 ### Authorization
 

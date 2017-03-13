@@ -27,7 +27,7 @@ import io.swagger.client.model.Voicemail;
  * The Full Extension Object has the same properties as the Extension Summary Object, along with the following:
  */
 @ApiModel(description = "The Full Extension Object has the same properties as the Extension Summary Object, along with the following:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
 public class ExtensionFull {
   @SerializedName("id")
   private Integer id = null;
@@ -86,7 +86,7 @@ public class ExtensionFull {
    * ID of the extension. This is the internal Phone.com ID, not the extension number callers may dial.
    * @return id
   **/
-  @ApiModelProperty(example = "null", required = true, value = "ID of the extension. This is the internal Phone.com ID, not the extension number callers may dial.")
+  @ApiModelProperty(example = "null", value = "ID of the extension. This is the internal Phone.com ID, not the extension number callers may dial.")
   public Integer getId() {
     return id;
   }
@@ -104,7 +104,7 @@ public class ExtensionFull {
    * User-supplied name for the extension. On POST, leaving this empty will result in an auto-generated value. On PUT, this field is required.
    * @return name
   **/
-  @ApiModelProperty(example = "null", required = true, value = "User-supplied name for the extension. On POST, leaving this empty will result in an auto-generated value. On PUT, this field is required.")
+  @ApiModelProperty(example = "null", value = "User-supplied name for the extension. On POST, leaving this empty will result in an auto-generated value. On PUT, this field is required.")
   public String getName() {
     return name;
   }
@@ -122,7 +122,7 @@ public class ExtensionFull {
    * Extension number that callers may dial. On POST, leaving this empty will result in an auto-generated value. On PUT, this field is required.
    * @return extension
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Extension number that callers may dial. On POST, leaving this empty will result in an auto-generated value. On PUT, this field is required.")
+  @ApiModelProperty(example = "null", value = "Extension number that callers may dial. On POST, leaving this empty will result in an auto-generated value. On PUT, this field is required.")
   public Integer getExtension() {
     return extension;
   }
@@ -140,7 +140,7 @@ public class ExtensionFull {
    * Full name of the individual or department to which this extension is assigned
    * @return fullName
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Full name of the individual or department to which this extension is assigned")
+  @ApiModelProperty(example = "null", value = "Full name of the individual or department to which this extension is assigned")
   public String getFullName() {
     return fullName;
   }
@@ -158,7 +158,7 @@ public class ExtensionFull {
    * Can be \"limited\" or \"unlimited\". In most cases, changing this will affect your monthly bill. Please see our Control Panel or contact Customer Service for pricing.
    * @return usageType
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Can be \"limited\" or \"unlimited\". In most cases, changing this will affect your monthly bill. Please see our Control Panel or contact Customer Service for pricing.")
+  @ApiModelProperty(example = "null", value = "Can be \"limited\" or \"unlimited\". In most cases, changing this will affect your monthly bill. Please see our Control Panel or contact Customer Service for pricing.")
   public String getUsageType() {
     return usageType;
   }
@@ -194,7 +194,7 @@ public class ExtensionFull {
    * Time zone. Can be in any commonly recognized format, such as \"America/Los_Angeles\".
    * @return timezone
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Time zone. Can be in any commonly recognized format, such as \"America/Los_Angeles\".")
+  @ApiModelProperty(example = "null", value = "Time zone. Can be in any commonly recognized format, such as \"America/Los_Angeles\".")
   public String getTimezone() {
     return timezone;
   }
@@ -212,7 +212,7 @@ public class ExtensionFull {
    * Greeting that communicates the extension's name. Output is a Greeting Summary Object. Input must be a Greeting Lookup Object.
    * @return nameGreeting
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Greeting that communicates the extension's name. Output is a Greeting Summary Object. Input must be a Greeting Lookup Object.")
+  @ApiModelProperty(example = "null", value = "Greeting that communicates the extension's name. Output is a Greeting Summary Object. Input must be a Greeting Lookup Object.")
   public MediaSummary getNameGreeting() {
     return nameGreeting;
   }
@@ -230,7 +230,7 @@ public class ExtensionFull {
    * Whether this extension should be included in the dial-by-name directory for this account. Boolean.
    * @return includeInDirectory
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Whether this extension should be included in the dial-by-name directory for this account. Boolean.")
+  @ApiModelProperty(example = "null", value = "Whether this extension should be included in the dial-by-name directory for this account. Boolean.")
   public Boolean getIncludeInDirectory() {
     return includeInDirectory;
   }
@@ -248,7 +248,7 @@ public class ExtensionFull {
    * Phone number to use as Caller ID for outgoing calls. Must be a phone number belonging to this account, or one of any additional authorized phone numbers. You can use our List Caller Ids service to see a current list. To unassign, you may set this to \"private\", NULL, or an empty string.
    * @return callerId
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Phone number to use as Caller ID for outgoing calls. Must be a phone number belonging to this account, or one of any additional authorized phone numbers. You can use our List Caller Ids service to see a current list. To unassign, you may set this to \"private\", NULL, or an empty string.")
+  @ApiModelProperty(example = "null", value = "Phone number to use as Caller ID for outgoing calls. Must be a phone number belonging to this account, or one of any additional authorized phone numbers. You can use our List Caller Ids service to see a current list. To unassign, you may set this to \"private\", NULL, or an empty string.")
   public String getCallerId() {
     return callerId;
   }
@@ -266,7 +266,7 @@ public class ExtensionFull {
    * For outbound calls, this is the North American area code that this extension is calling from.
    * @return localAreaCode
   **/
-  @ApiModelProperty(example = "null", required = true, value = "For outbound calls, this is the North American area code that this extension is calling from.")
+  @ApiModelProperty(example = "null", value = "For outbound calls, this is the North American area code that this extension is calling from.")
   public String getLocalAreaCode() {
     return localAreaCode;
   }
@@ -284,7 +284,7 @@ public class ExtensionFull {
    * Whether Call Waiting is enabled. Boolean. Default is TRUE.
    * @return enableCallWaiting
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Whether Call Waiting is enabled. Boolean. Default is TRUE.")
+  @ApiModelProperty(example = "null", value = "Whether Call Waiting is enabled. Boolean. Default is TRUE.")
   public Boolean getEnableCallWaiting() {
     return enableCallWaiting;
   }
@@ -302,7 +302,7 @@ public class ExtensionFull {
    * Whether outgoing calls are enabled. Boolean. Default is TRUE.
    * @return enableOutboundCalls
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Whether outgoing calls are enabled. Boolean. Default is TRUE.")
+  @ApiModelProperty(example = "null", value = "Whether outgoing calls are enabled. Boolean. Default is TRUE.")
   public Boolean getEnableOutboundCalls() {
     return enableOutboundCalls;
   }
@@ -320,7 +320,7 @@ public class ExtensionFull {
    * Get voicemail
    * @return voicemail
   **/
-  @ApiModelProperty(example = "null", required = true, value = "")
+  @ApiModelProperty(example = "null", value = "")
   public Voicemail getVoicemail() {
     return voicemail;
   }
@@ -338,7 +338,7 @@ public class ExtensionFull {
    * Call Notifications Object. See below for details.
    * @return callNotifications
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Call Notifications Object. See below for details.")
+  @ApiModelProperty(example = "null", value = "Call Notifications Object. See below for details.")
   public Notification getCallNotifications() {
     return callNotifications;
   }

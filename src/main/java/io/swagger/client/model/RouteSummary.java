@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiModelProperty;
  * The Route Summary Object is used to briefly represent a route. It can be seen in several places throughout this API. Here are the properties:
  */
 @ApiModel(description = "The Route Summary Object is used to briefly represent a route. It can be seen in several places throughout this API. Here are the properties:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
 public class RouteSummary {
   @SerializedName("id")
   private Integer id = null;

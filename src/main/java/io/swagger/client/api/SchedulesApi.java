@@ -27,7 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import io.swagger.client.model.ListSchedulesFull;
+import io.swagger.client.model.ListSchedules;
 import io.swagger.client.model.ScheduleFull;
 
 import java.lang.reflect.Type;
@@ -268,11 +268,11 @@ public class SchedulesApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ListSchedulesFull
+     * @return ListSchedules
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ListSchedulesFull listAccountSchedules(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
-        ApiResponse<ListSchedulesFull> resp = listAccountSchedulesWithHttpInfo(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+    public ListSchedules listAccountSchedules(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
+        ApiResponse<ListSchedules> resp = listAccountSchedulesWithHttpInfo(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
         return resp.getData();
     }
 
@@ -287,12 +287,12 @@ public class SchedulesApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ApiResponse&lt;ListSchedulesFull&gt;
+     * @return ApiResponse&lt;ListSchedules&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ListSchedulesFull> listAccountSchedulesWithHttpInfo(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
+    public ApiResponse<ListSchedules> listAccountSchedulesWithHttpInfo(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields) throws ApiException {
         com.squareup.okhttp.Call call = listAccountSchedulesValidateBeforeCall(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields, null, null);
-        Type localVarReturnType = new TypeToken<ListSchedulesFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListSchedules>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -311,7 +311,7 @@ public class SchedulesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listAccountSchedulesAsync(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields, final ApiCallback<ListSchedulesFull> callback) throws ApiException {
+    public com.squareup.okhttp.Call listAccountSchedulesAsync(Integer accountId, List<String> filtersId, List<String> filtersName, String sortId, String sortName, Integer limit, Integer offset, String fields, final ApiCallback<ListSchedules> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -333,7 +333,7 @@ public class SchedulesApi {
         }
 
         com.squareup.okhttp.Call call = listAccountSchedulesValidateBeforeCall(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListSchedulesFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListSchedules>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

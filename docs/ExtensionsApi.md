@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 <a name="listAccountExtensions"></a>
 # **listAccountExtensions**
-> ListExtensionsFull listAccountExtensions(accountId, filtersId, filtersExtension, filtersName, sortId, sortExtension, sortName, limit, offset, fields)
+> ListExtensions listAccountExtensions(accountId, filtersId, filtersExtension, filtersName, sortId, sortExtension, sortName, limit, offset, fields)
 
 Get a list of extensions visible to the authenticated user or client
 
@@ -161,7 +161,7 @@ Integer limit = 56; // Integer | Max results
 Integer offset = 56; // Integer | Results to skip
 String fields = "fields_example"; // String | Field set
 try {
-    ListExtensionsFull result = apiInstance.listAccountExtensions(accountId, filtersId, filtersExtension, filtersName, sortId, sortExtension, sortName, limit, offset, fields);
+    ListExtensions result = apiInstance.listAccountExtensions(accountId, filtersId, filtersExtension, filtersName, sortId, sortExtension, sortName, limit, offset, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ExtensionsApi#listAccountExtensions");
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListExtensionsFull**](ListExtensionsFull.md)
+[**ListExtensions**](ListExtensions.md)
 
 ### Authorization
 

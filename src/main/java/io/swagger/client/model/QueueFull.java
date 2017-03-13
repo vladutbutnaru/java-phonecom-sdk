@@ -19,13 +19,15 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.client.model.HoldMusic;
 import io.swagger.client.model.MediaSummary;
-import io.swagger.client.model.Members;
+import io.swagger.client.model.Member;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The Full QueueObject has the same properties as the Queue Summary Object, along with the following:
  */
 @ApiModel(description = "The Full QueueObject has the same properties as the Queue Summary Object, along with the following:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-09T10:24:24.257Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
 public class QueueFull {
   @SerializedName("id")
   private Integer id = null;
@@ -49,7 +51,7 @@ public class QueueFull {
   private Integer ringTime = null;
 
   @SerializedName("members")
-  private Members members = null;
+  private List<Member> members = new ArrayList<Member>();
 
   public QueueFull id(Integer id) {
     this.id = id;
@@ -177,21 +179,26 @@ public class QueueFull {
     this.ringTime = ringTime;
   }
 
-  public QueueFull members(Members members) {
+  public QueueFull members(List<Member> members) {
     this.members = members;
     return this;
   }
 
+  public QueueFull addMembersItem(Member membersItem) {
+    this.members.add(membersItem);
+    return this;
+  }
+
    /**
-   * Get members
+   * Array of Member Objects. Non-virtual account extensions or phone numbers. See below for details.
    * @return members
   **/
-  @ApiModelProperty(example = "null", value = "")
-  public Members getMembers() {
+  @ApiModelProperty(example = "null", value = "Array of Member Objects. Non-virtual account extensions or phone numbers. See below for details.")
+  public List<Member> getMembers() {
     return members;
   }
 
-  public void setMembers(Members members) {
+  public void setMembers(List<Member> members) {
     this.members = members;
   }
 

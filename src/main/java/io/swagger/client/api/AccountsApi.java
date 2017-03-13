@@ -28,7 +28,7 @@ import java.io.IOException;
 
 
 import io.swagger.client.model.AccountFull;
-import io.swagger.client.model.ListAccountsFull;
+import io.swagger.client.model.ListAccounts;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -246,11 +246,11 @@ public class AccountsApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ListAccountsFull
+     * @return ListAccounts
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ListAccountsFull listAccounts(List<String> filtersId, String sortId, Integer limit, Integer offset, String fields) throws ApiException {
-        ApiResponse<ListAccountsFull> resp = listAccountsWithHttpInfo(filtersId, sortId, limit, offset, fields);
+    public ListAccounts listAccounts(List<String> filtersId, String sortId, Integer limit, Integer offset, String fields) throws ApiException {
+        ApiResponse<ListAccounts> resp = listAccountsWithHttpInfo(filtersId, sortId, limit, offset, fields);
         return resp.getData();
     }
 
@@ -262,12 +262,12 @@ public class AccountsApi {
      * @param limit Max results (optional)
      * @param offset Results to skip (optional)
      * @param fields Field set (optional)
-     * @return ApiResponse&lt;ListAccountsFull&gt;
+     * @return ApiResponse&lt;ListAccounts&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ListAccountsFull> listAccountsWithHttpInfo(List<String> filtersId, String sortId, Integer limit, Integer offset, String fields) throws ApiException {
+    public ApiResponse<ListAccounts> listAccountsWithHttpInfo(List<String> filtersId, String sortId, Integer limit, Integer offset, String fields) throws ApiException {
         com.squareup.okhttp.Call call = listAccountsValidateBeforeCall(filtersId, sortId, limit, offset, fields, null, null);
-        Type localVarReturnType = new TypeToken<ListAccountsFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListAccounts>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -283,7 +283,7 @@ public class AccountsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listAccountsAsync(List<String> filtersId, String sortId, Integer limit, Integer offset, String fields, final ApiCallback<ListAccountsFull> callback) throws ApiException {
+    public com.squareup.okhttp.Call listAccountsAsync(List<String> filtersId, String sortId, Integer limit, Integer offset, String fields, final ApiCallback<ListAccounts> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -305,7 +305,7 @@ public class AccountsApi {
         }
 
         com.squareup.okhttp.Call call = listAccountsValidateBeforeCall(filtersId, sortId, limit, offset, fields, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListAccountsFull>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListAccounts>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

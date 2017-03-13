@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 <a name="listAccountSubaccounts"></a>
 # **listAccountSubaccounts**
-> ListAccountsFull listAccountSubaccounts(accountId, filtersId, sortId, limit, offset, fields)
+> ListAccounts listAccountSubaccounts(accountId, filtersId, sortId, limit, offset, fields)
 
 Get a list of subaccounts for the authenticated user or client
 
@@ -98,7 +98,7 @@ Integer limit = 56; // Integer | Max results
 Integer offset = 56; // Integer | Results to skip
 String fields = "fields_example"; // String | Field set
 try {
-    ListAccountsFull result = apiInstance.listAccountSubaccounts(accountId, filtersId, sortId, limit, offset, fields);
+    ListAccounts result = apiInstance.listAccountSubaccounts(accountId, filtersId, sortId, limit, offset, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SubaccountsApi#listAccountSubaccounts");
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListAccountsFull**](ListAccountsFull.md)
+[**ListAccounts**](ListAccounts.md)
 
 ### Authorization
 

@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 <a name="listAccountQueues"></a>
 # **listAccountQueues**
-> ListQueuesFull listAccountQueues(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields)
+> ListQueues listAccountQueues(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields)
 
 Get a list of queues for an account
 
@@ -217,7 +217,7 @@ Integer limit = 56; // Integer | Max results
 Integer offset = 56; // Integer | Results to skip
 String fields = "fields_example"; // String | Field set
 try {
-    ListQueuesFull result = apiInstance.listAccountQueues(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
+    ListQueues result = apiInstance.listAccountQueues(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling QueuesApi#listAccountQueues");
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListQueuesFull**](ListQueuesFull.md)
+[**ListQueues**](ListQueues.md)
 
 ### Authorization
 
