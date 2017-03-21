@@ -18,6 +18,7 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.swagger.client.ApiException;
@@ -48,6 +49,7 @@ public class SmsApiTest {
      */
     @Test
     public void createAccountSmsTest() throws ApiException {
+
         Integer accountId = 1315091;
         CreateSmsParams data = new CreateSmsParams();
         data.setFrom("+16309624775");
@@ -66,12 +68,12 @@ public class SmsApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in other test")
     public void getAccountSmsTest() throws ApiException {
         Integer accountId = null;
-        Integer smsId = null;
-        // SmsFull response = api.getAccountSms(accountId, smsId);
-
-        // TODO: test validations
+        String smsId = null;
+        SmsFull response = api.getAccountSms(accountId, smsId);
+        assertNotNull(response);
     }
     
     /**
@@ -83,7 +85,8 @@ public class SmsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void listAccountSmsTest() throws ApiException {
+    public void listGetAccountSmsTest() throws ApiException {
+
         Integer accountId = 1315091;
         List<String> filtersId = null;
         String filtersDirection = null;
@@ -95,12 +98,21 @@ public class SmsApiTest {
         String fields = null;
         ListSms response = api.listAccountSms(accountId, filtersId, filtersDirection, filtersFrom, sortId, sortCreatedAt, limit, offset, fields);
         assertNotNull(response.getFilters());
-        assertNotNull(response.getItems());
+        List<SmsFull> items = response.getItems();
+		assertNotNull(items);
         assertNotNull(response.getLimit());
         assertNotNull(response.getOffset());
         assertNotNull(response.getSort());
         assertNotNull(response.getTotal());
-        // TODO: test validations
+        
+        if (!items.isEmpty()) {
+        	SmsFull smsItem = api.getAccountSms(accountId, items.get(0).getId());
+        	assertNotNull(smsItem);
+        	assertNotNull(smsItem.getFrom());
+   			assertNotNull(smsItem.getTo());
+			assertNotNull(smsItem.getText());
+        	
+        }
     }
     
 }

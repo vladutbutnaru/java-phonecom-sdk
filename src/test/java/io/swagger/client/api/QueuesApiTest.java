@@ -13,17 +13,22 @@
 
 package io.swagger.client.api;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateQueueParams;
+import io.swagger.client.model.DeleteQueue;
 import io.swagger.client.model.ListQueues;
+import io.swagger.client.model.QueueFull;
 
 /**
  * API tests for QueuesApi
@@ -37,6 +42,46 @@ public class QueuesApiTest {
     	TestConfig.setAuthorization();
     }
     
+    @Test
+    public void createGetReplaceDeleteQueue() throws ApiException {
+    	Integer accountId = 1315091;
+        CreateQueueParams data = new CreateQueueParams();
+        String queueName = "queueName" + TestConfig.nextRandom();
+        data.setName(queueName);
+        data.setMaxHoldTime(60);
+        data.setCallerIdType("called_number");
+        data.setRingTime(15);
+        
+        QueueFull response = api.createAccountQueue(accountId, data);
+        assertNotNull(response);
+        assertNotNull(response.getCallerIdType());
+//        assertNotNull(response.getGreeting());
+//        assertNotNull(response.getHoldMusic());
+        assertNotNull(response.getId());
+        assertNotNull(response.getMaxHoldTime());
+        assertNotNull(response.getMembers());
+        assertNotNull(response.getName());
+        assertNotNull(response.getRingTime());
+        
+        Integer queueId = response.getId();
+        
+        CreateQueueParams dataReplace = new CreateQueueParams();
+        String queueName2 = "queueName" + TestConfig.nextRandom();;
+		dataReplace.setName(queueName2);
+		dataReplace.setMaxHoldTime(120);
+		dataReplace.setCallerIdType("calling_number");
+		dataReplace.setRingTime(20);
+		
+		QueueFull responseReplace = api.replaceAccountQueue(accountId, queueId, dataReplace);
+		assertEquals(queueName2, responseReplace.getName());
+		assertEquals(new Integer(120), responseReplace.getMaxHoldTime());
+		assertEquals("calling_number", responseReplace.getCallerIdType());
+		assertEquals(new Integer(20), responseReplace.getRingTime());
+		
+		DeleteQueue responseDelete = api.deleteAccountQueue(accountId, queueId);
+		assertTrue(responseDelete.getSuccess());
+    }
+    
     /**
      * Create a queue
      *
@@ -46,7 +91,9 @@ public class QueuesApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in other test")
     public void createAccountQueueTest() throws ApiException {
+
         Integer accountId = 1315091;
         CreateQueueParams data = null;
         data = new CreateQueueParams();
@@ -54,10 +101,9 @@ public class QueuesApiTest {
         data.setMaxHoldTime(13);
         data.setName("TEST");
         data.setRingTime(10);
-        
-        // QueueFull response = api.createAccountQueue(accountId, data);
-        
-        // TODO: test validations
+
+        QueueFull response = api.createAccountQueue(accountId, data);
+        assertNotNull(response);
     }
     
     /**
@@ -69,12 +115,13 @@ public class QueuesApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in other test")
     public void deleteAccountQueueTest() throws ApiException {
+
         Integer accountId = null;
         Integer queueId = null;
-        // DeleteQueue response = api.deleteAccountQueue(accountId, queueId);
-
-        // TODO: test validations
+        DeleteQueue response = api.deleteAccountQueue(accountId, queueId);
+        assertNotNull(response);
     }
     
     /**
@@ -86,12 +133,12 @@ public class QueuesApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in listget")
     public void getAccountQueueTest() throws ApiException {
         Integer accountId = 1315091;
         Integer queueId = null;
-        // QueueFull response = api.getAccountQueue(accountId, queueId);
-
-        // TODO: test validations
+        QueueFull response = api.getAccountQueue(accountId, queueId);
+        assertNotNull(response);
     }
     
     /**
@@ -103,7 +150,8 @@ public class QueuesApiTest {
      *          if the Api call fails
      */
     @Test
-    public void listAccountQueuesTest() throws ApiException {
+    public void listGetAccountQueuesTest() throws ApiException {
+
         Integer accountId = 1315091;
         List<String> filtersId = null;
         List<String> filtersName = null;
@@ -114,12 +162,25 @@ public class QueuesApiTest {
         String fields = null;
         ListQueues response = api.listAccountQueues(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
         assertNotNull(response.getFilters());
-        assertNotNull(response.getItems());
+        List<QueueFull> items = response.getItems();
+		assertNotNull(items);
         assertNotNull(response.getLimit());
         assertNotNull(response.getOffset());
         assertNotNull(response.getSort());
         assertNotNull(response.getTotal());
-        // TODO: test validations
+        
+        if (items.size() > 0) {
+	        Integer firstItemId = items.get(0).getId();
+	        QueueFull getQueueResoinse = api.getAccountQueue(accountId, firstItemId);
+	        assertNotNull(getQueueResoinse.getCallerIdType());
+	//        assertNotNull(getQueueResoinse.getGreeting());
+	//        assertNotNull(getQueueResoinse.getHoldMusic());
+	        assertNotNull(getQueueResoinse.getId());
+	        assertNotNull(getQueueResoinse.getMaxHoldTime());
+	        assertNotNull(getQueueResoinse.getMembers());
+	        assertNotNull(getQueueResoinse.getName());
+	        assertNotNull(getQueueResoinse.getRingTime());
+        }
     }
     
     /**
@@ -131,13 +192,13 @@ public class QueuesApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in other test")
     public void replaceAccountQueueTest() throws ApiException {
         Integer accountId = null;
         Integer queueId = null;
         CreateQueueParams data = null;
-        // QueueFull response = api.replaceAccountQueue(accountId, queueId, data);
-
-        // TODO: test validations
+        QueueFull response = api.replaceAccountQueue(accountId, queueId, data);
+        assertNotNull(response);
     }
     
 }

@@ -18,11 +18,13 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.ListSchedules;
+import io.swagger.client.model.ScheduleFull;
 
 /**
  * API tests for SchedulesApi
@@ -45,12 +47,12 @@ public class SchedulesApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in other test")
     public void getAccountScheduleTest() throws ApiException {
         Integer accountId = null;
         Integer scheduleId = null;
-        // ScheduleFull response = api.getAccountSchedule(accountId, scheduleId);
-
-        // TODO: test validations
+        ScheduleFull response = api.getAccountSchedule(accountId, scheduleId);
+        assertNotNull(response);
     }
     
     /**
@@ -62,7 +64,8 @@ public class SchedulesApiTest {
      *          if the Api call fails
      */
     @Test
-    public void listAccountSchedulesTest() throws ApiException {
+    public void listGetAccountSchedulesTest() throws ApiException {
+
         Integer accountId = 1315091;
         List<String> filtersId = null;
         List<String> filtersName = null;
@@ -73,12 +76,20 @@ public class SchedulesApiTest {
         String fields = null;
         ListSchedules response = api.listAccountSchedules(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
         assertNotNull(response.getFilters());
-        assertNotNull(response.getItems());
+        List<ScheduleFull> items = response.getItems();
+		assertNotNull(items);
         assertNotNull(response.getLimit());
         assertNotNull(response.getOffset());
         assertNotNull(response.getSort());
         assertNotNull(response.getTotal());
-        // TODO: test validations
+
+        if (items.size() > 0) {
+	        Integer firstItemId = items.get(0).getId();
+			ScheduleFull schedule = api.getAccountSchedule(accountId, firstItemId);
+			assertNotNull(schedule);
+			assertNotNull(schedule.getId());
+			assertNotNull(schedule.getName());
+        }
     }
     
 }

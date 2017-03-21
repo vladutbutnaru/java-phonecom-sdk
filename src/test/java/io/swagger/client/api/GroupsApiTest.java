@@ -150,7 +150,7 @@ public class GroupsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void listAccountExtensionContactGroupsTest() throws ApiException {
+    public void listGetAccountExtensionContactGroupsTest() throws ApiException {
 
         Integer accountId = 1315091;
         Integer extensionId = 1764590;
@@ -189,6 +189,13 @@ public class GroupsApiTest {
         assertEquals(sortId, sort.getId());
         
         assertEquals(sortName, sort.getName());
+        
+        if (items.size() > 0) {
+	        Integer firstItemId = response.getItems().get(0).getId();
+	        GroupFull getGroupResponse = api.getAccountExtensionContactGroup(accountId, extensionId, firstItemId);
+	        assertNotNull(getGroupResponse.getId());
+	        assertNotNull(getGroupResponse.getName());
+        }
     }
     
     /**
@@ -202,6 +209,7 @@ public class GroupsApiTest {
     @Test
     @Ignore("Tested in previous test")
     public void replaceAccountExtensionContactGroupTest() throws ApiException {
+
         Integer accountId = null;
         Integer extensionId = null;
         Integer groupId = null;

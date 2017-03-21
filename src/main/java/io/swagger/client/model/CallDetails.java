@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Each item in the &#39;details&#39; record may contain the following properties:
  */
 @ApiModel(description = "Each item in the 'details' record may contain the following properties:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-21T10:43:19.319+01:00")
 public class CallDetails {
   @SerializedName("start_time")
   private Integer startTime = null;

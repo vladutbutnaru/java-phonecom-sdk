@@ -293,7 +293,7 @@ public class ExtensionsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void listAccountExtensionsTest() throws ApiException {
+    public void listGetAccountExtensionsTest() throws ApiException {
 
         Integer accountId = 1315091;
         List<String> filtersId = TestConfig.createDefaultFilter();
@@ -334,6 +334,19 @@ public class ExtensionsApiTest {
         assertEquals(sortExtension, sort.getId());
 
         assertEquals(sortName, sort.getId());
+        
+        if (items.size() > 0) {
+	        Integer firstItemId = response.getItems().get(0).getId();
+	        ExtensionFull getExtensionResponse = api.getAccountExtension(accountId, firstItemId);
+	        assertNotNull(getExtensionResponse.getCallerId());
+	//        assertNotNull(getExtensionResponse.getCallNotifications());
+	//        assertNotNull(getExtensionResponse.getDeviceMembership());
+	        assertNotNull(getExtensionResponse.getEnableCallWaiting());
+	        assertNotNull(getExtensionResponse.getEnableOutboundCalls());
+	        assertNotNull(getExtensionResponse.getExtension());
+	        assertNotNull(getExtensionResponse.getFullName());
+	        assertNotNull(getExtensionResponse.getId());
+        }
     }
     
     /**

@@ -12,15 +12,20 @@
 
 package io.swagger.client.api;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.CreateMediaParams;
+import io.swagger.client.model.DeleteMedia;
 import io.swagger.client.model.ListMedia;
 import io.swagger.client.model.MediaFull;
 
@@ -35,6 +40,56 @@ public class MediaApiTest {
 	public void initTest() {
 		TestConfig.setAuthorization();
 	}
+	
+	@Test
+	public void createGetReplaceDeleteMediaTest() throws ApiException {
+
+		Integer accountId = 1315091;
+		CreateMediaParams data = new CreateMediaParams();
+		String expectedName = "mediaName" + TestConfig.nextRandom();
+		data.setName(expectedName);
+		data.setOrigin("tts");
+		data.setType("hold_music");
+		data.setTtsVoice("allison");
+		data.setTtsText("someRandomText");
+		data.setIsTemparary("Y");
+		data.setExpirationDate(30);
+		data.setDuration(7);
+		data.setNotes("someNotes");
+		data.setRandomized("N");
+		
+		MediaFull response = api.createAccountMedia(accountId, data);
+        assertNotNull(response.getId());
+        
+        assertNotNull(response.getId());
+        assertNotNull(response.getName());
+        assertNotNull(response.getType());
+		assertEquals(expectedName, response.getName());
+		assertEquals("hold_music", response.getType());
+
+        Integer mediaId = response.getId();
+        
+        CreateMediaParams dataReplace = new CreateMediaParams();
+        String replaceMediaName = "nccswfeeeebk" + TestConfig.nextRandom();
+		dataReplace.setName(replaceMediaName);
+        dataReplace.setOrigin("tts");
+        dataReplace.setType("hold_music");
+        dataReplace.setTtsVoice("belle");
+        dataReplace.setTtsText("someRandomText2");
+        dataReplace.setIsTemparary("N");
+        dataReplace.setExpirationDate(35);
+        dataReplace.setDuration(8);
+        dataReplace.setNotes("someNotes2");
+        dataReplace.setRandomized("Y");
+		
+		MediaFull responseReplace = api.replaceAccountMedia(accountId, mediaId, dataReplace);
+		assertEquals(replaceMediaName, responseReplace.getName());
+		assertEquals("hold_music", responseReplace.getType());
+		
+		DeleteMedia responseDelete = api.deleteAccountMedia(accountId, mediaId);
+        assertTrue(responseDelete.getSuccess());
+	}
+
 
 	/**
 	 * Show details of an individual media recording (Greeting or Hold Music)
@@ -45,6 +100,7 @@ public class MediaApiTest {
 	 *             if the Api call fails
 	 */
 	@Test
+	@Ignore("Tested in listget")
 	public void getAccountMediaTest() throws ApiException {
 		Integer accountId = 1315091;
 		Integer recordingId = 11;
@@ -63,7 +119,8 @@ public class MediaApiTest {
 	 *             if the Api call fails
 	 */
 	@Test
-	public void listAccountMediaTest() throws ApiException {
+	public void listGetAccountMediaTest() throws ApiException {
+
 		Integer accountId = 1315091;
 		List<String> filtersId = null;
 		List<String> filtersName = null;
@@ -81,6 +138,12 @@ public class MediaApiTest {
 		assertNotNull(response.getOffset());
 		assertNotNull(response.getSort());
 		assertNotNull(response.getTotal());
+		
+		Integer firstItemId = response.getItems().get(0).getId();
+		MediaFull getMediaResponse = api.getAccountMedia(accountId, firstItemId);
+		assertNotNull(getMediaResponse.getId());
+		assertNotNull(getMediaResponse.getName());
+		assertNotNull(getMediaResponse.getType());
 	}
 
 }

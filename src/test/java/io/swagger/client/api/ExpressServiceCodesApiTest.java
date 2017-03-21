@@ -19,6 +19,7 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.swagger.client.ApiException;
@@ -49,6 +50,7 @@ public class ExpressServiceCodesApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in listget")
     public void getAccountExpressSrvCodeTest() throws ApiException {
         Integer accountId = 1315091;
         Integer codeId = 329273;
@@ -66,7 +68,7 @@ public class ExpressServiceCodesApiTest {
      *          if the Api call fails
      */
     @Test
-    public void listAccountExpressSrvCodesTest() throws ApiException {
+    public void listGetAccountExpressSrvCodesTest() throws ApiException {
         Integer accountId = 1315091;
         List<String> filtersId = TestConfig.createDefaultFilter();
         ListExpressServiceCodes response = api.listAccountExpressSrvCodes(accountId, filtersId);
@@ -84,6 +86,14 @@ public class ExpressServiceCodesApiTest {
         assertNotNull(offset2);
         List<SortId> sort = response.getSort();
         assertNotNull(sort);
+        
+        if (items.size() > 0) {
+	        Integer firstItemId = response.getItems().get(0).getId();
+	        ExpressServiceCodeFull getExpressServiceCodeResponse = api.getAccountExpressSrvCode(accountId, firstItemId);
+	        assertNotNull(getExpressServiceCodeResponse.getExpireDate());
+	        assertNotNull(getExpressServiceCodeResponse.getExpressServiceCode());
+	        assertNotNull(getExpressServiceCodeResponse.getId());
+        }
     }
     
 }

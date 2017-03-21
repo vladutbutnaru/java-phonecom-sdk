@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **total** | **Integer** |  |  [optional]
 **offset** | **Integer** |  |  [optional]
 **limit** | **Integer** |  |  [optional]
-**items** | [**List&lt;PhoneNumberContact&gt;**](PhoneNumberContact.md) | Array of Contact Phone Number Objects. See below for details. |  [optional]
+**items** | [**List&lt;PhoneNumberFull&gt;**](PhoneNumberFull.md) | Array of Contact Phone Number Objects. See below for details. |  [optional]
 
 
 

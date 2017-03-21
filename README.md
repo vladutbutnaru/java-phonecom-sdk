@@ -105,7 +105,7 @@ Class | Method | HTTP request | Description
 *CallLogsApi* | [**getAccountCallLogs**](docs/CallLogsApi.md#getAccountCallLogs) | **GET** /accounts/{account_id}/call-logs/{call_id} | Show details of an individual Call Log entry
 *CallLogsApi* | [**listAccountCallLogs**](docs/CallLogsApi.md#listAccountCallLogs) | **GET** /accounts/{account_id}/call-logs | Get a list of call details associated with your account
 *CallerIdsApi* | [**getCallerIds**](docs/CallerIdsApi.md#getCallerIds) | **GET** /accounts/{account_id}/extensions/{extension_id}/caller-ids | Show the Caller ID options a given extension can use
-*CallsApi* | [**createAccountCalls**](docs/CallsApi.md#createAccountCalls) | **POST** /accounts/{account_id}/calls | Make a phone call
+*CallsApi* | [**createAccountCall**](docs/CallsApi.md#createAccountCall) | **POST** /accounts/{account_id}/calls | Make a phone call
 *ContactsApi* | [**createAccountExtensionContact**](docs/ContactsApi.md#createAccountExtensionContact) | **POST** /accounts/{account_id}/extensions/{extension_id}/contacts | Add a new address book contact for an extension
 *ContactsApi* | [**deleteAccountExtensionContact**](docs/ContactsApi.md#deleteAccountExtensionContact) | **DELETE** /accounts/{account_id}/extensions/{extension_id}/contacts/{contact_id} | 
 *ContactsApi* | [**getAccountExtensionContact**](docs/ContactsApi.md#getAccountExtensionContact) | **GET** /accounts/{account_id}/extensions/{extension_id}/contacts/{contact_id} | Retrieve the details of an address book contact
@@ -127,8 +127,11 @@ Class | Method | HTTP request | Description
 *GroupsApi* | [**getAccountExtensionContactGroup**](docs/GroupsApi.md#getAccountExtensionContactGroup) | **GET** /accounts/{account_id}/extensions/{extension_id}/contact-groups/{group_id} | 
 *GroupsApi* | [**listAccountExtensionContactGroups**](docs/GroupsApi.md#listAccountExtensionContactGroups) | **GET** /accounts/{account_id}/extensions/{extension_id}/contact-groups | Show a list of contact groups belonging to an extension
 *GroupsApi* | [**replaceAccountExtensionContactGroup**](docs/GroupsApi.md#replaceAccountExtensionContactGroup) | **PUT** /accounts/{account_id}/extensions/{extension_id}/contact-groups/{group_id} | 
-*MediaApi* | [**getAccountMedia**](docs/MediaApi.md#getAccountMedia) | **GET** /accounts/{account_id}/media/{recording_id} | Show details of an individual media recording (Greeting or Hold Music)
+*MediaApi* | [**createAccountMedia**](docs/MediaApi.md#createAccountMedia) | **POST** /accounts/{account_id}/media | Add a media object to your account that can be used as a greeting or hold music. Users may create a media by using the built-in Text-to-speech (TTS) facility or upload a file of their choice. (Note: The maximum size for media files or JSON objects included with a POST or PUT request is 10 MB)
+*MediaApi* | [**deleteAccountMedia**](docs/MediaApi.md#deleteAccountMedia) | **DELETE** /accounts/{account_id}/media/{media_id} | Delete an individual media record
+*MediaApi* | [**getAccountMedia**](docs/MediaApi.md#getAccountMedia) | **GET** /accounts/{account_id}/media/{media_id} | Show details of an individual media recording (Greeting or Hold Music)
 *MediaApi* | [**listAccountMedia**](docs/MediaApi.md#listAccountMedia) | **GET** /accounts/{account_id}/media | Get a list of media recordings for an account
+*MediaApi* | [**replaceAccountMedia**](docs/MediaApi.md#replaceAccountMedia) | **PUT** /accounts/{account_id}/media/{media_id} | Update a media object to your account. Note: The maximum size for media files or JSON objects included with a POST or PUT request is 10 MB.
 *MenusApi* | [**createAccountMenu**](docs/MenusApi.md#createAccountMenu) | **POST** /accounts/{account_id}/menus | Create an individual menu
 *MenusApi* | [**deleteAccountMenu**](docs/MenusApi.md#deleteAccountMenu) | **DELETE** /accounts/{account_id}/menus/{menu_id} | Delete an individual menu
 *MenusApi* | [**getAccountMenu**](docs/MenusApi.md#getAccountMenu) | **GET** /accounts/{account_id}/menus/{menu_id} | Show details of an individual menu
@@ -187,6 +190,7 @@ Class | Method | HTTP request | Description
  - [CreateDeviceParams](docs/CreateDeviceParams.md)
  - [CreateExtensionParams](docs/CreateExtensionParams.md)
  - [CreateGroupParams](docs/CreateGroupParams.md)
+ - [CreateMediaParams](docs/CreateMediaParams.md)
  - [CreateMenuParams](docs/CreateMenuParams.md)
  - [CreatePhoneNumberParams](docs/CreatePhoneNumberParams.md)
  - [CreateQueueParams](docs/CreateQueueParams.md)
@@ -196,6 +200,7 @@ Class | Method | HTTP request | Description
  - [CreateTrunkParams](docs/CreateTrunkParams.md)
  - [DeleteContact](docs/DeleteContact.md)
  - [DeleteGroup](docs/DeleteGroup.md)
+ - [DeleteMedia](docs/DeleteMedia.md)
  - [DeleteMenu](docs/DeleteMenu.md)
  - [DeleteQueue](docs/DeleteQueue.md)
  - [DeleteRoute](docs/DeleteRoute.md)

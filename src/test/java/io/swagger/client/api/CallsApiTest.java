@@ -13,16 +13,14 @@
 
 package io.swagger.client.api;
 
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.Ignore;
+import org.junit.Test;
+
 import io.swagger.client.ApiException;
 import io.swagger.client.model.CallFull;
 import io.swagger.client.model.CreateCallParams;
-import org.junit.Test;
-import org.junit.Ignore;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * API tests for CallsApi
@@ -45,9 +43,9 @@ public class CallsApiTest {
     public void createAccountCallsTest() throws ApiException {
         Integer accountId = null;
         CreateCallParams data = null;
-        CallFull response = api.createAccountCalls(accountId, data);
+        CallFull response = api.createAccountCall(accountId, data);
 
-        // TODO: test validations
+        assertNotNull(response);
     }
     
 }

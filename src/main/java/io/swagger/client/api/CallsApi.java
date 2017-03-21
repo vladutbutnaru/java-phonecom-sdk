@@ -55,8 +55,8 @@ public class CallsApi {
         this.apiClient = apiClient;
     }
 
-    /* Build call for createAccountCalls */
-    private com.squareup.okhttp.Call createAccountCallsCall(Integer accountId, CreateCallParams data, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /* Build call for createAccountCall */
+    private com.squareup.okhttp.Call createAccountCallCall(Integer accountId, CreateCallParams data, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = data;
         
         // create path and map variables
@@ -98,15 +98,15 @@ public class CallsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call createAccountCallsValidateBeforeCall(Integer accountId, CreateCallParams data, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call createAccountCallValidateBeforeCall(Integer accountId, CreateCallParams data, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling createAccountCalls(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling createAccountCall(Async)");
         }
         
         
-        com.squareup.okhttp.Call call = createAccountCallsCall(accountId, data, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = createAccountCallCall(accountId, data, progressListener, progressRequestListener);
         return call;
 
         
@@ -123,8 +123,8 @@ public class CallsApi {
      * @return CallFull
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public CallFull createAccountCalls(Integer accountId, CreateCallParams data) throws ApiException {
-        ApiResponse<CallFull> resp = createAccountCallsWithHttpInfo(accountId, data);
+    public CallFull createAccountCall(Integer accountId, CreateCallParams data) throws ApiException {
+        ApiResponse<CallFull> resp = createAccountCallWithHttpInfo(accountId, data);
         return resp.getData();
     }
 
@@ -136,8 +136,8 @@ public class CallsApi {
      * @return ApiResponse&lt;CallFull&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<CallFull> createAccountCallsWithHttpInfo(Integer accountId, CreateCallParams data) throws ApiException {
-        com.squareup.okhttp.Call call = createAccountCallsValidateBeforeCall(accountId, data, null, null);
+    public ApiResponse<CallFull> createAccountCallWithHttpInfo(Integer accountId, CreateCallParams data) throws ApiException {
+        com.squareup.okhttp.Call call = createAccountCallValidateBeforeCall(accountId, data, null, null);
         Type localVarReturnType = new TypeToken<CallFull>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -151,7 +151,7 @@ public class CallsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createAccountCallsAsync(Integer accountId, CreateCallParams data, final ApiCallback<CallFull> callback) throws ApiException {
+    public com.squareup.okhttp.Call createAccountCallAsync(Integer accountId, CreateCallParams data, final ApiCallback<CallFull> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -172,7 +172,7 @@ public class CallsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = createAccountCallsValidateBeforeCall(accountId, data, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = createAccountCallValidateBeforeCall(accountId, data, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<CallFull>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

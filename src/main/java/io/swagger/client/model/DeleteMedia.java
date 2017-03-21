@@ -19,30 +19,29 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * 
+ * DeleteMedia
  */
-@ApiModel(description = "")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-21T10:43:19.319+01:00")
-public class CallFull {
-  @SerializedName("id")
-  private String id = null;
+public class DeleteMedia {
+  @SerializedName("success")
+  private Boolean success = null;
 
-  public CallFull id(String id) {
-    this.id = id;
+  public DeleteMedia success(Boolean success) {
+    this.success = success;
     return this;
   }
 
    /**
-   * 
-   * @return id
+   * Get success
+   * @return success
   **/
   @ApiModelProperty(example = "null", value = "")
-  public String getId() {
-    return id;
+  public Boolean getSuccess() {
+    return success;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setSuccess(Boolean success) {
+    this.success = success;
   }
 
 
@@ -54,22 +53,22 @@ public class CallFull {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CallFull callFull = (CallFull) o;
-    return Objects.equals(this.id, callFull.id);
+    DeleteMedia deleteMedia = (DeleteMedia) o;
+    return Objects.equals(this.success, deleteMedia.success);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id);
+    return Objects.hash(success);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CallFull {\n");
+    sb.append("class DeleteMedia {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }

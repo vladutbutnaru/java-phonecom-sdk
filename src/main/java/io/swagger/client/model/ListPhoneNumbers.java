@@ -18,7 +18,7 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.client.model.FilterIdNamePhoneNumberArray;
-import io.swagger.client.model.PhoneNumberContact;
+import io.swagger.client.model.PhoneNumberFull;
 import io.swagger.client.model.SortIdNamePhoneNumber;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * ListPhoneNumbers
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-21T10:43:19.319+01:00")
 public class ListPhoneNumbers {
   @SerializedName("filters")
   private FilterIdNamePhoneNumberArray filters = null;
@@ -44,7 +44,7 @@ public class ListPhoneNumbers {
   private Integer limit = null;
 
   @SerializedName("items")
-  private List<PhoneNumberContact> items = new ArrayList<PhoneNumberContact>();
+  private List<PhoneNumberFull> items = new ArrayList<PhoneNumberFull>();
 
   public ListPhoneNumbers filters(FilterIdNamePhoneNumberArray filters) {
     this.filters = filters;
@@ -136,12 +136,12 @@ public class ListPhoneNumbers {
     this.limit = limit;
   }
 
-  public ListPhoneNumbers items(List<PhoneNumberContact> items) {
+  public ListPhoneNumbers items(List<PhoneNumberFull> items) {
     this.items = items;
     return this;
   }
 
-  public ListPhoneNumbers addItemsItem(PhoneNumberContact itemsItem) {
+  public ListPhoneNumbers addItemsItem(PhoneNumberFull itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -151,11 +151,11 @@ public class ListPhoneNumbers {
    * @return items
   **/
   @ApiModelProperty(example = "null", value = "Array of Contact Phone Number Objects. See below for details.")
-  public List<PhoneNumberContact> getItems() {
+  public List<PhoneNumberFull> getItems() {
     return items;
   }
 
-  public void setItems(List<PhoneNumberContact> items) {
+  public void setItems(List<PhoneNumberFull> items) {
     this.items = items;
   }
 

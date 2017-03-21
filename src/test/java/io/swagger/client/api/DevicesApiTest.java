@@ -116,7 +116,7 @@ public class DevicesApiTest {
      *          if the Api call fails
      */
     @Test
-    public void listAccountDevicesTest() throws ApiException {
+    public void listGetAccountDevicesTest() throws ApiException {
         Integer accountId = 1315091;
         List<String> filtersId = TestConfig.createDefaultFilter();
         List<String> filtersName = TestConfig.createDefaultFilter();
@@ -153,6 +153,15 @@ public class DevicesApiTest {
         assertEquals(sortId, sort.getId());
         
         assertEquals(sortName, sort.getName());
+        
+        if (items.size() > 0) {
+	        Integer firstItemId = items.get(0).getId();
+	        DeviceFull getDeviceResponse = api.getAccountDevice(accountId, firstItemId);
+	        assertNotNull(getDeviceResponse.getId());
+	        assertNotNull(getDeviceResponse.getLines());
+	        assertNotNull(getDeviceResponse.getName());
+	        assertNotNull(getDeviceResponse.getSipAuthentication());
+        }
     }
     
     /**

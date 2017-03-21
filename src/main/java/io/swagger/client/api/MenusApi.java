@@ -248,7 +248,7 @@ public class MenusApi {
 
     /**
      * Delete an individual menu
-     * This service shows the details of an individual menu.
+     * See Account Menus for more info on the properties.
      * @param accountId Account ID (required)
      * @param menuId Menu ID (required)
      * @return DeleteMenu
@@ -261,7 +261,7 @@ public class MenusApi {
 
     /**
      * Delete an individual menu
-     * This service shows the details of an individual menu.
+     * See Account Menus for more info on the properties.
      * @param accountId Account ID (required)
      * @param menuId Menu ID (required)
      * @return ApiResponse&lt;DeleteMenu&gt;
@@ -275,7 +275,7 @@ public class MenusApi {
 
     /**
      * Delete an individual menu (asynchronously)
-     * This service shows the details of an individual menu.
+     * See Account Menus for more info on the properties.
      * @param accountId Account ID (required)
      * @param menuId Menu ID (required)
      * @param callback The callback to be executed when the API call finishes
@@ -658,7 +658,7 @@ public class MenusApi {
 
     /**
      * Replace an individual menu
-     * This service replaces the details of an individual Menu.
+     * See Account Menus for more info on the properties.
      * @param accountId Account ID (required)
      * @param menuId Menu ID (required)
      * @param data Menu data (optional)
@@ -672,7 +672,7 @@ public class MenusApi {
 
     /**
      * Replace an individual menu
-     * This service replaces the details of an individual Menu.
+     * See Account Menus for more info on the properties.
      * @param accountId Account ID (required)
      * @param menuId Menu ID (required)
      * @param data Menu data (optional)
@@ -687,7 +687,7 @@ public class MenusApi {
 
     /**
      * Replace an individual menu (asynchronously)
-     * This service replaces the details of an individual Menu.
+     * See Account Menus for more info on the properties.
      * @param accountId Account ID (required)
      * @param menuId Menu ID (required)
      * @param data Menu data (optional)

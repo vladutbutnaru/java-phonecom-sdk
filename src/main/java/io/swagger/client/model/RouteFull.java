@@ -26,7 +26,7 @@ import java.util.List;
  * The root level of the Full Route Object includes all of the properties in the Route Summary Object, along with two more:
  */
 @ApiModel(description = "The root level of the Full Route Object includes all of the properties in the Route Summary Object, along with two more:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-21T10:43:19.319+01:00")
 public class RouteFull {
   @SerializedName("id")
   private Integer id = null;

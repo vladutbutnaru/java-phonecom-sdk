@@ -20,6 +20,7 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.swagger.client.ApiException;
@@ -50,7 +51,9 @@ public class ApplicationsApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in listget test")
     public void getAccountApplicationTest() throws ApiException {
+
     	Integer accountId = 1315091;
         Integer applicationId = 1356077;
         ApplicationFull response = api.getAccountApplication(accountId, applicationId);
@@ -73,12 +76,11 @@ public class ApplicationsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void listAccountApplicationsTest() throws ApiException {
+    public void listGetAccountApplicationsTest() throws ApiException {
 
         Integer accountId = 1315091;
         List<String> filtersId = TestConfig.createDefaultFilter();
 
-        // TODO Response from API: "The filters.name filter is unsupported"
         List<String> filtersName = null;
 
         String sortId = "asc";
@@ -109,6 +111,13 @@ public class ApplicationsApiTest {
         assertEquals(sortId, sort.getId());
         
         assertEquals(sortName, sort.getName());
+
+        if (items.size() > 0) {
+	        Integer firstItemId = items.get(0).getId();
+	        ApplicationFull getApplicationResponse = api.getAccountApplication(accountId, firstItemId);
+	        assertNotNull(getApplicationResponse.getId());
+	        assertNotNull(getApplicationResponse.getName());
+        }
     }
     
 }

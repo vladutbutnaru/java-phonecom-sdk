@@ -27,6 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.swagger.client.model.CreateMediaParams;
+import io.swagger.client.model.DeleteMedia;
 import io.swagger.client.model.ListMedia;
 import io.swagger.client.model.MediaFull;
 
@@ -55,14 +57,264 @@ public class MediaApi {
         this.apiClient = apiClient;
     }
 
-    /* Build call for getAccountMedia */
-    private com.squareup.okhttp.Call getAccountMediaCall(Integer accountId, Integer recordingId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /* Build call for createAccountMedia */
+    private com.squareup.okhttp.Call createAccountMediaCall(Integer accountId, CreateMediaParams data, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = data;
+        
+        // create path and map variables
+        String localVarPath = "/accounts/{account_id}/media".replaceAll("\\{format\\}","json")
+        .replaceAll("\\{" + "account_id" + "\\}", apiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "apiKey" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createAccountMediaValidateBeforeCall(Integer accountId, CreateMediaParams data, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling createAccountMedia(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = createAccountMediaCall(accountId, data, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Add a media object to your account that can be used as a greeting or hold music. Users may create a media by using the built-in Text-to-speech (TTS) facility or upload a file of their choice. (Note: The maximum size for media files or JSON objects included with a POST or PUT request is 10 MB)
+     * See Account Media for more info on the properties.
+     * @param accountId Account ID (required)
+     * @param data Media data (optional)
+     * @return MediaFull
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public MediaFull createAccountMedia(Integer accountId, CreateMediaParams data) throws ApiException {
+        ApiResponse<MediaFull> resp = createAccountMediaWithHttpInfo(accountId, data);
+        return resp.getData();
+    }
+
+    /**
+     * Add a media object to your account that can be used as a greeting or hold music. Users may create a media by using the built-in Text-to-speech (TTS) facility or upload a file of their choice. (Note: The maximum size for media files or JSON objects included with a POST or PUT request is 10 MB)
+     * See Account Media for more info on the properties.
+     * @param accountId Account ID (required)
+     * @param data Media data (optional)
+     * @return ApiResponse&lt;MediaFull&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<MediaFull> createAccountMediaWithHttpInfo(Integer accountId, CreateMediaParams data) throws ApiException {
+        com.squareup.okhttp.Call call = createAccountMediaValidateBeforeCall(accountId, data, null, null);
+        Type localVarReturnType = new TypeToken<MediaFull>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Add a media object to your account that can be used as a greeting or hold music. Users may create a media by using the built-in Text-to-speech (TTS) facility or upload a file of their choice. (Note: The maximum size for media files or JSON objects included with a POST or PUT request is 10 MB) (asynchronously)
+     * See Account Media for more info on the properties.
+     * @param accountId Account ID (required)
+     * @param data Media data (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createAccountMediaAsync(Integer accountId, CreateMediaParams data, final ApiCallback<MediaFull> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createAccountMediaValidateBeforeCall(accountId, data, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<MediaFull>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /* Build call for deleteAccountMedia */
+    private com.squareup.okhttp.Call deleteAccountMediaCall(Integer accountId, Integer mediaId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/accounts/{account_id}/media/{recording_id}".replaceAll("\\{format\\}","json")
+        String localVarPath = "/accounts/{account_id}/media/{media_id}".replaceAll("\\{format\\}","json")
         .replaceAll("\\{" + "account_id" + "\\}", apiClient.escapeString(accountId.toString()))
-        .replaceAll("\\{" + "recording_id" + "\\}", apiClient.escapeString(recordingId.toString()));
+        .replaceAll("\\{" + "media_id" + "\\}", apiClient.escapeString(mediaId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "apiKey" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteAccountMediaValidateBeforeCall(Integer accountId, Integer mediaId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling deleteAccountMedia(Async)");
+        }
+        
+        // verify the required parameter 'mediaId' is set
+        if (mediaId == null) {
+            throw new ApiException("Missing the required parameter 'mediaId' when calling deleteAccountMedia(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = deleteAccountMediaCall(accountId, mediaId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Delete an individual media record
+     * See Account Media for more info on the properties.
+     * @param accountId Account ID (required)
+     * @param mediaId Media ID (required)
+     * @return DeleteMedia
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public DeleteMedia deleteAccountMedia(Integer accountId, Integer mediaId) throws ApiException {
+        ApiResponse<DeleteMedia> resp = deleteAccountMediaWithHttpInfo(accountId, mediaId);
+        return resp.getData();
+    }
+
+    /**
+     * Delete an individual media record
+     * See Account Media for more info on the properties.
+     * @param accountId Account ID (required)
+     * @param mediaId Media ID (required)
+     * @return ApiResponse&lt;DeleteMedia&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<DeleteMedia> deleteAccountMediaWithHttpInfo(Integer accountId, Integer mediaId) throws ApiException {
+        com.squareup.okhttp.Call call = deleteAccountMediaValidateBeforeCall(accountId, mediaId, null, null);
+        Type localVarReturnType = new TypeToken<DeleteMedia>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Delete an individual media record (asynchronously)
+     * See Account Media for more info on the properties.
+     * @param accountId Account ID (required)
+     * @param mediaId Media ID (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteAccountMediaAsync(Integer accountId, Integer mediaId, final ApiCallback<DeleteMedia> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteAccountMediaValidateBeforeCall(accountId, mediaId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<DeleteMedia>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /* Build call for getAccountMedia */
+    private com.squareup.okhttp.Call getAccountMediaCall(Integer accountId, Integer mediaId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/accounts/{account_id}/media/{media_id}".replaceAll("\\{format\\}","json")
+        .replaceAll("\\{" + "account_id" + "\\}", apiClient.escapeString(accountId.toString()))
+        .replaceAll("\\{" + "media_id" + "\\}", apiClient.escapeString(mediaId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -99,20 +351,20 @@ public class MediaApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAccountMediaValidateBeforeCall(Integer accountId, Integer recordingId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAccountMediaValidateBeforeCall(Integer accountId, Integer mediaId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getAccountMedia(Async)");
         }
         
-        // verify the required parameter 'recordingId' is set
-        if (recordingId == null) {
-            throw new ApiException("Missing the required parameter 'recordingId' when calling getAccountMedia(Async)");
+        // verify the required parameter 'mediaId' is set
+        if (mediaId == null) {
+            throw new ApiException("Missing the required parameter 'mediaId' when calling getAccountMedia(Async)");
         }
         
         
-        com.squareup.okhttp.Call call = getAccountMediaCall(accountId, recordingId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAccountMediaCall(accountId, mediaId, progressListener, progressRequestListener);
         return call;
 
         
@@ -125,12 +377,12 @@ public class MediaApi {
      * Show details of an individual media recording (Greeting or Hold Music)
      * Get individual media recording
      * @param accountId Account ID (required)
-     * @param recordingId Recording ID (required)
+     * @param mediaId Media ID (required)
      * @return MediaFull
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public MediaFull getAccountMedia(Integer accountId, Integer recordingId) throws ApiException {
-        ApiResponse<MediaFull> resp = getAccountMediaWithHttpInfo(accountId, recordingId);
+    public MediaFull getAccountMedia(Integer accountId, Integer mediaId) throws ApiException {
+        ApiResponse<MediaFull> resp = getAccountMediaWithHttpInfo(accountId, mediaId);
         return resp.getData();
     }
 
@@ -138,12 +390,12 @@ public class MediaApi {
      * Show details of an individual media recording (Greeting or Hold Music)
      * Get individual media recording
      * @param accountId Account ID (required)
-     * @param recordingId Recording ID (required)
+     * @param mediaId Media ID (required)
      * @return ApiResponse&lt;MediaFull&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<MediaFull> getAccountMediaWithHttpInfo(Integer accountId, Integer recordingId) throws ApiException {
-        com.squareup.okhttp.Call call = getAccountMediaValidateBeforeCall(accountId, recordingId, null, null);
+    public ApiResponse<MediaFull> getAccountMediaWithHttpInfo(Integer accountId, Integer mediaId) throws ApiException {
+        com.squareup.okhttp.Call call = getAccountMediaValidateBeforeCall(accountId, mediaId, null, null);
         Type localVarReturnType = new TypeToken<MediaFull>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -152,12 +404,12 @@ public class MediaApi {
      * Show details of an individual media recording (Greeting or Hold Music) (asynchronously)
      * Get individual media recording
      * @param accountId Account ID (required)
-     * @param recordingId Recording ID (required)
+     * @param mediaId Media ID (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAccountMediaAsync(Integer accountId, Integer recordingId, final ApiCallback<MediaFull> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAccountMediaAsync(Integer accountId, Integer mediaId, final ApiCallback<MediaFull> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -178,7 +430,7 @@ public class MediaApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAccountMediaValidateBeforeCall(accountId, recordingId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAccountMediaValidateBeforeCall(accountId, mediaId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<MediaFull>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -334,6 +586,137 @@ public class MediaApi {
 
         com.squareup.okhttp.Call call = listAccountMediaValidateBeforeCall(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ListMedia>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /* Build call for replaceAccountMedia */
+    private com.squareup.okhttp.Call replaceAccountMediaCall(Integer accountId, Integer mediaId, CreateMediaParams data, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = data;
+        
+        // create path and map variables
+        String localVarPath = "/accounts/{account_id}/media/{media_id}".replaceAll("\\{format\\}","json")
+        .replaceAll("\\{" + "account_id" + "\\}", apiClient.escapeString(accountId.toString()))
+        .replaceAll("\\{" + "media_id" + "\\}", apiClient.escapeString(mediaId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "apiKey" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call replaceAccountMediaValidateBeforeCall(Integer accountId, Integer mediaId, CreateMediaParams data, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling replaceAccountMedia(Async)");
+        }
+        
+        // verify the required parameter 'mediaId' is set
+        if (mediaId == null) {
+            throw new ApiException("Missing the required parameter 'mediaId' when calling replaceAccountMedia(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = replaceAccountMediaCall(accountId, mediaId, data, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Update a media object to your account. Note: The maximum size for media files or JSON objects included with a POST or PUT request is 10 MB.
+     * See Account Media for more info on the properties.
+     * @param accountId Account ID (required)
+     * @param mediaId Media ID (required)
+     * @param data Media data (optional)
+     * @return MediaFull
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public MediaFull replaceAccountMedia(Integer accountId, Integer mediaId, CreateMediaParams data) throws ApiException {
+        ApiResponse<MediaFull> resp = replaceAccountMediaWithHttpInfo(accountId, mediaId, data);
+        return resp.getData();
+    }
+
+    /**
+     * Update a media object to your account. Note: The maximum size for media files or JSON objects included with a POST or PUT request is 10 MB.
+     * See Account Media for more info on the properties.
+     * @param accountId Account ID (required)
+     * @param mediaId Media ID (required)
+     * @param data Media data (optional)
+     * @return ApiResponse&lt;MediaFull&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<MediaFull> replaceAccountMediaWithHttpInfo(Integer accountId, Integer mediaId, CreateMediaParams data) throws ApiException {
+        com.squareup.okhttp.Call call = replaceAccountMediaValidateBeforeCall(accountId, mediaId, data, null, null);
+        Type localVarReturnType = new TypeToken<MediaFull>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Update a media object to your account. Note: The maximum size for media files or JSON objects included with a POST or PUT request is 10 MB. (asynchronously)
+     * See Account Media for more info on the properties.
+     * @param accountId Account ID (required)
+     * @param mediaId Media ID (required)
+     * @param data Media data (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call replaceAccountMediaAsync(Integer accountId, Integer mediaId, CreateMediaParams data, final ApiCallback<MediaFull> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = replaceAccountMediaValidateBeforeCall(accountId, mediaId, data, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<MediaFull>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

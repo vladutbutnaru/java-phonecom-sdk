@@ -43,7 +43,7 @@ public class MenusApiTest {
     	TestConfig.setAuthorization();
     }
     @Test
-    public void createGetReplaceDeleteDevice() throws ApiException {
+    public void createGetReplaceDeleteMenu() throws ApiException {
         Integer accountId = 1315091;
         CreateMenuParams data = new CreateMenuParams();
         data.setAllowExtensionDial(true);
@@ -83,6 +83,7 @@ public class MenusApiTest {
     @Test
     @Ignore("Tested in previous test")
     public void createAccountMenuTest() throws ApiException {
+
         Integer accountId = 1315091;
         CreateMenuParams data = new CreateMenuParams();
         data.setAllowExtensionDial(true);
@@ -111,9 +112,8 @@ public class MenusApiTest {
     public void deleteAccountMenuTest() throws ApiException {
         Integer accountId = null;
         Integer menuId = null;
-        // DeleteMenu response = api.deleteAccountMenu(accountId, menuId);
-
-        // TODO: test validations
+        DeleteMenu response = api.deleteAccountMenu(accountId, menuId);
+        assertNotNull(response);
     }
     
     /**
@@ -129,14 +129,12 @@ public class MenusApiTest {
     public void getAccountMenuTest() throws ApiException {
         Integer accountId = 1315091;
         Integer menuId = 87926;
-         MenuFull response = api.getAccountMenu(accountId, menuId);
-         assertNotNull(response.getAllowExtensionDial());
-         assertNotNull(response.getId());
-         assertNotNull(response.getKeypressWaitTime());
-         assertNotNull(response.getName());
-         assertNotNull(response.getOptions());
-         
-        // TODO: test validations
+        MenuFull response = api.getAccountMenu(accountId, menuId);
+        assertNotNull(response.getAllowExtensionDial());
+        assertNotNull(response.getId());
+        assertNotNull(response.getKeypressWaitTime());
+        assertNotNull(response.getName());
+        assertNotNull(response.getOptions());
     }
     
     /**
@@ -148,7 +146,8 @@ public class MenusApiTest {
      *          if the Api call fails
      */
     @Test
-    public void listAccountMenusTest() throws ApiException {
+    public void listGetAccountMenusTest() throws ApiException {
+
         Integer accountId = 1315091;
         List<String> filtersId = null;
         List<String> filtersName = null;
@@ -159,13 +158,25 @@ public class MenusApiTest {
         String fields = null;
         ListMenus response = api.listAccountMenus(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
         assertNotNull(response.getFilters());
-        assertNotNull(response.getItems());
+        List<MenuFull> items = response.getItems();
+		assertNotNull(items);
         assertNotNull(response.getLimit());
         assertNotNull(response.getOffset());
         assertNotNull(response.getSort());
         assertNotNull(response.getTotal());
         
-        // TODO: test validations
+        if (items.size() > 0) {
+	        Integer firstItemId = items.get(0).getId();
+	        MenuFull getMenuResponse = api.getAccountMenu(accountId, firstItemId);
+	        assertNotNull(getMenuResponse.getId());
+	//        assertNotNull(getMenuResponse.getKeypressError());
+	        assertNotNull(getMenuResponse.getAllowExtensionDial());
+	//        assertNotNull(getMenuResponse.getGreeting());
+	        assertNotNull(getMenuResponse.getKeypressWaitTime());
+	        assertNotNull(getMenuResponse.getName());
+	        assertNotNull(getMenuResponse.getOptions());
+	//        assertNotNull(getMenuResponse.getTimeoutHandler());
+        }
     }
     
     /**
@@ -182,9 +193,8 @@ public class MenusApiTest {
         Integer accountId = null;
         Integer menuId = null;
         ReplaceMenuParams data = null;
-        // MenuFull response = api.replaceAccountMenu(accountId, menuId, data);
-
-        // TODO: test validations
+        MenuFull response = api.replaceAccountMenu(accountId, menuId, data);
+        assertNotNull(response);
     }
     
 }

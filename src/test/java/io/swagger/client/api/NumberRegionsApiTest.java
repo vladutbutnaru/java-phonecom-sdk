@@ -46,6 +46,8 @@ public class NumberRegionsApiTest {
      */
     @Test
     public void listAvailablePhoneNumberRegionsTest() throws ApiException {
+
+    	// Given
         List<String> filtersCountryCode = null;
         List<String> filtersNpa = null;
         List<String> filtersNxx = null;
@@ -64,9 +66,12 @@ public class NumberRegionsApiTest {
         Integer offset = null;
         String fields = null;
         List<String> groupBy = null;
+        
+        // When
         ListPhoneNumbersRegions response = api.listAvailablePhoneNumberRegions(filtersCountryCode, filtersNpa, filtersNxx, filtersIsTollFree, filtersCity, filtersProvincePostalCode, filtersCountryPostalCode, sortCountryCode, sortNpa, sortNxx, sortIsTollFree, sortCity, sortProvincePostalCode, sortCountryPostalCode, limit, offset, fields, groupBy);
+        
+        // Then
         assertNotNull(response.getItems());
-        // TODO: test validations
     }
     
 }

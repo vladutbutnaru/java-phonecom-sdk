@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Hold Music to be played while callers are waiting. Output is a Media Summary Object. Input must be a Media Lookup Object. Must refer to a media recording that has is_hold_music set to TRUE. Default is to play a standard ring tone.
  */
 @ApiModel(description = "Hold Music to be played while callers are waiting. Output is a Media Summary Object. Input must be a Media Lookup Object. Must refer to a media recording that has is_hold_music set to TRUE. Default is to play a standard ring tone.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-21T10:43:19.319+01:00")
 public class HoldMusic {
   @SerializedName("id")
   private Integer id = null;

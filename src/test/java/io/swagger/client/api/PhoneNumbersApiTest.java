@@ -29,7 +29,6 @@ import io.swagger.client.model.CreatePhoneNumberParams;
 import io.swagger.client.model.FilterIdNamePhoneNumberArray;
 import io.swagger.client.model.ListAvailableNumbers;
 import io.swagger.client.model.ListPhoneNumbers;
-import io.swagger.client.model.PhoneNumberContact;
 import io.swagger.client.model.PhoneNumberFull;
 import io.swagger.client.model.ReplacePhoneNumberParams;
 import io.swagger.client.model.SortIdNamePhoneNumber;
@@ -191,19 +190,17 @@ public class PhoneNumbersApiTest {
      *          if the Api call fails
      */
     @Test
-    public void listAccountPhoneNumbersTest() throws ApiException {
+    public void listGetAccountPhoneNumbersTest() throws ApiException {
 
         Integer accountId = 1315091;
         List<String> filtersId = TestConfig.createDefaultFilter();
         List<String> filtersName = TestConfig.createDefaultFilter();
 
-        // TODO API response: filter.phone_number "Unsupported filter type"
         List<String> filtersPhoneNumber = null;
 
         String sortId = "asc";
         String sortName = "asc";
 
-        // TODO API response: sort.phone_number "Invalid sort type"
         String sortPhoneNumber = null;
         Integer limit = 4;
         Integer offset = 1;
@@ -211,7 +208,7 @@ public class PhoneNumbersApiTest {
         ListPhoneNumbers response = api.listAccountPhoneNumbers(accountId, filtersId, filtersName, filtersPhoneNumber, sortId, sortName, sortPhoneNumber, limit, offset, fields);
 
         assertNotNull(response);
-        List<PhoneNumberContact> items = response.getItems();
+        List<PhoneNumberFull> items = response.getItems();
         assertNotNull(items);
         
         FilterIdNamePhoneNumberArray filters = response.getFilters();
@@ -237,6 +234,19 @@ public class PhoneNumbersApiTest {
         assertEquals(sortName, sort.getName());
         
 //        assertEquals(sortPhoneNumber, sort.getPhoneNumber());
+        
+        if (items.size() > 0) {
+        	Integer firstItemId = items.get(0).getId();
+        	PhoneNumberFull getPhoneNumberResponse = api.getAccountPhoneNumber(accountId, firstItemId);
+        	assertNotNull(getPhoneNumberResponse.getBlockAnonymous());
+        	assertNotNull(getPhoneNumberResponse.getBlockIncoming());
+//        	assertNotNull(getPhoneNumberResponse.getCallerId());
+        	assertNotNull(getPhoneNumberResponse.getId());
+        	assertNotNull(getPhoneNumberResponse.getName());
+        	assertNotNull(getPhoneNumberResponse.getPhoneNumber());
+//        	assertNotNull(getPhoneNumberResponse.getRoute());
+        	assertNotNull(getPhoneNumberResponse.getSmsForwarding());
+        }
     }
     
     /**

@@ -51,7 +51,7 @@ public class CallLogsApiTest {
      *          if the Api call fails
      */
     @Test
-    @Ignore("[CANNOT TEST] No Call log, no method for creating call log")
+    @Ignore("tested in other method")
     public void getAccountCallLogTest() throws ApiException {
 
         Integer accountId = 1315091;
@@ -59,7 +59,6 @@ public class CallLogsApiTest {
         CallLogFull response = api.getAccountCallLogs(accountId, callId);
 
         assertNotNull(response);
-        // TODO: [CANNOT TEST] No Call log, no method for creating call log
     }
 
     /**
@@ -71,7 +70,7 @@ public class CallLogsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void listAccountCallLogsTest() throws ApiException {
+    public void listGetAccountCallLogsTest() throws ApiException {
 
         Integer accountId = 1315091;
         List<String> filtersId = TestConfig.createDefaultFilter();
@@ -123,6 +122,27 @@ public class CallLogsApiTest {
         assertEquals(sortStartTime, sort.getStartTime());
 
         assertEquals(sortCreatedAt, sort.getCreatedAt());
+
+        if (items.size() > 0) {
+	        String firstItemId = items.get(0).getId();
+	        CallLogFull getCallLogResponse = api.getAccountCallLogs(accountId, firstItemId);
+	        assertNotNull(getCallLogResponse.getCallDuration());
+	        assertNotNull(getCallLogResponse.getCalledNumber());
+	        assertNotNull(getCallLogResponse.getCallerCnam());
+	        assertNotNull(getCallLogResponse.getCallerId());
+	        assertNotNull(getCallLogResponse.getCallNumber());
+	        assertNotNull(getCallLogResponse.getCallRecording());
+	        assertNotNull(getCallLogResponse.getCreatedAt());
+	        assertNotNull(getCallLogResponse.getDetails());
+	        assertNotNull(getCallLogResponse.getDirection());
+	        assertNotNull(getCallLogResponse.getExtension());
+	        assertNotNull(getCallLogResponse.getFinalAction());
+	        assertNotNull(getCallLogResponse.getId());
+	        assertNotNull(getCallLogResponse.getIsMonitored());
+	        assertNotNull(getCallLogResponse.getStartTime());
+	        assertNotNull(getCallLogResponse.getType());
+	        assertNotNull(getCallLogResponse.getUuid());
+        }
     }
     
 }

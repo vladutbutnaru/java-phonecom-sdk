@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * ReplaceMenuParams
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-21T10:43:19.319+01:00")
 public class ReplaceMenuParams {
   @SerializedName("name")
   private String name = null;

@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiModelProperty;
  * The Region Object may include any of several fields describing the group, as well as the quantity of phone numbers available in that group. Here are the properties:
  */
 @ApiModel(description = "The Region Object may include any of several fields describing the group, as well as the quantity of phone numbers available in that group. Here are the properties:")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-13T08:15:06.119Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-21T10:43:19.319+01:00")
 public class PhoneNumbersRegionFull {
   @SerializedName("country_code")
   private String countryCode = null;

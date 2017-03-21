@@ -75,7 +75,7 @@ public class NumberRegionsApi {
         if (filtersProvincePostalCode != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filters[province_postal_code]", filtersProvincePostalCode));
         if (filtersCountryPostalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filters[country_postal_code]", filtersCountryPostalCode));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filters[country_postal_code]", filtersCountryPostalCode));
         if (sortCountryCode != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort[country_code]", sortCountryCode));
         if (sortNpa != null)
@@ -97,7 +97,7 @@ public class NumberRegionsApi {
         if (fields != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "fields", fields));
         if (groupBy != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "group_by", groupBy));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "group_by", groupBy));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 

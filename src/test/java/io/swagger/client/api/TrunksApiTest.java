@@ -13,16 +13,20 @@
 
 package io.swagger.client.api;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateTrunkParams;
+import io.swagger.client.model.DeleteTrunk;
 import io.swagger.client.model.ListTrunks;
 import io.swagger.client.model.TrunkFull;
 
@@ -36,6 +40,45 @@ public class TrunksApiTest {
     @Before
     public void initTest() {
     	TestConfig.setAuthorization();
+    }
+    
+    @Test
+    public void createGetReplaceDeleteTrunk() throws ApiException {
+    	Integer accountId = 1315091;
+        CreateTrunkParams data = new CreateTrunkParams();
+        String trunkName = "trunkName" + TestConfig.nextRandom();
+		data.setName(trunkName);
+		data.setUri("SIP/1234@phone.com:5060");
+		data.setMaxConcurrentCalls(3);
+		data.setMaxMinutesPerMonth(1000);
+		
+		TrunkFull response = api.createAccountTrunk(accountId, data);
+		assertNotNull(response.getCodecs());
+//		assertNotNull(response.getErrorMessage());
+//		assertNotNull(response.getGreeting());
+		assertNotNull(response.getId());
+		assertNotNull(response.getMaxConcurrentCalls());
+		assertNotNull(response.getMaxMinutesPerMonth());
+		assertNotNull(response.getName());
+		assertNotNull(response.getUri());
+		
+		Integer trunkId = response.getId();
+		
+		CreateTrunkParams dataReplace = new CreateTrunkParams();
+		String trunkName2 = "trunkName" + TestConfig.nextRandom();
+		dataReplace.setName(trunkName2);
+		dataReplace.setUri("SIP/1235@phone.com:5060");
+		dataReplace.setMaxConcurrentCalls(4);
+		dataReplace.setMaxMinutesPerMonth(950);
+		
+		TrunkFull responeReplace = api.replaceAccountTrunk(accountId, trunkId, dataReplace);
+		assertEquals(trunkName2, responeReplace.getName());
+		assertEquals("SIP/1235@phone.com:5060", responeReplace.getUri());
+		assertEquals(new Integer(4), responeReplace.getMaxConcurrentCalls());
+		assertEquals(new Integer(950), responeReplace.getMaxMinutesPerMonth());
+		
+		DeleteTrunk responseDelete = api.deleteAccountTrunk(accountId, trunkId);
+		assertTrue(responseDelete.getSuccess());
     }
     
     /**
@@ -70,12 +113,12 @@ public class TrunksApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in other test")
     public void deleteAccountTrunkTest() throws ApiException {
         Integer accountId = null;
         Integer trunkId = null;
-        // DeleteTrunk response = api.deleteAccountTrunk(accountId, trunkId);
-
-        // TODO: test validations
+        DeleteTrunk response = api.deleteAccountTrunk(accountId, trunkId);
+        assertNotNull(response);
     }
     
     /**
@@ -87,12 +130,12 @@ public class TrunksApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in listget")
     public void getAccountTrunkTest() throws ApiException {
         Integer accountId = null;
         Integer trunkId = null;
-        // TrunkFull response = api.getAccountTrunk(accountId, trunkId);
-
-        // TODO: test validations
+        TrunkFull response = api.getAccountTrunk(accountId, trunkId);
+        assertNotNull(response);
     }
     
     /**
@@ -104,7 +147,7 @@ public class TrunksApiTest {
      *          if the Api call fails
      */
     @Test
-    public void listAccountTrunksTest() throws ApiException {
+    public void listGetAccountTrunksTest() throws ApiException {
         Integer accountId = 1315091;
         List<String> filtersId = null;
         List<String> filtersName = null;
@@ -115,11 +158,25 @@ public class TrunksApiTest {
         String fields = null;
         ListTrunks response = api.listAccountTrunks(accountId, filtersId, filtersName, sortId, sortName, limit, offset, fields);
         assertNotNull(response.getFilters());
-        assertNotNull(response.getItems());
+        List<TrunkFull> items = response.getItems();
+		assertNotNull(items);
         assertNotNull(response.getLimit());
         assertNotNull(response.getOffset());
         assertNotNull(response.getSort());
         assertNotNull(response.getTotal());
+        
+        if (items.size() > 0) {
+	        Integer firstItemId = items.get(0).getId();
+	        TrunkFull getTrunkResponse = api.getAccountTrunk(accountId, firstItemId);
+	        assertNotNull(getTrunkResponse.getCodecs());
+	//        assertNotNull(getTrunkResponse.getErrorMessage());
+	//        assertNotNull(getTrunkResponse.getGreeting());
+	        assertNotNull(getTrunkResponse.getId());
+	        assertNotNull(getTrunkResponse.getMaxConcurrentCalls());
+	        assertNotNull(getTrunkResponse.getMaxMinutesPerMonth());
+	        assertNotNull(getTrunkResponse.getName());
+	        assertNotNull(getTrunkResponse.getUri());
+        }
     }
     
     /**
@@ -131,13 +188,13 @@ public class TrunksApiTest {
      *          if the Api call fails
      */
     @Test
+    @Ignore("Tested in other test")
     public void replaceAccountTrunkTest() throws ApiException {
         Integer accountId = null;
         Integer trunkId = null;
         CreateTrunkParams data = null;
-        // TrunkFull response = api.replaceAccountTrunk(accountId, trunkId, data);
-
-        // TODO: test validations
+        TrunkFull response = api.replaceAccountTrunk(accountId, trunkId, data);
+        assertNotNull(response);
     }
     
 }

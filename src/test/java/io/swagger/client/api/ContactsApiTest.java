@@ -111,9 +111,6 @@ public class ContactsApiTest {
         assertEquals(prefix, responseCreate.getPrefix());
         assertEquals(suffix, responseCreate.getSuffix());
 
-        // TODO: [API Error] Replace call misses contact id to be replaced.
-        // In the API docs there does not exist a parameter for the contact id
-
         // Replace
         data.setJobTitle("title");
         ContactFull responseReplace = api.replaceAccountExtensionContact(accountId, extensionId, responseCreate.getId(), data);

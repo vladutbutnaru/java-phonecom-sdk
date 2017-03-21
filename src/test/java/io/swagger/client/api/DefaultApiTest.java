@@ -13,25 +13,27 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.ApiException;
-import io.swagger.client.model.PingResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import static org.junit.Assert.assertNotNull;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.junit.Before;
+import org.junit.Test;
+
+import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
+import io.swagger.client.model.PingResponse;
 
 /**
  * API tests for DefaultApi
  */
-@Ignore
 public class DefaultApiTest {
 
     private final DefaultApi api = new DefaultApi();
 
-    
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
+
     /**
      * The default API command
      *
@@ -42,9 +44,10 @@ public class DefaultApiTest {
      */
     @Test
     public void pingTest() throws ApiException {
+
         PingResponse response = api.ping();
 
-        // TODO: test validations
+        assertNotNull(response);
     }
     
 }

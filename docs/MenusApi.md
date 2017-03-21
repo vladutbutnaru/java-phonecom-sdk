@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 Delete an individual menu
 
-This service shows the details of an individual menu.
+See Account Menus for more info on the properties.
 
 ### Example
 ```java
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 Replace an individual menu
 
-This service replaces the details of an individual Menu.
+See Account Menus for more info on the properties.
 
 ### Example
 ```java

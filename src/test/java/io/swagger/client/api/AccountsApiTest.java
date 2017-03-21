@@ -98,12 +98,8 @@ public class AccountsApiTest {
         String fields = null;
         
         
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //apiKey.setApiKeyPrefix("Token");
-       
          ListAccounts response = api.listAccounts(filtersId, sortId, limit, offset, fields);
-         
-        // assertNotNull(response);
+         assertNotNull(response);
          List<AccountFull> items = response.getItems();
          assertNotNull(items);
 
