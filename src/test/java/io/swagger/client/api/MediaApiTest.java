@@ -28,6 +28,7 @@ import io.swagger.client.model.CreateMediaParams;
 import io.swagger.client.model.DeleteMedia;
 import io.swagger.client.model.ListMedia;
 import io.swagger.client.model.MediaFull;
+import io.swagger.client.model.MediaSummary;
 
 /**
  * API tests for MediaApi
@@ -133,17 +134,20 @@ public class MediaApiTest {
 		ListMedia response = api.listAccountMedia(accountId, filtersId, filtersName, sortId, sortName, limit, offset,
 				fields);
 		assertNotNull(response.getFilters());
-		assertNotNull(response.getItems());
+		List<MediaSummary> items = response.getItems();
+		assertNotNull(items);
 		assertNotNull(response.getLimit());
 		assertNotNull(response.getOffset());
 		assertNotNull(response.getSort());
 		assertNotNull(response.getTotal());
 		
-		Integer firstItemId = response.getItems().get(0).getId();
-		MediaFull getMediaResponse = api.getAccountMedia(accountId, firstItemId);
-		assertNotNull(getMediaResponse.getId());
-		assertNotNull(getMediaResponse.getName());
-		assertNotNull(getMediaResponse.getType());
+		if (items.size() > 0) {
+			Integer firstItemId = items.get(0).getId();
+			MediaFull getMediaResponse = api.getAccountMedia(accountId, firstItemId);
+			assertNotNull(getMediaResponse.getId());
+			assertNotNull(getMediaResponse.getName());
+			assertNotNull(getMediaResponse.getType());
+		}
 	}
 
 }

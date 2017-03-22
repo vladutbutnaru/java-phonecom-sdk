@@ -15,6 +15,8 @@ package io.swagger.client.api;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -48,24 +50,24 @@ public class NumberRegionsApiTest {
     public void listAvailablePhoneNumberRegionsTest() throws ApiException {
 
     	// Given
-        List<String> filtersCountryCode = null;
-        List<String> filtersNpa = null;
-        List<String> filtersNxx = null;
-        List<String> filtersIsTollFree = null;
-        List<String> filtersCity = null;
-        List<String> filtersProvincePostalCode = null;
-        List<String> filtersCountryPostalCode = null;
-        String sortCountryCode = null;
-        String sortNpa = null;
-        String sortNxx = null;
-        String sortIsTollFree = null;
-        String sortCity = null;
-        String sortProvincePostalCode = null;
-        String sortCountryPostalCode = null;
-        Integer limit = null;
-        Integer offset = null;
+        List<String> filtersCountryCode = Arrays.asList("asd");
+        List<String> filtersNpa = Arrays.asList("asd");
+        List<String> filtersNxx = Arrays.asList("asd");
+        List<String> filtersIsTollFree = Arrays.asList("asd");
+        List<String> filtersCity = Arrays.asList("asd");
+        List<String> filtersProvincePostalCode = Arrays.asList("asd");
+        List<String> filtersCountryPostalCode = Arrays.asList("asd");
+        String sortCountryCode = "asc";
+        String sortNpa = "asc";
+        String sortNxx = "asc";
+        String sortIsTollFree = "asc";
+        String sortCity = "asc";
+        String sortProvincePostalCode = "asc";
+        String sortCountryPostalCode = "asc";
+        Integer limit = 25;
+        Integer offset = 0;
         String fields = null;
-        List<String> groupBy = null;
+        List<String> groupBy = null;//Arrays.asList("city");
         
         // When
         ListPhoneNumbersRegions response = api.listAvailablePhoneNumberRegions(filtersCountryCode, filtersNpa, filtersNxx, filtersIsTollFree, filtersCity, filtersProvincePostalCode, filtersCountryPostalCode, sortCountryCode, sortNpa, sortNxx, sortIsTollFree, sortCity, sortProvincePostalCode, sortCountryPostalCode, limit, offset, fields, groupBy);

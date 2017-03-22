@@ -13,6 +13,7 @@
 package io.swagger.client.api;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ import org.junit.Test;
 import io.swagger.client.ApiException;
 import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CreateRouteParams;
+import io.swagger.client.model.DeleteRoute;
 import io.swagger.client.model.ListQueues;
 import io.swagger.client.model.ListRoutes;
 import io.swagger.client.model.QueueFull;
@@ -43,6 +45,53 @@ public class RoutesApiTest {
 	@Before
 	public void initTest() {
 		TestConfig.setAuthorization();
+	}
+	
+	@Test
+	public void createGetReplaceDeleteRouteTest() throws ApiException {
+		Integer accountId = 1315091;
+		CreateRouteParams data = new CreateRouteParams();
+		data.setName("name" + TestConfig.nextRandom());
+		
+		RuleSetAction action = new RuleSetAction();
+		action.action("queue");
+		
+		ListQueues queues = queuesApi.listAccountQueues(accountId, null, null, null, null, 25, 0, null);
+		QueueFull firstQueue = queues.getItems().get(0);
+
+		QueueSummary queue = new QueueSummary();
+		queue.id(firstQueue.getId());
+		queue.name(firstQueue.getName());
+		
+		action.queue(queue);
+		List<RuleSetAction> actions = new ArrayList<>();
+		
+		actions.add(action);
+		
+		RuleSet rule = new RuleSet();
+		rule.actions(actions);
+		
+		List<Object> rules = new ArrayList<>();
+		rules.add(rule);
+
+		data.setRules(rules);
+		
+		RouteFull response = api.createRoute(accountId, data);
+		assertNotNull(response);
+		
+		Integer routeId = response.getId();
+		
+		CreateRouteParams dataReplace = new CreateRouteParams();
+		String name2 = "name" + TestConfig.nextRandom();
+		dataReplace.setName(name2);
+
+		dataReplace.setRules(rules);
+		dataReplace.setExtension(response.getExtension());
+		RouteFull responseReplace = api.replaceAccountRoute(accountId, routeId, dataReplace);
+		assertNotNull(responseReplace);
+		
+		DeleteRoute responseDelete = api.deleteAccountRoute(accountId, routeId);
+		assertTrue(responseDelete.getSuccess());
 	}
 
 	/**
@@ -151,7 +200,8 @@ public class RoutesApiTest {
 		assertNotNull(response.getTotal());
 		
 		if (items.size() > 0) {
-			Integer firstItemId = items.get(0).getId();
+			RouteFull routeFull = items.get(0);
+			Integer firstItemId = routeFull.getId();
 			RouteFull getRouteResponse = api.getAccountRoute(accountId, firstItemId);
 		//		assertNotNull(getRouteResponse.getExtension());
 			assertNotNull(getRouteResponse.getId());

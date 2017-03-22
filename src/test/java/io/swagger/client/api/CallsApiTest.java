@@ -15,22 +15,26 @@ package io.swagger.client.api;
 
 import static org.junit.Assert.assertNotNull;
 
-import org.junit.Ignore;
+import org.junit.Before;
 import org.junit.Test;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.helper.TestConfig;
 import io.swagger.client.model.CallFull;
 import io.swagger.client.model.CreateCallParams;
 
 /**
  * API tests for CallsApi
  */
-@Ignore
 public class CallsApiTest {
 
     private final CallsApi api = new CallsApi();
 
-    
+    @Before
+    public void initTest() {
+    	TestConfig.setAuthorization();
+    }
+
     /**
      * Make a phone call
      *
@@ -41,8 +45,16 @@ public class CallsApiTest {
      */
     @Test
     public void createAccountCallsTest() throws ApiException {
-        Integer accountId = null;
-        CreateCallParams data = null;
+        Integer accountId = 1315091;
+        CreateCallParams data = new CreateCallParams();
+        data.setCalleePhoneNumber("+16309624775");
+        data.setCallerPhoneNumber("+12019570328");
+        data.setCalleeCallerId("+12019570328");
+        data.setCallerCallerId("+16309624775");
+        data.callerExtension(1767963);
+        data.calleeExtension(1750618);
+        data.callerPrivate(true);
+        data.calleePrivate(true);
         CallFull response = api.createAccountCall(accountId, data);
 
         assertNotNull(response);

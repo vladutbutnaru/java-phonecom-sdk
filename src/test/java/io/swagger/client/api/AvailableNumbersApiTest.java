@@ -15,6 +15,7 @@ package io.swagger.client.api;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -46,21 +47,21 @@ public class AvailableNumbersApiTest {
      */
     @Test
     public void listAvailablePhoneNumbersTest() throws ApiException {
-        List<String> filtersPhoneNumber = null;
-        List<String> filtersCountryCode = null;
-        List<String> filtersNpa = null;
-        List<String> filtersNxx = null;
-        List<String> filtersXxxx = null;
-        List<String> filtersCity = null;
-        List<String> filtersProvince = null;
-        List<String> filtersCountry = null;
-        List<String> filtersPrice = null;
+        List<String> filtersPhoneNumber = Arrays.asList("asd");
+        List<String> filtersCountryCode = Arrays.asList("asd");
+        List<String> filtersNpa = Arrays.asList("asd");
+        List<String> filtersNxx = Arrays.asList("asd");
+        List<String> filtersXxxx = Arrays.asList("asd");
+        List<String> filtersCity = Arrays.asList("asd");
+        List<String> filtersProvince = Arrays.asList("asd");
+        List<String> filtersCountry = Arrays.asList("asd");
+        List<String> filtersPrice = Arrays.asList("asd");
         List<String> filtersCategory = null;
-        String sortInternal = null;
-        String sortPrice = null;
-        String sortPhoneNumber = null;
-        Integer limit = null;
-        Integer offset = null;
+        String sortInternal = "asc";
+        String sortPrice = "asc";
+        String sortPhoneNumber = "asc";
+        Integer limit = 25;
+        Integer offset = 0;
         String fields = null;
         ListAvailableNumbers response = api.listAvailablePhoneNumbers(filtersPhoneNumber, filtersCountryCode, filtersNpa, filtersNxx, filtersXxxx, filtersCity, filtersProvince, filtersCountry, filtersPrice, filtersCategory, sortInternal, sortPrice, sortPhoneNumber, limit, offset, fields);
         assertNotNull(response.getItems());
